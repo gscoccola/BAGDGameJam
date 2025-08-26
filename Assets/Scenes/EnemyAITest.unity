@@ -987,6 +987,7 @@ MonoBehaviour:
   _randomPatrolDistance: 20
   _navMesh: {fileID: 42597202}
   _target: {fileID: 942722624}
+  _playerTransform: {fileID: 952809405}
   CurrentState: 0
 --- !u!195 &881552779
 NavMeshAgent:
@@ -1417,7 +1418,7 @@ GameObject:
   - component: {fileID: 952809403}
   - component: {fileID: 952809402}
   - component: {fileID: 952809400}
-  - component: {fileID: 952809406}
+  - component: {fileID: 952809409}
   - component: {fileID: 952809408}
   - component: {fileID: 952809407}
   m_Layer: 7
@@ -1548,18 +1549,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &952809406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952809399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301b3a5642498164189db9c114faf7e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &952809407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,6 +1637,18 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &952809409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952809399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bbd446be1fe3d047933ca0f27fd556d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1005072142
 GameObject:
   m_ObjectHideFlags: 0

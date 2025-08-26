@@ -10,12 +10,12 @@ public class EnemyMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private NavMeshSurface _navMesh;
     [SerializeField] private Transform _target;
+    [SerializeField] private Transform _playerTransform;
 
     [Header("Debug")]
     public EnemyState CurrentState;
 
     private NavMeshAgent _naveMeshAgent;
-    private Transform _playerTransform;
     private bool _canSeePlayer;
     private Vector3 _lastKnownPlayerPos;
     
@@ -23,7 +23,6 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         _naveMeshAgent = GetComponent<NavMeshAgent>();
-        _playerTransform = FindAnyObjectByType<TopDownPlayerController>().transform;
         if (_playerTransform == null) Debug.LogError("No Player Found");
         //CurrentState = EnemyState.Idle;
 
