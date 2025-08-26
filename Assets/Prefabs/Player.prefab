@@ -427,7 +427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733855038482514334}
   - component: {fileID: 5977318154292609576}
-  - component: {fileID: 6335992862682142178}
+  - component: {fileID: 8266218004754040164}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -477,7 +477,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6335992862682142178
+--- !u!114 &8266218004754040164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8338320075049027767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301b3a5642498164189db9c114faf7e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bbd446be1fe3d047933ca0f27fd556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   preset: {fileID: 11400000, guid: 0419e25f4796af746bcdbe6c78d89b9c, type: 2}
