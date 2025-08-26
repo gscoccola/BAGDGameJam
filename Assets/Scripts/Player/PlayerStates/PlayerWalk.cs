@@ -1,17 +1,13 @@
-using UnityEngine;
-
-[RequireComponent(typeof(PlayerController))]
-public class PlayerWalk : MonoBehaviour, IState<PlayerState>
+public class PlayerWalk : IState<PlayerState>
 {
     private PlayerController _playerController;
     private FiniteStateMachine<PlayerState> _fsm;
     
 
-    public IState<PlayerState> Initialize(FiniteStateMachine<PlayerState> fsm)
+    public PlayerWalk (params object[] parameters)
     {
-        _playerController = GetComponent<PlayerController>();
-        _fsm = fsm;
-        return this;
+        _fsm = (FiniteStateMachine<PlayerState>) parameters[0];
+        _playerController = (PlayerController) parameters[1];
     }
 
     public void OnEnter(params object[] parameters)

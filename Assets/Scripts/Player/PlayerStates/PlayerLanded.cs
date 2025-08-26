@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-public class PlayerLanded : MonoBehaviour, IState<PlayerState>
+public class PlayerLanded : IState<PlayerState>
 {
     private PlayerController _playerController;
     private FiniteStateMachine<PlayerState> _fsm;
@@ -11,11 +10,10 @@ public class PlayerLanded : MonoBehaviour, IState<PlayerState>
     public float GetCurrentDuration => currentDuration;
     
     
-    public IState<PlayerState> Initialize(FiniteStateMachine<PlayerState> fsm)
+    public PlayerLanded (params object[] parameters)
     {
-        _playerController = GetComponent<PlayerController>();
-        _fsm = fsm;
-        return this;
+        _fsm = (FiniteStateMachine<PlayerState>) parameters[0];
+        _playerController = (PlayerController) parameters[1];
     }
 
     public void OnEnter(params object[] parameters)

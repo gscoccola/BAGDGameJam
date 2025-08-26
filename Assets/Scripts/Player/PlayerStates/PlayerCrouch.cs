@@ -1,17 +1,13 @@
-using UnityEngine;
-
-[RequireComponent(typeof(PlayerController))]
-public class PlayerCrouch : MonoBehaviour, IState<PlayerState>
+public class PlayerCrouch : IState<PlayerState>
 {
-    private PlayerController _playerController;
-    private FiniteStateMachine<PlayerState> _fsm;
+    private readonly PlayerController _playerController;
+    private readonly FiniteStateMachine<PlayerState> _fsm;
 
     
-    public IState<PlayerState> Initialize(FiniteStateMachine<PlayerState> fsm)
+    public PlayerCrouch (params object[] parameters)
     {
-        _playerController = GetComponent<PlayerController>();
-        _fsm = fsm;
-        return this;
+        _fsm = (FiniteStateMachine<PlayerState>) parameters[0];
+        _playerController = (PlayerController) parameters[1];
     }
     
     public void OnEnter(params object[] parameters)

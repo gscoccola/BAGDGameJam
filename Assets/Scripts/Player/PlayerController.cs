@@ -62,13 +62,13 @@ public class PlayerController : MonoBehaviour
         PlayerControls.Instance.OnJumpKey += RequestJump;
         
         _fsm = new FiniteStateMachine<PlayerState>();
-        _fsm.AddState(PlayerState.Idle, gameObject.GetComponent<PlayerIdle>().Initialize(_fsm));
-        _fsm.AddState(PlayerState.Walking, gameObject.GetComponent<PlayerWalk>().Initialize(_fsm));
-        _fsm.AddState(PlayerState.Sprinting, gameObject.GetComponent<PlayerSprint>().Initialize(_fsm));
-        _fsm.AddState(PlayerState.Crouching, gameObject.GetComponent<PlayerCrouch>().Initialize(_fsm));
-        _fsm.AddState(PlayerState.Falling, gameObject.GetComponent<PlayerFall>().Initialize(_fsm));
-        _fsm.AddState(PlayerState.Landed, gameObject.GetComponent<PlayerLanded>().Initialize(_fsm));
-        _fsm.AddState(PlayerState.Recovery, gameObject.GetComponent<PlayerRecovery>().Initialize(_fsm));
+        _fsm.AddState(PlayerState.Idle, new PlayerIdle(_fsm, this));
+        _fsm.AddState(PlayerState.Walking, new PlayerWalk(_fsm, this));
+        _fsm.AddState(PlayerState.Sprinting, new PlayerSprint(_fsm, this));
+        _fsm.AddState(PlayerState.Crouching, new PlayerCrouch(_fsm, this));
+        _fsm.AddState(PlayerState.Falling, new PlayerFall(_fsm, this));
+        _fsm.AddState(PlayerState.Landed, new PlayerLanded(_fsm, this));
+        _fsm.AddState(PlayerState.Recovery, new PlayerRecovery(_fsm, this));
         _fsm.ChangeState(PlayerState.Idle);
     }
     

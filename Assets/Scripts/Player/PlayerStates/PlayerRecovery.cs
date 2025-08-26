@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-public class PlayerRecovery : MonoBehaviour, IState<PlayerState>
+
+public class PlayerRecovery :  IState<PlayerState>
 {
     private PlayerController _playerController;
     private FiniteStateMachine<PlayerState> _fsm;
@@ -10,11 +10,10 @@ public class PlayerRecovery : MonoBehaviour, IState<PlayerState>
     [SerializeField, ReadOnly] private float currentDuration;
     
     
-    public IState<PlayerState> Initialize(FiniteStateMachine<PlayerState> fsm)
+    public PlayerRecovery (params object[] parameters)
     {
-        _playerController = GetComponent<PlayerController>();
-        _fsm = fsm;
-        return this;
+        _fsm = (FiniteStateMachine<PlayerState>) parameters[0];
+        _playerController = (PlayerController) parameters[1];
     }
 
     public void OnEnter(params object[] parameters)

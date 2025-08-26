@@ -1,21 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-public class PlayerFall : MonoBehaviour, IState<PlayerState>
+public class PlayerFall : IState<PlayerState>
 {
-    private PlayerController _playerController;
-    private FiniteStateMachine<PlayerState> _fsm;
-
-    [Header("Fall")]
-    [SerializeField, ReadOnly] private float currentFallTime;
-    [SerializeField, ReadOnly] private float currentSpeed;
+    private readonly PlayerController _playerController;
+    private readonly FiniteStateMachine<PlayerState> _fsm;
+    
+    private float currentFallTime;
+    private float currentSpeed;
     
     
-    public IState<PlayerState> Initialize(FiniteStateMachine<PlayerState> fsm)
+    public PlayerFall (params object[] parameters)
     {
-        _playerController = GetComponent<PlayerController>();
-        _fsm = fsm;
-        return this;
+        _fsm = (FiniteStateMachine<PlayerState>) parameters[0];
+        _playerController = (PlayerController) parameters[1];
     }
 
     public void OnEnter(params object[] parameters)

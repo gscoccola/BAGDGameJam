@@ -11,7 +11,7 @@ public class PlayerCameraLand : MonoBehaviour
     [SerializeField] private AnimationCurve landCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     private PlayerCameraController _playerCameraController;
     private PlayerController _playerController;
-    private PlayerLanded _playerLanded;
+    //private PlayerLanded _playerLanded;
     
     [Header("Recovery Animation")]
     [SerializeField, Range(0f, 20f)] private float recoverySmoothness = 7f;
@@ -21,7 +21,7 @@ public class PlayerCameraLand : MonoBehaviour
     {
         _playerCameraController = GetComponent<PlayerCameraController>();
         _playerController = GetComponentInParent<PlayerController>();
-        _playerLanded = _playerController.GetComponent<PlayerLanded>();
+        //_playerLanded = _playerController.GetComponent<PlayerLanded>();
         EventManager.Instance.Subscribe(Constants.OnPlayerLanded, OnStartLanded);
     }
     
@@ -48,7 +48,7 @@ public class PlayerCameraLand : MonoBehaviour
     {
         if (_playerController.CurrentPlayerState == PlayerState.Landed)
         {
-            float t = landCurve.Evaluate(_playerLanded.GetCurrentDuration / _playerController.Preset.LandDuration);
+            float t = landCurve.Evaluate(1 / _playerController.Preset.LandDuration); //Revisar
             currentOffset = Vector3.LerpUnclamped(Vector3.zero, targetOffset, t);
             _playerCameraController.UpdateCameraPositionOffset(currentOffset);
         }
