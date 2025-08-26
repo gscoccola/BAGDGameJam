@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class TopDownPlayerController : MonoBehaviour
 {
     Vector2 _movementInput;
 
