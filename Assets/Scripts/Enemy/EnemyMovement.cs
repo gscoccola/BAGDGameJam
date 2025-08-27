@@ -16,6 +16,8 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Debug")]
     public EnemyState CurrentState;
+    public float DistanceToTarget;
+    public float DistanceToPlayer;
 
     private NavMeshAgent _naveMeshAgent;
     private bool _canSeePlayer;
@@ -28,13 +30,22 @@ public class EnemyMovement : MonoBehaviour
         if (_playerTransform == null) Debug.LogError("No Player Found");
         //CurrentState = EnemyState.Idle;
 
-        CurrentState = EnemyState.MovingToRandomPosition;
-        SwitchTowardsRandomPos(_randomPatrolDistance, _playerTransform.position);
+        CurrentState = EnemyState.MovingToLastKnownPosition;
+        SetTarget(_playerTransform.position);
     }
 
     private void Update()
     {
-        if (HasLineOfSight(transform.position, _playerTransform.position))
+        DistanceToTarget = FlatDistance(_target);
+        DistanceToPlayer = FlatDistance(_playerTransform);
+
+        if (FlatDistance(_playerTransform) < 0.1f)
+        {
+            CurrentState = EnemyState.FoundPlayer;
+            SetTarget(transform.position);
+        }
+
+        else if (HasLineOfSight(transform.position, _playerTransform.position))
         {
             CurrentState = EnemyState.MovingToPlayer;
             SetTarget(_playerTransform.position);
@@ -43,8 +54,7 @@ public class EnemyMovement : MonoBehaviour
         else if (FlatDistance(_playerTransform) > _maxDistanceToPlayer)
         {
             Teleport();
-            CurrentState = EnemyState.MovingToRandomPosition;
-            SwitchTowardsRandomPos(_randomPatrolDistance, _playerTransform.position);
+            
         }
 
         else if (CurrentState == EnemyState.MovingToPlayer)
@@ -64,8 +74,8 @@ public class EnemyMovement : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 direction = (target - origin).normalized;
-        Physics.Raycast(origin, direction, out hit);
-        return hit.point == target;
+        if (!Physics.Raycast(origin, direction, out hit)) return false;
+        return hit.transform.position == target;
     }
 
     private void SetTarget(Vector3 position)
@@ -77,13 +87,15 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 GetRandomPos()
     {
         Vector2 randomCircle = Random.insideUnitCircle;
+        randomCircle = randomCircle.normalized;
         return new Vector3(randomCircle.x, 0, randomCircle.y);
     }
 
     private void SwitchTowardsRandomPos(float distance, Vector3 playerPos)
     {
-        NavMesh.SamplePosition(playerPos + GetRandomPos() * distance, out NavMeshHit hit, 10f, NavMesh.AllAreas);
-        SetTarget(hit.position);
+        if (NavMesh.SamplePosition(playerPos.Flatten() + GetRandomPos() * distance, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+            SetTarget(hit.position);
+        else Debug.Log("Random Pos was too far from mesh");
     }
 
     private float FlatDistance(Transform target)
@@ -93,21 +105,22 @@ public class EnemyMovement : MonoBehaviour
 
     private void Teleport()
     {
-        int i = 0;
-        while (i < 3)
+        Vector3 tryPos = _playerTransform.position.Flatten() + GetRandomPos() * _teleportDistanceToPlayer;
+        /*Debug.Log("PlayerPos " + _playerTransform.position.Flatten());
+        Debug.Log("Trying to teleport to " + tryPos);*/
+        if (NavMesh.SamplePosition(tryPos, out NavMeshHit hit, 1f, NavMesh.AllAreas))
         {
-            if (NavMesh.SamplePosition(_playerTransform.position + GetRandomPos() *
-            _teleportDistanceToPlayer, out NavMeshHit hit, 1f, NavMesh.AllAreas) &&
-            !HasLineOfSight(transform.position, hit.position))
+            if (HasLineOfSight(hit.position , _playerTransform.position))
             {
-                transform.position = hit.position;
-                SwitchTowardsRandomPos(_randomPatrolDistance, _playerTransform.position);
-                CurrentState = EnemyState.MovingToRandomPosition;
-                break;
+                Debug.Log("Teleport was in line of sight of player");
+                return;
             }
-
-            i++;
-        } 
+            transform.position = hit.position;
+            SwitchTowardsRandomPos(_randomPatrolDistance, _playerTransform.position);
+            CurrentState = EnemyState.MovingToRandomPosition;
+            Debug.Log(FlatDistance(_playerTransform));
+        }
+        else Debug.Log("Random Pos was too far from mesh");
     }
 }
 
@@ -117,13 +130,14 @@ public enum EnemyState
     Idle,
     MovingToLastKnownPosition,
     MovingToPlayer,
-    MovingToRandomPosition
+    MovingToRandomPosition,
+    FoundPlayer,
 }
 
 public static class VectorExtensions
 {
     public static Vector3 Flatten(this Vector3 vector)
     {
-        return new Vector3(vector.x, vector.z);
+        return new Vector3(vector.x, 0f, vector.z);
     }
 }
