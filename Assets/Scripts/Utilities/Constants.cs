@@ -1,5 +1,8 @@
 public static class Constants
 {
+    //Enemy
+    public const string OnSheepPickup = "OnSheepPickup";
+    public const string OnSheepNoise = "OnSheepNoise";
     //Player
     public const string OnEnableControls = "OnEnableControls";
     public const string OnDisableControls = "OnDisableControls";

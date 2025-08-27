@@ -22,10 +22,13 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent _naveMeshAgent;
     private bool _canSeePlayer;
     private Vector3 _lastKnownPlayerPos;
-    
+    private bool _playerInSafeZone;
 
     private void Start()
     {
+        EventManager.Instance.Subscribe("EnterSafeZone", EnterSafeZone);
+        EventManager.Instance.Subscribe("ExitSafeZone", ExitSafeZone);
+
         _naveMeshAgent = GetComponent<NavMeshAgent>();
         if (_playerTransform == null) Debug.LogError("No Player Found");
         //CurrentState = EnemyState.Idle;
@@ -122,6 +125,22 @@ public class EnemyMovement : MonoBehaviour
         }
         //else Debug.Log("Random Pos was too far from mesh");
     }
+
+    private void EnterSafeZone()
+    {
+        _playerInSafeZone = true;
+        CurrentState = EnemyState.Idle;
+        _naveMeshAgent.isStopped = true;
+
+    }
+
+    private void ExitSafeZone()
+    {
+        _playerInSafeZone = false;
+        _naveMeshAgent.isStopped = false;
+        CurrentState = EnemyState.MovingToLastKnownPosition;
+        SetTarget(_playerTransform.position);
+    }
 }
 
 
@@ -132,6 +151,10 @@ public enum EnemyState
     MovingToPlayer,
     MovingToRandomPosition,
     FoundPlayer,
+    Patrol,
+    Chase,
+    Search,
+    UltraInstinct,
 }
 
 public static class VectorExtensions
