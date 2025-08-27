@@ -24,8 +24,8 @@ public class LevelMusic : MonoBehaviour
 #endif
         StartCoroutine(ChangeMusic());
         
-        EventManager.Instance.Subscribe(Constants.MuteMusic, MuteMusic);
-        EventManager.Instance.Subscribe(Constants.UnMuteMusic, UnMuteMusic);
+        //EventManager.Instance.Subscribe(Constants.MuteMusic, MuteMusic);
+        //EventManager.Instance.Subscribe(Constants.UnMuteMusic, UnMuteMusic);
     }
 
     

@@ -29,12 +29,16 @@ public class PlayerPreset : ScriptableObject
     public float WalkSpeed => walkSpeed;
     [SerializeField] private HeadBobPreset walkHeadBobPreset;
     public HeadBobPreset WalkHeadBobPreset => walkHeadBobPreset;
-    [SerializeField, Range(0f, 20f)] private float sprintSpeed = 3.5f;
-    public float SprintSpeed => sprintSpeed;
-    [SerializeField] private HeadBobPreset sprintHeadBobPreset;
     public HeadBobPreset SprintHeadBobPreset => sprintHeadBobPreset;
     [SerializeField] private bool canSprintBackward;
     public bool CanSprintBackward => canSprintBackward;
+    
+    [Header("Sprint")]
+    [SerializeField, Range(0f, 20f)] public float minSprintSpeed = 2.5f;
+    [SerializeField, Range(0f, 20f)] public float maxSprintSpeed = 4;
+    [Space]
+    [SerializeField, Range(0f, 20f)] public float burstSprintSpeed = 7;
+    [SerializeField] private HeadBobPreset sprintHeadBobPreset;
     
     [Header("Jump")]
     [SerializeField, Range(0f, 10f)] private float jumpHeight = 1.5f;

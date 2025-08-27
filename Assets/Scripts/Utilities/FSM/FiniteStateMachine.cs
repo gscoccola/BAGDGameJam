@@ -54,5 +54,17 @@ public class FiniteStateMachine<T> where T : Enum
         _allStates.Clear();
         _currentState = null;
     }
+    
+    public IState<T> GetState(T state)
+    {
+        if (!_allStates.ContainsKey(state))
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning($"FSM: No se encontró el estado {state}.");
+            return null;
+#endif
+        }
+        return _allStates[state];
+    }
     #endregion
 }
