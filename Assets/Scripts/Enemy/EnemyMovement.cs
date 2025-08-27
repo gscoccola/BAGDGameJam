@@ -95,7 +95,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (NavMesh.SamplePosition(playerPos.Flatten() + GetRandomPos() * distance, out NavMeshHit hit, 2f, NavMesh.AllAreas))
             SetTarget(hit.position);
-        else Debug.Log("Random Pos was too far from mesh");
+        //else Debug.Log("Random Pos was too far from mesh");
     }
 
     private float FlatDistance(Transform target)
@@ -112,15 +112,15 @@ public class EnemyMovement : MonoBehaviour
         {
             if (HasLineOfSight(hit.position , _playerTransform.position))
             {
-                Debug.Log("Teleport was in line of sight of player");
+                //Debug.Log("Teleport was in line of sight of player");
                 return;
             }
             transform.position = hit.position;
             SwitchTowardsRandomPos(_randomPatrolDistance, _playerTransform.position);
             CurrentState = EnemyState.MovingToRandomPosition;
-            Debug.Log(FlatDistance(_playerTransform));
+            //Debug.Log(FlatDistance(_playerTransform));
         }
-        else Debug.Log("Random Pos was too far from mesh");
+        //else Debug.Log("Random Pos was too far from mesh");
     }
 }
 
