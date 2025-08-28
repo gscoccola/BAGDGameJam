@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using PixelMate.Input;
 
 public class PlayerControls : Singleton<PlayerControls> //Revisar
 {
@@ -18,13 +19,43 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
     public event Action OnPreviousSlotKey, OnNextSlotKey;
     public event Action<int> OnSelectInventorySlotKey;
     public event Action OnGamePlayCancelKey, OnMenuCancelKey;
-    
-    
+    public event Action OnClickAttack;
+    public event Action OnReleaseAttack;
+
+    private InputSystem_Actions _inputActions;
+
+    #region Unity Functions
+
     protected override void Awake()
     {
         base.Awake();
+
+        _inputActions = new InputSystem_Actions();
         SubscribeToAllActionEvents();
     }
+
+    private void OnEnable()
+    {
+        _inputActions.Enable();
+
+        _inputActions.Player.Attack.performed -= HandleOnAttackButton;
+        _inputActions.Player.Attack.performed += HandleOnAttackButton;
+
+        _inputActions.Player.Attack.canceled -= HandleOnReleaseAttackButton;
+        _inputActions.Player.Attack.canceled += HandleOnReleaseAttackButton;
+    }
+
+    private void OnDisable()
+    {
+        if (_inputActions == null)
+            return;
+
+        _inputActions.Player.Attack.performed -= HandleOnAttackButton;
+        _inputActions.Player.Attack.canceled -= HandleOnReleaseAttackButton;
+        _inputActions.Disable();
+    }
+
+    #endregion
 
     private void SubscribeToAllActionEvents()
     {
@@ -160,6 +191,19 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
     {
         if (callbackContext.started) OnGamePlayCancelKey?.Invoke();
     }
+
+    private void HandleOnAttackButton(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnClickAttack?.Invoke();
+    }
+
+    private void HandleOnReleaseAttackButton(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+            OnReleaseAttack?.Invoke();
+    }
+
     #endregion
 
 

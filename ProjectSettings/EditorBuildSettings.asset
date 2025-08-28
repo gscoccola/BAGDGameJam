@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/EnemyAITest.unity
     guid: e4785ee0c16f9df439c928eefc1ddbf1
+  - enabled: 1
+    path: Assets/Scenes/Tests/Level.unity
+    guid: 8c3cccf81e883c7469fa7becc406c22a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

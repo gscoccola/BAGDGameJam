@@ -5,11 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public bool haveASheep;
+    
     [Header("Controller")]
     [SerializeField] private PlayerPreset preset;
     public PlayerPreset Preset => preset;
     private Transform _playerCameraTransform;
     private Coroutine _crouchCoroutine;
+    public PlayerSprintEnergy GetPlayerSprintEnergy { get; private set; }
     
     [Header("Movement")]
     [SerializeField, ReadOnly] private bool canControllable = true;
@@ -41,8 +44,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentMoveVelocity;
     private Vector3 _currentGravityVelocity;
     public Vector3 CurrentGravityVelocity => _currentGravityVelocity;
-    private FiniteStateMachine<PlayerState> _fsm;
+    public FiniteStateMachine<PlayerState> Fsm;
     private CharacterController _characterController;
+    public PlayerSounds PlayerSounds { private set; get; }
+    public event Action OnMove, OnJump, OnLand;
 
 
     private void Awake()
@@ -54,6 +59,8 @@ public class PlayerController : MonoBehaviour
         Vector3 camStartPos = _playerCameraTransform.localPosition;
         Vector3 camTargetPos = new Vector3(camStartPos.x, Preset.NormalCameraHeight, camStartPos.z);
         _playerCameraTransform.localPosition = camTargetPos;
+        GetPlayerSprintEnergy = GetComponent<PlayerSprintEnergy>();
+        PlayerSounds = GetComponentInChildren<PlayerSounds>();
         
         EnableLocomotion();
         PlayerControls.Instance.OnSprintKey += StartPressSprint;
@@ -61,15 +68,15 @@ public class PlayerController : MonoBehaviour
         PlayerControls.Instance.OnCrouchKey += PressCrouch;
         PlayerControls.Instance.OnJumpKey += RequestJump;
         
-        _fsm = new FiniteStateMachine<PlayerState>();
-        _fsm.AddState(PlayerState.Idle, new PlayerIdle(_fsm, this));
-        _fsm.AddState(PlayerState.Walking, new PlayerWalk(_fsm, this));
-        _fsm.AddState(PlayerState.Sprinting, new PlayerSprint(_fsm, this));
-        _fsm.AddState(PlayerState.Crouching, new PlayerCrouch(_fsm, this));
-        _fsm.AddState(PlayerState.Falling, new PlayerFall(_fsm, this));
-        _fsm.AddState(PlayerState.Landed, new PlayerLanded(_fsm, this));
-        _fsm.AddState(PlayerState.Recovery, new PlayerRecovery(_fsm, this));
-        _fsm.ChangeState(PlayerState.Idle);
+        Fsm = new FiniteStateMachine<PlayerState>();
+        Fsm.AddState(PlayerState.Idle, new PlayerIdle(Fsm, this));
+        Fsm.AddState(PlayerState.Walking, new PlayerWalk(Fsm, this));
+        Fsm.AddState(PlayerState.Sprinting, new PlayerSprint(Fsm, this));
+        Fsm.AddState(PlayerState.Crouching, new PlayerCrouch(Fsm, this));
+        Fsm.AddState(PlayerState.Falling, new PlayerFall(Fsm, this));
+        Fsm.AddState(PlayerState.Landed, new PlayerLanded(Fsm, this));
+        Fsm.AddState(PlayerState.Recovery, new PlayerRecovery(Fsm, this));
+        Fsm.ChangeState(PlayerState.Idle);
     }
     
     private void OnDestroy()
@@ -83,8 +90,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         TryJump();
-        _fsm.Update();
+        Fsm.Update();
     }
+    
+    public void ActiveLandEvent() { OnLand?.Invoke(); }
 
     
     #region Inputs Methods
@@ -151,6 +160,7 @@ public class PlayerController : MonoBehaviour
             _currentGravityVelocity.y = Mathf.Sqrt(Preset.JumpHeight * Physics.gravity.y * -2f * Preset.FallGravityMultiplier);
             _currentJumpBufferTimer = 0f;
             _currentCoyoteTimer = 0f;
+            OnJump?.Invoke();
         }
     }
     #endregion
@@ -203,6 +213,8 @@ public class PlayerController : MonoBehaviour
         //Movimiento + detección de suelo
         CollisionFlags flags = _characterController.Move(totalVelocity * Time.deltaTime);
         isGrounded = (flags & CollisionFlags.Below) != 0;
+        
+        if (isGrounded) OnMove?.Invoke();
         
         //Cancelar salto si chocás el techo
         if ((flags & CollisionFlags.Above) != 0 && _currentGravityVelocity.y > 0) _currentGravityVelocity.y = AntiBumpFactor;

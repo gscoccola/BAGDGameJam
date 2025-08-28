@@ -20,7 +20,8 @@ public class PlayerLanded : IState<PlayerState>
     {
         _playerController.CurrentPlayerState = PlayerState.Landed;
         float fallTime = (float) parameters[0];
-        EventManager.Instance.Trigger(Constants.OnPlayerLanded, fallTime);
+        EventManager.Instance.Trigger(Constants.OnPlayerLanded, fallTime, 1, true, false);
+        _playerController.ActiveLandEvent();
     }
 
     public void OnUpdate()
@@ -28,7 +29,7 @@ public class PlayerLanded : IState<PlayerState>
         currentDuration += Time.deltaTime;
         float currentSpeed;
         if (PlayerControls.Instance.InputMovement().magnitude == 0) currentSpeed = 0f;
-        else if (_playerController.GetIsSprinting) currentSpeed = _playerController.Preset.SprintSpeed;
+        else if (_playerController.GetIsSprinting) currentSpeed = _playerController.Preset.minSprintSpeed;
         else if (_playerController.GetIsCrouching) currentSpeed = _playerController.Preset.CrouchSpeed;
         else currentSpeed = _playerController.Preset.WalkSpeed;
         
@@ -50,7 +51,7 @@ public class PlayerLanded : IState<PlayerState>
         if (_playerController.GetCanControllable)
         {
             // Si estoy corriendo de espaldas y no puedo
-            if (_playerController.GetIsSprinting && currentSpeed >= _playerController.Preset.SprintSpeed)
+            if (_playerController.GetIsSprinting && currentSpeed >= _playerController.Preset.minSprintSpeed)
             {
                 bool canSprint = _playerController.Preset.CanSprintBackward || !_playerController.IsMovingBackward;
                 if (!canSprint) currentSpeed = _playerController.Preset.WalkSpeed;
