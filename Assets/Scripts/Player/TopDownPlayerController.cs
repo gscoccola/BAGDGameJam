@@ -9,19 +9,20 @@ public class TopDownPlayerController : MonoBehaviour
     [SerializeField] float _baseSpeed;
     float _moveSpeed;
     [SerializeField] float _sprintSpeed;
+    [SerializeField] float _sheepBaseSpeed;
+    [SerializeField] float _sheepSprintSpeed;
     [SerializeField] float _maxStamina = 5f;
     [SerializeField] Slider _slider;
     private float _currentStamina;
     Rigidbody _rigidbody;
     bool _isSprinting;
-
-    PlayerControls _controls;
+    bool _isCarryingSheep;
+    public Sheep _sheepInContact;
 
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _controls = new PlayerControls();
         _currentStamina = _maxStamina;
         _slider.maxValue = _maxStamina;
     }
@@ -36,6 +37,21 @@ public class TopDownPlayerController : MonoBehaviour
         _isSprinting = value.Get<float>() == 1f && _currentStamina > 0f;
     }
 
+    void OnInteract(InputValue value)
+    {
+        if (!_isCarryingSheep && _sheepInContact != null)
+        {
+            _sheepInContact.OnPickup(transform);
+            _isCarryingSheep = true;
+        }
+        else if (_isCarryingSheep)
+        {
+            _sheepInContact.OnDrop();
+            _isCarryingSheep = false;
+
+        }
+    }
+
     
 
 
@@ -47,7 +63,7 @@ public class TopDownPlayerController : MonoBehaviour
 
         if (_isSprinting && _currentStamina > 0f)
         {
-            _moveSpeed = _sprintSpeed;
+            _moveSpeed = _isCarryingSheep ? _sheepSprintSpeed : _sprintSpeed;
             if (_movementInput != Vector2.zero)
             {
                 _currentStamina -= Time.deltaTime;
@@ -55,8 +71,8 @@ public class TopDownPlayerController : MonoBehaviour
         }
         else
         {
-            _currentStamina += Time.deltaTime;
-            _moveSpeed = _baseSpeed;
+            if (_currentStamina < _maxStamina)  _currentStamina += Time.deltaTime;
+            _moveSpeed = _isCarryingSheep ? _sheepBaseSpeed : _baseSpeed;
         }
             
 

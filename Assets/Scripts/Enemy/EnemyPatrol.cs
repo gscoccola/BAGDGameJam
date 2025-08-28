@@ -1,11 +1,15 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
+using System.Linq;
 
 public class EnemyPatrol : IState<EnemyState>
 {
     private FiniteStateMachine<EnemyState> _stateMachine;
     private Enemy _enemy;
-
+    private List<Vector3> _wayPointsQueue = new List<Vector3>();
+    private Vector3 _currentWayPoint;
 
     public EnemyPatrol(params object[] parameters)
     {
@@ -16,6 +20,7 @@ public class EnemyPatrol : IState<EnemyState>
     public void OnEnter(params object[] parameters)
     {
         _enemy.CurrentState = EnemyState.Patrol;
+        SetNewWayPoint();
     }
 
     public void OnExit()
@@ -25,26 +30,35 @@ public class EnemyPatrol : IState<EnemyState>
 
     public void OnUpdate()
     {
-        if (_enemy.HasLineOfSight(_enemy.transform.position))
+        if (!_enemy._playerInSafeZone && _enemy.HasLineOfSight(_enemy.transform.position))
         {
             _stateMachine.ChangeState(EnemyState.Chase);
             return;
         }
+        if (_enemy.FlatDistance(_currentWayPoint) < 0.5f)
+        {
+            SetNewWayPoint();
+        }
 
-   
     }
 
-    public void SwitchTowardsRandomPos()
+    private void SetNewWayPoint()
     {
-        if (NavMesh.SamplePosition(_enemy._playerTransform.position.Flatten() + GetRandomPos() * _enemy._randomPatrolDistance, out NavMeshHit hit, 2f, NavMesh.AllAreas))
-            _enemy.SetTargetAndNavMeshPath(hit.position);
-        //else Debug.Log("Random Pos was too far from mesh");
+        if (_wayPointsQueue.Count == 0)
+        {
+            _wayPointsQueue = GetWayPointsQueue();
+            Debug.Log("new queue");
+        }
+        Debug.Log("next waypoint");
+        _currentWayPoint = _wayPointsQueue[0];
+        _wayPointsQueue.RemoveAt(0);
+        _enemy.SetTargetAndNavMeshPath(_currentWayPoint);
     }
 
-    public Vector3 GetRandomPos()
+    public List<Vector3> GetWayPointsQueue()
     {
-        Vector2 randomCircle = Random.insideUnitCircle;
-        randomCircle = randomCircle.normalized;
-        return new Vector3(randomCircle.x, 0, randomCircle.y);
+        return _enemy.GetClosestCenter().ConnectedWaypointPositions.Shuffle();
     }
 }
+
+

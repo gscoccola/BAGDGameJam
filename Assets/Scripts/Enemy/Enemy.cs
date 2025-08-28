@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,9 +7,8 @@ public class Enemy : MonoBehaviour
 {
     private FiniteStateMachine<EnemyState> _stateMachine;
     private NavMeshAgent _naveMeshAgent;
-    private bool _canSeePlayer;
-    private Vector3 _lastKnownPlayerPos;
-    private bool _playerInSafeZone;
+    public bool _playerInSafeZone;
+    public List<Vector3> _wayPointlist = new();
 
     [Header("Parameters")]
     [SerializeField] public float _randomPatrolDistance;
@@ -16,14 +17,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float _maxSearchTime;
     [SerializeField] public float _ultraInstinctTime;
 
+    
+    
+
     [Header("References")]
     [SerializeField] public Transform _target;
     [SerializeField] public Transform _playerTransform;
+    [SerializeField] public Transform[] _wayPoints;
+    [SerializeField] public WaypointCenter[] _wayPointCenters;
+
 
     [Header("Debug")]
     [ReadOnly] public EnemyState CurrentState;
     [ReadOnly] public float DistanceToTarget;
     [ReadOnly] public float DistanceToPlayer;
+    [ReadOnly] public float ClosestCenterToPlayer;
 
     private void Awake()
     {
@@ -34,14 +42,26 @@ public class Enemy : MonoBehaviour
         _stateMachine.AddState(EnemyState.UltraInstinct, new EnemyUltraInstinct(this, _stateMachine));
         EventManager.Instance.Subscribe(Constants.OnSheepPickup, OnSheepPickup);
         EventManager.Instance.Subscribe(Constants.OnSheepNoise, OnSheepNoise);
-        _stateMachine.ChangeState(EnemyState.Patrol);
+        EventManager.Instance.Subscribe(Constants.OnEnterSafeZone, EnterSafeZone);
+        EventManager.Instance.Subscribe(Constants.OnExitSafeZone, ExitSafeZone);
         _naveMeshAgent = GetComponent<NavMeshAgent>();
+        foreach (Transform wp in _wayPoints)
+        {
+            _wayPointlist.Add(wp.position);
+        }
+        
+    }
+
+    private void Start()
+    {
+        _stateMachine.ChangeState(EnemyState.Patrol);
     }
 
     private void Update()
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
+
         _stateMachine.Update();
     }
 
@@ -63,6 +83,10 @@ public class Enemy : MonoBehaviour
     {
         return (transform.position - target.position).Flatten().magnitude;
     }
+    public float FlatDistance(Vector3 target)
+    {
+        return (transform.position - target).Flatten().magnitude;
+    }
 
     /*public void Teleport()
     {
@@ -82,21 +106,17 @@ public class Enemy : MonoBehaviour
         //else Debug.Log("Random Pos was too far from mesh");
     }*/
 
-    /*public void EnterSafeZone()
+    public void EnterSafeZone()
     {
         _playerInSafeZone = true;
-        CurrentState = EnemyState.Idle;
-        _naveMeshAgent.isStopped = true;
-    
-    }*/
+        _stateMachine.ChangeState(EnemyState.Patrol);
 
-    /*public void ExitSafeZone()
+    }
+
+    public void ExitSafeZone()
     {
         _playerInSafeZone = false;
-        _naveMeshAgent.isStopped = false;
-        CurrentState = EnemyState.MovingToLastKnownPosition;
-        SetTargetAndNavMeshPath(_playerTransform.position);
-    }*/
+    }
 
     public void OnSheepPickup()
     {
@@ -109,5 +129,59 @@ public class Enemy : MonoBehaviour
         if (CurrentState == EnemyState.UltraInstinct ||
             CurrentState == EnemyState.Search) return;
         _stateMachine.ChangeState(EnemyState.Search, false);
+    }
+
+    public WaypointCenter GetClosestCenter()
+    {
+        var result = _wayPointCenters[0];
+        float minDistance = Vector3.Distance( result.transform.position, _playerTransform.position);
+        for (int i = 1; i < _wayPointCenters.Length; i++)
+        {
+            float distance = Vector3.Distance(_wayPointCenters[i].transform.position, _playerTransform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                result = _wayPointCenters[i];
+            }
+        }
+        Debug.Log(result);
+        return result;
+    }
+}
+
+
+public enum EnemyState
+{
+    Idle,
+    FoundPlayer,
+    Patrol,
+    Chase,
+    Search,
+    UltraInstinct,
+}
+
+public static class VectorExtensions
+{
+    public static Vector3 Flatten(this Vector3 vector)
+    {
+        return new Vector3(vector.x, 0f, vector.z);
+    }
+}
+
+public static class ListExtension
+{
+    public static List<T> Shuffle<T>(this List<T> input)
+    {
+        List<T> list = new List<T>(input);
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+        return list;
     }
 }

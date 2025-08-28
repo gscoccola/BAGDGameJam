@@ -7,7 +7,7 @@ public class SafeZone : MonoBehaviour
 
         if (col.CompareTag("Player"))
         {
-            EventManager.Instance.Trigger("EnterSafeZone", true);
+            EventManager.Instance.Trigger(Constants.OnEnterSafeZone, true);
         }
     }
 
@@ -16,7 +16,7 @@ public class SafeZone : MonoBehaviour
 
         if (col.CompareTag("Player"))
         {
-            EventManager.Instance.Trigger("ExitSafeZone", false);
+            EventManager.Instance.Trigger(Constants.OnExitSafeZone, false);
         }
     }
 }
