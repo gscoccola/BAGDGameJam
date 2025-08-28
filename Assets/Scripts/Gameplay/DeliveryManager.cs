@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pixelmate.Gameplay
+namespace PixelMate.Gameplay
 {
-    public class DeliveryManager : Singleton<DeliveryManager>
+    [DisallowMultipleComponent]
+    public sealed class DeliveryManager : MonoBehaviour
     {
         [SerializeField]
         private int _requiredDeliveries = 3;
 
-        public event Action<int> OnItemDelivered;
-        public event Action<int> OnItemRetrieved;
+        public event Action<int> OnItemAmountChanged;
         public event Action OnAllItemsDelivered;
 
         private List<Deliverable> _deliveredItems = new List<Deliverable>();
@@ -21,10 +21,11 @@ namespace Pixelmate.Gameplay
                 return;
 
             _deliveredItems.Add(deliverable);
-            OnItemDelivered?.Invoke(_deliveredItems.Count);
 
             if (_deliveredItems.Count >= _requiredDeliveries)
                 OnAllItemsDelivered?.Invoke();
+            else
+                OnItemAmountChanged?.Invoke(_deliveredItems.Count);
         }
 
         public void RetrieveItem(Deliverable deliverable)
@@ -32,7 +33,7 @@ namespace Pixelmate.Gameplay
             if (_deliveredItems.Count > 0)
             {
                 _deliveredItems.Remove(deliverable);
-                OnItemRetrieved?.Invoke(_deliveredItems.Count);
+                OnItemAmountChanged?.Invoke(_deliveredItems.Count);
             }
         }
     }

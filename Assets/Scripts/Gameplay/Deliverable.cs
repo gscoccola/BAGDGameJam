@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pixelmate.Gameplay
+namespace PixelMate.Gameplay
 {
     [DisallowMultipleComponent]
     public sealed class Deliverable : MonoBehaviour
@@ -9,18 +9,18 @@ namespace Pixelmate.Gameplay
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("DeliveryZone") && !_isDelivered)
+            if (other.TryGetComponent<DeliveryManager>(out var manager) && !_isDelivered)
             {
-                DeliveryManager.Instance.DeliverItem(this);
+                manager.DeliverItem(this);
                 _isDelivered = true;
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("DeliveryZone") && _isDelivered)
+            if (other.TryGetComponent<DeliveryManager>(out var manager) && _isDelivered)
             {
-                DeliveryManager.Instance.RetrieveItem(this);
+                manager.RetrieveItem(this);
                 _isDelivered = false;
             }
         }

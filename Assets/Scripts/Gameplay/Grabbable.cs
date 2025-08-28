@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pixelmate.Gameplay
+namespace PixelMate.Gameplay
 {
     [DisallowMultipleComponent, RequireComponent(typeof(Collider))]
     public sealed class Grabbable : MonoBehaviour, IGrabbable

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Pixelmate.Gameplay
+namespace PixelMate.Gameplay
 {
     public interface IGrabbable
     {

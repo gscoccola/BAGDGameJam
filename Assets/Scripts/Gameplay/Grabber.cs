@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pixelmate.Gameplay
+namespace PixelMate.Gameplay
 {
     [DisallowMultipleComponent]
     public sealed class Grabber : MonoBehaviour, IGrabber

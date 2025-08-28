@@ -1,4 +1,4 @@
-﻿namespace Pixelmate.Gameplay
+﻿namespace PixelMate.Gameplay
 {
     public interface IGrabber
     {
