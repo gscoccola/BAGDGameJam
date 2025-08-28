@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 namespace Pixelmate.Gameplay
@@ -11,9 +10,11 @@ namespace Pixelmate.Gameplay
 
         [Header("Raycast")]
         [SerializeField]
+        private Vector3 _rayOrigin = new Vector3(0.5f, 0.5f, 0);
+        [SerializeField]
         private float _grabDistance = 3.0f;
         [SerializeField]
-        private float _sphereRadius = 0.1f;
+        private float _sphereRadius = 0.25f;
         [SerializeField]
         private LayerMask _grabMask = ~0;
 
@@ -45,7 +46,7 @@ namespace Pixelmate.Gameplay
             if (_heldItem != null)
                 return;
 
-            Ray ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            Ray ray = _camera.ViewportPointToRay(_rayOrigin);
 
             if (Physics.SphereCast(ray, _sphereRadius, out var hit, _grabDistance, _grabMask, QueryTriggerInteraction.Ignore))
             {
