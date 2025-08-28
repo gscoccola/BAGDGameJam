@@ -1,7 +1,12 @@
+using UnityEngine;
+
 public class PlayerSprint :  IState<PlayerState>
 {
     private PlayerController _playerController;
     private FiniteStateMachine<PlayerState> _fsm;
+
+    [Header("Speed")]
+    private float currentSpeed;
     
     
     public PlayerSprint (params object[] parameters)
@@ -20,7 +25,7 @@ public class PlayerSprint :  IState<PlayerState>
         // 1. Prioridad maxima si esta en el aire
         if (!_playerController.GetIsGrounded)
         {
-            _fsm.ChangeState(PlayerState.Falling, _playerController.Preset.SprintSpeed);
+            _fsm.ChangeState(PlayerState.Falling, _playerController.Preset.minSprintSpeed);
             return;
         }
         
@@ -46,7 +51,14 @@ public class PlayerSprint :  IState<PlayerState>
         }
         
         // 5. Corro
-        _playerController.Move(_playerController.Preset.SprintSpeed);
+        
+        
+        currentSpeed = _playerController.GetPlayerSprintEnergy.CanActiveBurst ? 
+            _playerController.Preset.burstSprintSpeed : 
+            Mathf.Lerp(_playerController.Preset.minSprintSpeed, _playerController.Preset.maxSprintSpeed, _playerController.GetPlayerSprintEnergy.currentEnergy / _playerController.GetPlayerSprintEnergy.minPercentForBurst);
+        _playerController.GetPlayerSprintEnergy.ConsumeEnergy();
+        
+        _playerController.Move(currentSpeed);
     }
 
     public void OnExit()

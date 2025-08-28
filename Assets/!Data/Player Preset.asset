@@ -31,12 +31,14 @@ MonoBehaviour:
     amplitude: 0
     frequency: 0
     smooth: 0
-  sprintSpeed: 3.5
+  canSprintBackward: 0
+  minSprintSpeed: 2.25
+  maxSprintSpeed: 4
+  burstSprintSpeed: 6
   sprintHeadBobPreset:
     amplitude: 0
     frequency: 0
     smooth: 0
-  canSprintBackward: 0
   jumpHeight: 1.5
   fallGravityMultiplier: 1.5
   coyoteTime: 0.15
