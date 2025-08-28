@@ -21,6 +21,7 @@ public class PlayerLanded : IState<PlayerState>
         _playerController.CurrentPlayerState = PlayerState.Landed;
         float fallTime = (float) parameters[0];
         EventManager.Instance.Trigger(Constants.OnPlayerLanded, fallTime, 1, true, false);
+        _playerController.ActiveLandEvent();
     }
 
     public void OnUpdate()

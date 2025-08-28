@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public bool haveASheep;
+    
     [Header("Controller")]
     [SerializeField] private PlayerPreset preset;
     public PlayerPreset Preset => preset;
@@ -44,8 +46,10 @@ public class PlayerController : MonoBehaviour
     public Vector3 CurrentGravityVelocity => _currentGravityVelocity;
     public FiniteStateMachine<PlayerState> Fsm;
     private CharacterController _characterController;
-    
-    
+    public PlayerSounds PlayerSounds { private set; get; }
+    public event Action OnMove, OnJump, OnLand;
+
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -56,6 +60,7 @@ public class PlayerController : MonoBehaviour
         Vector3 camTargetPos = new Vector3(camStartPos.x, Preset.NormalCameraHeight, camStartPos.z);
         _playerCameraTransform.localPosition = camTargetPos;
         GetPlayerSprintEnergy = GetComponent<PlayerSprintEnergy>();
+        PlayerSounds = GetComponentInChildren<PlayerSounds>();
         
         EnableLocomotion();
         PlayerControls.Instance.OnSprintKey += StartPressSprint;
@@ -87,6 +92,8 @@ public class PlayerController : MonoBehaviour
         TryJump();
         Fsm.Update();
     }
+    
+    public void ActiveLandEvent() { OnLand?.Invoke(); }
 
     
     #region Inputs Methods
@@ -153,6 +160,7 @@ public class PlayerController : MonoBehaviour
             _currentGravityVelocity.y = Mathf.Sqrt(Preset.JumpHeight * Physics.gravity.y * -2f * Preset.FallGravityMultiplier);
             _currentJumpBufferTimer = 0f;
             _currentCoyoteTimer = 0f;
+            OnJump?.Invoke();
         }
     }
     #endregion
@@ -205,6 +213,8 @@ public class PlayerController : MonoBehaviour
         //Movimiento + detección de suelo
         CollisionFlags flags = _characterController.Move(totalVelocity * Time.deltaTime);
         isGrounded = (flags & CollisionFlags.Below) != 0;
+        
+        if (isGrounded) OnMove?.Invoke();
         
         //Cancelar salto si chocás el techo
         if ((flags & CollisionFlags.Above) != 0 && _currentGravityVelocity.y > 0) _currentGravityVelocity.y = AntiBumpFactor;

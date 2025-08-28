@@ -21,19 +21,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   acceleration: 5
-  crouchSpeed: 1.5
+  crouchSpeed: 2
   crouchHeadBobPreset:
     amplitude: 0
     frequency: 0
     smooth: 0
-  walkSpeed: 2
+  walkSpeed: 3
   walkHeadBobPreset:
     amplitude: 0
     frequency: 0
     smooth: 0
   canSprintBackward: 0
-  minSprintSpeed: 2.25
-  maxSprintSpeed: 4
+  minSprintSpeed: 3.5
+  maxSprintSpeed: 5
   burstSprintSpeed: 6
   sprintHeadBobPreset:
     amplitude: 0
