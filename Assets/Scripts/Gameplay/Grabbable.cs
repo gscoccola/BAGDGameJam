@@ -6,7 +6,7 @@ namespace PixelMate.Gameplay
     public sealed class Grabbable : MonoBehaviour, IGrabbable
     {
         [SerializeField]
-        private Rigidbody _rb;
+        private Rigidbody rb;
 
         public bool IsHeld { get; private set; }
 
@@ -16,13 +16,9 @@ namespace PixelMate.Gameplay
                 return;
 
             IsHeld = true;
-
-            transform.SetParent(holdPoint);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.identity;
-
-            _rb.useGravity = false;
-            _rb.isKinematic = true;
+            transform.SetParent(holdPoint, true);
+            rb.useGravity = false;
+            rb.isKinematic = true;
         }
 
         public void EndGrab()
@@ -32,8 +28,8 @@ namespace PixelMate.Gameplay
 
             IsHeld = false;
             transform.SetParent(null, true);
-            _rb.useGravity = true;
-            _rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.isKinematic = false;
         }
     }
 }
