@@ -18,6 +18,14 @@ namespace PixelMate.Gameplay
         [SerializeField]
         private LayerMask _grabMask = ~0;
 
+#if UNITY_EDITOR
+        [Header("Debug")]
+        [SerializeField]
+        private bool _showDebugRay = true;
+        [SerializeField]
+        private float _rayDuration = 2.5f;
+#endif
+
         private Camera _camera;
         private IGrabbable _heldItem;
 
@@ -28,8 +36,8 @@ namespace PixelMate.Gameplay
 
         private void OnEnable()
         {
+            PlayerControls.Instance.OnClickAttack -= Grab;
             PlayerControls.Instance.OnClickAttack += Grab;
-            PlayerControls.Instance.OnReleaseAttack += Release;
         }
 
         private void OnDisable()
@@ -37,16 +45,25 @@ namespace PixelMate.Gameplay
             if (PlayerControls.Instance != null)
             {
                 PlayerControls.Instance.OnClickAttack -= Grab;
-                PlayerControls.Instance.OnReleaseAttack -= Release;
             }
         }
 
         public void Grab()
         {
             if (_heldItem != null)
+            {
+                Release();
                 return;
+            }
 
             Ray ray = _camera.ViewportPointToRay(_rayOrigin);
+
+#if UNITY_EDITOR
+            if (_showDebugRay)
+            {
+                Debug.DrawRay(ray.origin, ray.direction * _grabDistance, Color.cyan, _rayDuration);
+            }
+#endif
 
             if (Physics.SphereCast(ray, _sphereRadius, out var hit, _grabDistance, _grabMask, QueryTriggerInteraction.Ignore))
             {

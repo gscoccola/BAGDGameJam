@@ -52,7 +52,11 @@ public class LevelMusic : MonoBehaviour
 
     private int GetRandomTrackIndex()
     {
-        if (tracks.Length <= 1) return 0;
+        if (tracks.Length <= 1)
+        {
+            _lastTrackIndex = 0;
+            return 0;
+        }
 
         int randomIndex = Random.Range(0, tracks.Length);
         for (int i = 0; i < MAX_RANDOM_ATTEMPTS; i++)
