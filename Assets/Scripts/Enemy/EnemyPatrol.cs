@@ -47,7 +47,9 @@ public class EnemyPatrol : IState<EnemyState>
         if (_wayPointsQueue.Count == 0)
         {
             _wayPointsQueue = GetWayPointsQueue();
+            Debug.Log("new queue");
         }
+        Debug.Log("next waypoint");
         _currentWayPoint = _wayPointsQueue[0];
         _wayPointsQueue.RemoveAt(0);
         _enemy.SetTargetAndNavMeshPath(_currentWayPoint);
