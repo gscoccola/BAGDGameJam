@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Tests/EnemyAITest.unity
     guid: e4785ee0c16f9df439c928eefc1ddbf1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/Menu2D.unity
     guid: bedf9ef5e10a2b744b779473354b8452
   - enabled: 1
