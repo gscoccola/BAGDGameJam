@@ -50,7 +50,7 @@ public class PlayerSounds : MonoBehaviour
         switch (_playerController.CurrentPlayerState)
         {
             case PlayerState.Idle:
-                break;
+                return;
             case PlayerState.Walking:
                 footSteps = surfaceDetails.SurfaceFootsteps(tag).walkFootsteps;
                 cooldown = walkCooldown;
@@ -64,11 +64,11 @@ public class PlayerSounds : MonoBehaviour
                 cooldown = crouchCooldown;
                 break;
             case PlayerState.Falling:
-                break;
+                return;
             case PlayerState.Landed:
-                break;
+                return;
             case PlayerState.Recovery:
-                break;
+                return;
         }
         
         if (_playerController.haveASheep)
