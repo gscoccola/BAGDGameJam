@@ -8,14 +8,17 @@ public class Enemy : MonoBehaviour
     private FiniteStateMachine<EnemyState> _stateMachine;
     private NavMeshAgent _naveMeshAgent;
     public bool _playerInSafeZone;
-    public List<Vector3> _wayPointlist = new();
+    //public List<Vector3> _wayPointlist = new();
+    private PlayerHealth _playerHealth;
 
     [Header("Parameters")]
-    [SerializeField] public float _randomPatrolDistance;
+    /*[SerializeField] public float _randomPatrolDistance;
     [SerializeField] public float _maxDistanceToPlayer;
-    [SerializeField] public float _teleportDistanceToPlayer;
+    [SerializeField] public float _teleportDistanceToPlayer;*/
     [SerializeField] public float _maxSearchTime;
     [SerializeField] public float _ultraInstinctTime;
+    [SerializeField] public float _damageDistance;
+    [SerializeField] public float _damagePerSecond;
 
     
     
@@ -23,7 +26,7 @@ public class Enemy : MonoBehaviour
     [Header("References")]
     [SerializeField] public Transform _target;
     [SerializeField] public Transform _playerTransform;
-    [SerializeField] public Transform[] _wayPoints;
+    //[SerializeField] public Transform[] _wayPoints;
     [SerializeField] public WaypointCenter[] _wayPointCenters;
 
 
@@ -45,10 +48,11 @@ public class Enemy : MonoBehaviour
         EventManager.Instance.Subscribe(Constants.OnEnterSafeZone, EnterSafeZone);
         EventManager.Instance.Subscribe(Constants.OnExitSafeZone, ExitSafeZone);
         _naveMeshAgent = GetComponent<NavMeshAgent>();
-        foreach (Transform wp in _wayPoints)
+        _playerHealth = _playerTransform.gameObject.GetComponent<PlayerHealth>();
+        /*foreach (Transform wp in _wayPoints)
         {
             _wayPointlist.Add(wp.position);
-        }
+        }*/
         
     }
 
@@ -61,6 +65,10 @@ public class Enemy : MonoBehaviour
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
+        if (DistanceToPlayer < _damageDistance)
+        {
+            _playerHealth.TakeDamage(_damagePerSecond * Time.deltaTime);
+        }
 
         _stateMachine.Update();
     }
@@ -70,6 +78,7 @@ public class Enemy : MonoBehaviour
         RaycastHit hit;
         Vector3 direction = (_playerTransform.position - origin).normalized;
         if (!Physics.Raycast(origin, direction, out hit)) return false;
+        Debug.DrawRay(origin, direction * hit.distance, Color.red);
         return hit.transform.position == _playerTransform.position;
     }
 
@@ -144,7 +153,6 @@ public class Enemy : MonoBehaviour
                 result = _wayPointCenters[i];
             }
         }
-        Debug.Log(result);
         return result;
     }
 }
