@@ -3,26 +3,40 @@
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     public static T Instance { get; private set; }
-    
-    
+
+    [SerializeField]
+    protected bool _dontDestroyOnLoad = false;
+
     protected virtual void Awake()
     {
         CreateSingleton();
     }
-    
-    
+
     private void CreateSingleton()
     {
         if (Instance == null)
         {
             Instance = GetComponent<T>();
+
+            if (_dontDestroyOnLoad)
+                DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (Instance != this)
         {
 #if UNITY_EDITOR
             Debug.LogWarning($"GAC: Duplicated {GetType()} found", this);
 #endif
             gameObject.SetActive(false);
+            //Destroy(gameObject);
+        }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        // Always clear the static reference if this is the current instance
+        if (Instance == this)
+        {
+            Instance = null;
         }
     }
 }
