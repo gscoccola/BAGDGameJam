@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Waypoint : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class Waypoint : MonoBehaviour
     {
         _enemy = FindAnyObjectByType<Enemy>();
 
-        //WaypointCenter closestCenter = null;
-        //WaypointCenter secondClosestCenter = null;
+
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 10f, NavMesh.AllAreas))
+        {
+            transform.position = hit.position;
+        }
+
         float minDistance = Mathf.Infinity;
         float secondMinDistance = Mathf.Infinity;
 

@@ -10,13 +10,14 @@ public class Enemy : MonoBehaviour
     public bool _playerInSafeZone;
     private int _playerInSafeZoneNumber = 0;
     private PlayerHealth _playerHealth;
-    
+    private float _attackTimer = 0f;
 
     [Header("Parameters")]
     [SerializeField] public float _maxSearchTime;
     [SerializeField] public float _ultraInstinctTime;
     [SerializeField] float _maxDistanceToDMG = 1f;
-    [SerializeField] float _dmgPerSecond = 20f;
+    [SerializeField] float _attackDamage = 20f;
+    [SerializeField] float _attackCooldown = 2f;
 
 
 
@@ -58,8 +59,12 @@ public class Enemy : MonoBehaviour
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
-        if (DistanceToPlayer < _maxDistanceToDMG)
-            _playerHealth.TakeDamage(_dmgPerSecond * Time.deltaTime);
+        if (DistanceToPlayer < _maxDistanceToDMG && _attackTimer > _attackCooldown)
+        {
+            _playerHealth.TakeDamage(_attackDamage);
+            _attackTimer = 0f;
+        }
+        _attackTimer += Time.deltaTime;
         _stateMachine.Update();
     }
 
@@ -90,7 +95,7 @@ public class Enemy : MonoBehaviour
     {
         _playerInSafeZoneNumber++;
         if (_playerInSafeZone) return;
-        Debug.Log("Player in safe zone");
+        //Debug.Log("Player in safe zone");
         _playerInSafeZone = true;
         _stateMachine.ChangeState(EnemyState.Patrol);
         
