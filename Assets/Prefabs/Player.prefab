@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7500940360129250994}
   m_Layer: 10
   m_Name: Arms Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,7 +523,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1015
+    m_Bits: 3009
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -823,7 +823,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1985
+    m_Bits: 1473
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 3175355311261338810}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1369,6 +1369,10 @@ PrefabInstance:
     - target: {fileID: 2549303256884575082, guid: 51877ba8393417c4db90d313b7756d81, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846260716848068914, guid: 51877ba8393417c4db90d313b7756d81, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3145795181828768795, guid: 51877ba8393417c4db90d313b7756d81, type: 3}
       propertyPath: m_Layer
