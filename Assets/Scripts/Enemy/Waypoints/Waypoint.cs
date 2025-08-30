@@ -6,7 +6,7 @@ public class Waypoint : MonoBehaviour
     public WaypointCenter closestCenter = null;
     public WaypointCenter secondClosestCenter = null;
 
-    private void Awake()
+    private void Start()
     {
         _enemy = FindAnyObjectByType<Enemy>();
 
@@ -15,7 +15,7 @@ public class Waypoint : MonoBehaviour
         float minDistance = Mathf.Infinity;
         float secondMinDistance = Mathf.Infinity;
 
-        foreach (WaypointCenter center in _enemy._wayPointCenters)
+        foreach (WaypointCenter center in _enemy._centers)
         {
             float distance = Vector3.Distance(transform.position, center.transform.position);
             if (distance < minDistance)

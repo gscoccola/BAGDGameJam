@@ -8,30 +8,29 @@ public class Enemy : MonoBehaviour
     private FiniteStateMachine<EnemyState> _stateMachine;
     private NavMeshAgent _naveMeshAgent;
     public bool _playerInSafeZone;
-    public List<Vector3> _wayPointlist = new();
+    private int _playerInSafeZoneNumber = 0;
+    private PlayerHealth _playerHealth;
+    
 
     [Header("Parameters")]
-    [SerializeField] public float _randomPatrolDistance;
-    [SerializeField] public float _maxDistanceToPlayer;
-    [SerializeField] public float _teleportDistanceToPlayer;
     [SerializeField] public float _maxSearchTime;
     [SerializeField] public float _ultraInstinctTime;
+    [SerializeField] float _maxDistanceToDMG = 1f;
+    [SerializeField] float _dmgPerSecond = 20f;
 
-    
-    
+
 
     [Header("References")]
     [SerializeField] public Transform _target;
     [SerializeField] public Transform _playerTransform;
-    [SerializeField] public Transform[] _wayPoints;
-    [SerializeField] public WaypointCenter[] _wayPointCenters;
-
 
     [Header("Debug")]
     [ReadOnly] public EnemyState CurrentState;
     [ReadOnly] public float DistanceToTarget;
     [ReadOnly] public float DistanceToPlayer;
     [ReadOnly] public float ClosestCenterToPlayer;
+    //[ReadOnly] public List<WaypointCenter> _wayPointCenters;
+    [ReadOnly] public List<WaypointCenter> _centers;
 
     private void Awake()
     {
@@ -45,11 +44,9 @@ public class Enemy : MonoBehaviour
         EventManager.Instance.Subscribe(Constants.OnEnterSafeZone, EnterSafeZone);
         EventManager.Instance.Subscribe(Constants.OnExitSafeZone, ExitSafeZone);
         _naveMeshAgent = GetComponent<NavMeshAgent>();
-        foreach (Transform wp in _wayPoints)
-        {
-            _wayPointlist.Add(wp.position);
-        }
-        
+        _playerHealth = _playerTransform.GetComponent<PlayerHealth>();
+        _playerInSafeZoneNumber = 0;
+        _playerInSafeZone = false;
     }
 
     private void Start()
@@ -61,7 +58,8 @@ public class Enemy : MonoBehaviour
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
-
+        if (DistanceToPlayer < _maxDistanceToDMG)
+            _playerHealth.TakeDamage(_dmgPerSecond * Time.deltaTime);
         _stateMachine.Update();
     }
 
@@ -88,33 +86,21 @@ public class Enemy : MonoBehaviour
         return (transform.position - target).Flatten().magnitude;
     }
 
-    /*public void Teleport()
-    {
-        Vector3 tryPos = _playerTransform.position.Flatten() + GetRandomPos() * _teleportDistanceToPlayer;
-        if (NavMesh.SamplePosition(tryPos, out NavMeshHit hit, 1f, NavMesh.AllAreas))
-        {
-            if (HasLineOfSight(hit.position, _playerTransform.position))
-            {
-                //Debug.Log("Teleport was in line of sight of player");
-                return;
-            }
-            transform.position = hit.position;
-            SwitchTowardsRandomPos(_randomPatrolDistance, _playerTransform.position);
-            CurrentState = EnemyState.MovingToRandomPosition;
-            //Debug.Log(FlatDistance(_playerTransform));
-        }
-        //else Debug.Log("Random Pos was too far from mesh");
-    }*/
-
     public void EnterSafeZone()
     {
+        _playerInSafeZoneNumber++;
+        if (_playerInSafeZone) return;
+        Debug.Log("Player in safe zone");
         _playerInSafeZone = true;
         _stateMachine.ChangeState(EnemyState.Patrol);
-
+        
     }
 
     public void ExitSafeZone()
     {
+        _playerInSafeZoneNumber--;
+        if (_playerInSafeZoneNumber > 0) return;
+        //Debug.Log("Player outside safe zone");
         _playerInSafeZone = false;
     }
 
@@ -133,18 +119,17 @@ public class Enemy : MonoBehaviour
 
     public WaypointCenter GetClosestCenter()
     {
-        var result = _wayPointCenters[0];
+        var result = _centers[0];
         float minDistance = Vector3.Distance( result.transform.position, _playerTransform.position);
-        for (int i = 1; i < _wayPointCenters.Length; i++)
+        for (int i = 1; i < _centers.Count; i++)
         {
-            float distance = Vector3.Distance(_wayPointCenters[i].transform.position, _playerTransform.position);
+            float distance = Vector3.Distance(_centers[i].transform.position, _playerTransform.position);
             if (distance < minDistance)
             {
                 minDistance = distance;
-                result = _wayPointCenters[i];
+                result = _centers[i];
             }
         }
-        Debug.Log(result);
         return result;
     }
 }
