@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     private FiniteStateMachine<EnemyState> _stateMachine;
     private NavMeshAgent _naveMeshAgent;
+    private PlayerHealth _playerHealth;
     public bool _playerInSafeZone;
 
     [Header("Parameters")]
@@ -23,6 +24,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] public Transform _target;
     [SerializeField] public Transform _playerTransform;
     [SerializeField] public WaypointCenter[] _wayPointCenters;
+    [SerializeField] float _maxDistanceToDMG;
+    [SerializeField] float _dmgPerSecond;
+
 
 
     [Header("Debug")]
@@ -49,13 +53,15 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _stateMachine.ChangeState(EnemyState.Patrol);
+        _playerHealth = _playerTransform.GetComponent<PlayerHealth>();
     }
 
     private void Update()
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
-
+        if (DistanceToPlayer < _maxDistanceToDMG)
+            _playerHealth.TakeDamage(_dmgPerSecond * Time.deltaTime);
         _stateMachine.Update();
     }
 

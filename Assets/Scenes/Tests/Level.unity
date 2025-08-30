@@ -107524,9 +107524,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2090166106095674463, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
+      propertyPath: _dmgPerSecond
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090166106095674463, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
       propertyPath: _playerTransform
       value: 
       objectReference: {fileID: 1704562495}
+    - target: {fileID: 2090166106095674463, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
+      propertyPath: _maxDistanceToDMG
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3528195657859735403, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.00362
