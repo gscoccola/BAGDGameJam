@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     private FiniteStateMachine<EnemyState> _stateMachine;
     private NavMeshAgent _naveMeshAgent;
     public bool _playerInSafeZone;
-    public List<Vector3> _wayPointlist = new();
 
     [Header("Parameters")]
     [SerializeField] public float _randomPatrolDistance;
@@ -23,7 +22,6 @@ public class Enemy : MonoBehaviour
     [Header("References")]
     [SerializeField] public Transform _target;
     [SerializeField] public Transform _playerTransform;
-    [SerializeField] public Transform[] _wayPoints;
     [SerializeField] public WaypointCenter[] _wayPointCenters;
 
 
@@ -45,10 +43,6 @@ public class Enemy : MonoBehaviour
         EventManager.Instance.Subscribe(Constants.OnEnterSafeZone, EnterSafeZone);
         EventManager.Instance.Subscribe(Constants.OnExitSafeZone, ExitSafeZone);
         _naveMeshAgent = GetComponent<NavMeshAgent>();
-        foreach (Transform wp in _wayPoints)
-        {
-            _wayPointlist.Add(wp.position);
-        }
         
     }
 
