@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Localizations Eng Es_en
+  m_Name: Eng-Esp_es
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: en
-  m_SharedData: {fileID: 11400000, guid: b2d15521f4da252438577d12a3716abb, type: 2}
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 492ed95835c2f4743b48a411f96ced2f, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 56971251712
-    m_Localized: Play
+  - m_Id: 58137268224
+    m_Localized: Jugar
     m_Metadata:
       m_Items: []
-  - m_Id: 664604266496
-    m_Localized: How To Play
+  - m_Id: 62977495040
+    m_Localized: Como Jugar
     m_Metadata:
       m_Items: []
-  - m_Id: 709902749696
+  - m_Id: 66613956608
     m_Localized: Pixel Mate
     m_Metadata:
       m_Items: []
-  - m_Id: 732031897600
-    m_Localized: Back
+  - m_Id: 160419565568
+    m_Localized: Atras
     m_Metadata:
       m_Items: []
   references:

@@ -14,13 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Spanish (Argentina) (es-AR)
   m_GUID: 0b38c146c93410744a14f6faa5563bc0
-  m_SerializeEntries:
-  - m_GUID: 9f68939ecc7c2a54bbd64ea872b5238d
-    m_Address: Localizations Eng Es_es-AR
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-es-AR
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: aaa0f203872eb3946aab6830d47ef5d1, type: 2}
   m_SchemaSet:

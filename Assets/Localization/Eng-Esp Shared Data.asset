@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Localizations Eng Es Shared Data
+  m_Name: Eng-Esp Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: Localizations Eng Es
-  m_TableCollectionNameGuidString: b2d15521f4da252438577d12a3716abb
+  m_TableCollectionName: Eng-Esp
+  m_TableCollectionNameGuidString: 492ed95835c2f4743b48a411f96ced2f
   m_Entries:
-  - m_Id: 56971251712
+  - m_Id: 58137268224
     m_Key: Play
     m_Metadata:
       m_Items: []
-  - m_Id: 664604266496
+  - m_Id: 62977495040
     m_Key: How To Play
     m_Metadata:
       m_Items: []
-  - m_Id: 709902749696
+  - m_Id: 66613956608
     m_Key: Pixel Mate
     m_Metadata:
       m_Items: []
-  - m_Id: 732031897600
+  - m_Id: 160419565568
     m_Key: Back
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 4122749267516588372
+    rid: 4122749277496410301
   references:
     version: 2
     RefIds:
-    - rid: 4122749267516588372
+    - rid: 4122749277496410301
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1756506337208
+        m_CustomEpoch: 1756544612551
