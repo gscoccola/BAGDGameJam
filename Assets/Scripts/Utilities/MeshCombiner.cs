@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor; // necesario para guardar assets
 
-[ExecuteInEditMode]
+
 public class MeshCombiner : MonoBehaviour
 {
+#if  UNITY_EDITOR
+    
     [ContextMenu("Combinar y Guardar Meshes")]
     public void CombineAndSaveMeshes()
     {
@@ -61,4 +63,5 @@ public class MeshCombiner : MonoBehaviour
 
         Debug.Log("Meshes combinados y guardados en " + folderPath);
     }
+#endif
 }
