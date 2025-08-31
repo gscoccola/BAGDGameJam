@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 8199660672342506511}
   - {fileID: 792335896660465093}
+  - {fileID: 7108253392511030848}
   m_Father: {fileID: 3880708529343356843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3071245587897980235
@@ -131,7 +132,7 @@ GameObject:
   - component: {fileID: 8013168819505830776}
   - component: {fileID: 1038186199901212204}
   m_Layer: 0
-  m_Name: CombinedMesh_1
+  m_Name: Maizal CombinedMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +206,92 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5421615616929100202}
   m_Mesh: {fileID: 4300000, guid: 260c15e0b9754ed4aae897ea04317be9, type: 2}
+--- !u!1 &6895743668750937182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7108253392511030848}
+  - component: {fileID: 7583666413587232649}
+  - component: {fileID: 1923204364594047726}
+  m_Layer: 0
+  m_Name: Low Maizal CombinedMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &7108253392511030848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895743668750937182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7481784124933605751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &7583666413587232649
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895743668750937182}
+  m_Enabled: 1
+  m_CastShadows: 2
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1e33aa3673842b940be7ed6548f4f861, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1923204364594047726
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895743668750937182}
+  m_Mesh: {fileID: 4300000, guid: 29051ae68244d3e4f8a6a2c61c614627, type: 2}
 --- !u!1 &8473947177416917072
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +303,7 @@ GameObject:
   - component: {fileID: 3880708529343356843}
   - component: {fileID: 592822496651421733}
   - component: {fileID: 7740847737815909048}
+  - component: {fileID: 6033440023343215524}
   m_Layer: 0
   m_Name: Set Alternativo
   m_TagString: Untagged
@@ -305,6 +393,36 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!205 &6033440023343215524
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473947177416917072}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8013168819505830776}
+    - renderer: {fileID: 6762998871444855779}
+  - screenRelativeHeight: 0.07496074
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8013168819505830776}
+    - renderer: {fileID: 6762998871444855779}
+  - screenRelativeHeight: 0.017655563
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7583666413587232649}
+    - renderer: {fileID: 6762998871444855779}
+  m_Enabled: 1
 --- !u!1 &9063120938828388886
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +435,7 @@ GameObject:
   - component: {fileID: 6762998871444855779}
   - component: {fileID: 7920578310970573556}
   m_Layer: 0
-  m_Name: CombinedMesh_0
+  m_Name: Cerca CombinedMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
