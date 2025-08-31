@@ -1,3 +1,4 @@
+using PixelMate.Collectibles;
 using UnityEngine;
 
 namespace PixelMate.Gameplay
@@ -65,17 +66,21 @@ namespace PixelMate.Gameplay
             }
 #endif
 
-            // Opening/closing the famryard door
             if (Physics.SphereCast(ray, _sphereRadius, out var hitInteractives, _grabDistance, _defaultMask, QueryTriggerInteraction.Collide))
             {
-                Debug.Log($"Player has hit {hitInteractives.collider.name}");
+                Debug.Log($"Player ray has hit {hitInteractives.collider.name}");
 
-                SheepDoor door = hitInteractives.collider.GetComponentInParent<SheepDoor>();
-
-                if (door)
+                // Picking up collectibles
+                if (hitInteractives.collider.TryGetComponent<Collectible>(out var collectible))
                 {
-                    Debug.Log($"Player tries to open the door {door.name}");
-                    door.OpenDoor();
+                    collectible.Collect();
+                    return;
+                }
+
+                // Opening/closing the famryard door
+                if (hitInteractives.collider.transform.parent.TryGetComponent<SheepDoor>(out var door))
+                {
+                    door.MoveDoor();
                     return;
                 }
             }

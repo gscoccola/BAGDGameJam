@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb0a2bde9557674ba9d294beae71a15, type: 3}
+  m_Name: Collectible_4_Oveja de cerca
+  m_EditorClassIdentifier: 
+  _collectibleID: 4
+  _collectibleImage: {fileID: 21300000, guid: 91ca108c9253bb54cbaf78567a3e0e64, type: 3}
+  _collectibleName: Oveja de cerca
+  _collectibleDescription: Un retrato de cerca de la oveja.
