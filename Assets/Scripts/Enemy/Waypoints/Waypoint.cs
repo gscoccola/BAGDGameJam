@@ -12,9 +12,13 @@ public class Waypoint : MonoBehaviour
         _enemy = FindAnyObjectByType<Enemy>();
 
 
-        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 10f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 50f, NavMesh.AllAreas))
         {
             transform.position = hit.position;
+        }
+        else
+        {
+            Debug.LogError("Waypoint could not find a valid NavMesh position.");
         }
 
         float minDistance = Mathf.Infinity;

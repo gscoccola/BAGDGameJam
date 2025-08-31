@@ -188,6 +188,7 @@ MonoBehaviour:
   _mainMenu: {fileID: 8451811920808269009}
   _howToPlayMenu: {fileID: 3927154346913245301}
   _creditsMenu: {fileID: 7111028208704508328}
+  _languageMenu: {fileID: 3888486489513448640}
 --- !u!1 &2917451034084155210
 GameObject:
   m_ObjectHideFlags: 0
