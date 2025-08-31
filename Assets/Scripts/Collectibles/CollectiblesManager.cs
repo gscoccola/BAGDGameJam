@@ -6,6 +6,9 @@ namespace PixelMate.Collectibles
     [DisallowMultipleComponent]
     public sealed class CollectiblesManager : Singleton<CollectiblesManager>
     {
+        [SerializeField]
+        private CustomAudioClip _collectSound;
+
         private const string Key = "COLLECTIBLES_A2";
         private readonly HashSet<string> _collected = new();
 
@@ -63,6 +66,8 @@ namespace PixelMate.Collectibles
 
             if (!_collected.Add(id))
                 return false; // already had it
+
+            AudioSystem.Instance?.PlaySound(_collectSound);
 
             Save();
             return true;

@@ -28,22 +28,14 @@ namespace PixelMate.Collectibles
             }
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            Debug.Log($"Colliding with {other.name}");
-
-            if (!other.CompareTag("Player"))
-                return;
-
-            Collect();
-        }
-
         public void Collect()
         {
             if (CollectiblesManager.Instance != null && CollectiblesManager.Instance.RegisterCollected(CollectibleData.CollectibleID))
             {
                 if (_disableOnCollected)
+                {
                     gameObject.SetActive(false);
+                }
             }
         }
     }

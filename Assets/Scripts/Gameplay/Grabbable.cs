@@ -5,6 +5,9 @@ namespace PixelMate.Gameplay
     [DisallowMultipleComponent, RequireComponent(typeof(Collider))]
     public sealed class Grabbable : MonoBehaviour, IGrabbable
     {
+        [SerializeField]
+        private bool _willWarnEnemy = true;
+
         private Deliverable _deliverable;
 
         public bool IsHeld { get; private set; }
@@ -18,6 +21,11 @@ namespace PixelMate.Gameplay
         {
             if (IsHeld)
                 return;
+
+            if (_willWarnEnemy)
+            {
+                EventManager.Instance.Trigger(Constants.OnSheepPickup);
+            }
 
             IsHeld = true;
             gameObject.SetActive(false);

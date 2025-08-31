@@ -24,6 +24,12 @@ namespace PixelMate.Gameplay
         [SerializeField]
         private GameObject _leftArm;
 
+        [Header("Audio")]
+        [SerializeField]
+        private AudioClip[] _grabSounds;
+        [SerializeField]
+        private AudioClip _dropSound;
+
 #if UNITY_EDITOR
         [Header("Debug")]
         [SerializeField]
@@ -99,6 +105,7 @@ namespace PixelMate.Gameplay
                     grabbable.BeginGrab();
                     _heldItem = grabbable;
                     _leftArm.gameObject.SetActive(true);
+                    //AudioSystem.Instance?.PlaySound(_grabSounds[Random.Range(0, _grabSounds.Length)]);
                 }
             }
         }
@@ -111,6 +118,7 @@ namespace PixelMate.Gameplay
             _heldItem.EndGrab(transform.position, transform.rotation);
             _heldItem = null;
             _leftArm.gameObject.SetActive(false);
+            //AudioSystem.Instance?.PlaySound(_dropSound);
         }
     }
 }
