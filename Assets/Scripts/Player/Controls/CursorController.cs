@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CursorController : MonoBehaviour
@@ -11,6 +12,14 @@ public class CursorController : MonoBehaviour
    private void Awake()
    {
       if (startLooked) LockCursor();
+      EventManager.Instance.Subscribe(Constants.OnEnableControls, LockCursor);
+      EventManager.Instance.Subscribe(Constants.OnDisableControls, UnLockCursor);
+   }
+
+   private void OnDestroy()
+   {
+      EventManager.Instance.Subscribe(Constants.OnEnableControls, LockCursor);
+      EventManager.Instance.Subscribe(Constants.OnDisableControls, UnLockCursor);
    }
 
 
