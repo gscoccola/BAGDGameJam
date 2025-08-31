@@ -6,7 +6,7 @@ namespace PixelMate.Gameplay
     {
         public bool IsHeld { get; }
 
-        void BeginGrab(Transform holdPoint);
-        void EndGrab();
+        void BeginGrab();
+        void EndGrab(Vector3 releasePoint, Quaternion rotation);
     }
 }

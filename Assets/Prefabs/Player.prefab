@@ -523,7 +523,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3009
+    m_Bits: 3041
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1031,7 +1031,11 @@ MonoBehaviour:
   _sphereRadius: 0.25
   _grabMask:
     serializedVersion: 2
+    m_Bits: 4096
+  _defaultMask:
+    serializedVersion: 2
     m_Bits: 1
+  _leftArm: {fileID: 4040116544516977075}
   _showDebugRay: 1
   _rayDuration: 2.5
 --- !u!1001 &3223806555360664805
@@ -1301,6 +1305,11 @@ PrefabInstance:
       addedObject: {fileID: 2264541892382419016}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5140ad0ba7d7ffc458a6bea28fbfbd37, type: 3}
+--- !u!1 &4040116544516977075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7097588186198974053, guid: 5140ad0ba7d7ffc458a6bea28fbfbd37, type: 3}
+  m_PrefabInstance: {fileID: 6516376946379255766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9077260518420114458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2852531287286154188, guid: 5140ad0ba7d7ffc458a6bea28fbfbd37, type: 3}

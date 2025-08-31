@@ -17,6 +17,11 @@ namespace PixelMate.Gameplay
         private float _sphereRadius = 0.25f;
         [SerializeField]
         private LayerMask _grabMask = ~0;
+        [SerializeField]
+        private LayerMask _defaultMask = ~0;
+
+        [SerializeField]
+        private GameObject _leftArm;
 
 #if UNITY_EDITOR
         [Header("Debug")]
@@ -32,6 +37,7 @@ namespace PixelMate.Gameplay
         private void Awake()
         {
             _camera = Camera.main;
+            _leftArm.gameObject.SetActive(false);
         }
 
         private void OnEnable()
@@ -50,12 +56,6 @@ namespace PixelMate.Gameplay
 
         public void Grab()
         {
-            if (_heldItem != null)
-            {
-                Release();
-                return;
-            }
-
             Ray ray = _camera.ViewportPointToRay(_rayOrigin);
 
 #if UNITY_EDITOR
@@ -65,12 +65,35 @@ namespace PixelMate.Gameplay
             }
 #endif
 
-            if (Physics.SphereCast(ray, _sphereRadius, out var hit, _grabDistance, _grabMask, QueryTriggerInteraction.Ignore))
+            // Opening/closing the famryard door
+            if (Physics.SphereCast(ray, _sphereRadius, out var hitInteractives, _grabDistance, _defaultMask, QueryTriggerInteraction.Collide))
+            {
+                Debug.Log($"Player has hit {hitInteractives.collider.name}");
+
+                SheepDoor door = hitInteractives.collider.GetComponentInParent<SheepDoor>();
+
+                if (door)
+                {
+                    Debug.Log($"Player tries to open the door {door.name}");
+                    door.OpenDoor();
+                    return;
+                }
+            }
+
+            // Grabbing and releasing the sheeps
+            if (_heldItem != null)
+            {
+                Release();
+                return;
+            }
+
+            if (Physics.SphereCast(ray, _sphereRadius, out var hit, _grabDistance, _grabMask, QueryTriggerInteraction.Collide))
             {
                 if (hit.collider.TryGetComponent<IGrabbable>(out var grabbable))
                 {
-                    grabbable.BeginGrab(_holdPoint);
+                    grabbable.BeginGrab();
                     _heldItem = grabbable;
+                    _leftArm.gameObject.SetActive(true);
                 }
             }
         }
@@ -80,8 +103,9 @@ namespace PixelMate.Gameplay
             if (_heldItem == null)
                 return;
 
-            _heldItem.EndGrab();
+            _heldItem.EndGrab(transform.position, transform.rotation);
             _heldItem = null;
+            _leftArm.gameObject.SetActive(false);
         }
     }
 }

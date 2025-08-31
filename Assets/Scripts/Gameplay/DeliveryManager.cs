@@ -15,6 +15,8 @@ namespace PixelMate.Gameplay
 
         private List<Deliverable> _deliveredItems = new List<Deliverable>();
 
+        public int RequiredDeliveries => _requiredDeliveries;
+
         public void DeliverItem(Deliverable deliverable)
         {
             if (_deliveredItems.Contains(deliverable))

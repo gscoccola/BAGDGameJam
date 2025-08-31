@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class SheepDoor : MonoBehaviour
+namespace PixelMate.Gameplay
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class SheepDoor : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private Animator _doorAnimator;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void OpenDoor()
+        {
+            bool openBool = _doorAnimator.GetBool("Open");
+            _doorAnimator.SetBool("Open", !openBool);
+        }
     }
 }

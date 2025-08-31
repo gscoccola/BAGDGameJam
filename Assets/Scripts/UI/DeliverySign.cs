@@ -8,16 +8,25 @@ namespace PixelMate.UI
     {
         [SerializeField]
         private DeliveryManager _deliveryManager;
+
+        [SerializeField]
+        private Canvas _worldCanvas;
         [SerializeField]
         private TMP_Text _signText;
         [SerializeField]
-        private string _countText = "Sheeps in Farmyard: {0}";
+        private string _countText = "Sheeps: {0}/{1}";
         [SerializeField]
         private string _allDeliveredText = "All sheeps are in the Farmyard!";
 
         private void Awake()
         {
-            _signText.SetText(_countText, 0);
+            _worldCanvas.worldCamera = Camera.main;
+        }
+
+        private void Start()
+        {
+            string content = string.Format(_countText, 0, _deliveryManager.RequiredDeliveries);
+            _signText.SetText(content);
         }
 
         private void OnEnable()
@@ -34,9 +43,10 @@ namespace PixelMate.UI
             _deliveryManager.OnItemAmountChanged -= HandleNumberOfItemsChange;
         }
 
-        private void HandleNumberOfItemsChange(int obj)
+        private void HandleNumberOfItemsChange(int current)
         {
-            _signText.SetText(_countText, obj);
+            string content = string.Format(_countText, current, _deliveryManager.RequiredDeliveries);
+            _signText.SetText(content);
         }
 
         private void HandleAllItemsDelivered()
