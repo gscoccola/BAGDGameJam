@@ -54,7 +54,7 @@ public class AudioSystem : MonoBehaviour
         DisposableSound disposableSound = AudioPool.GetObject();
         disposableSound.transform.position = _cameraTransform.position;
         disposableSound.transform.SetParent(_cameraTransform);
-        disposableSound.Play(customAudioClip, 1);
+        disposableSound.Play(customAudioClip, 1, 1);
     }
     
     
@@ -67,7 +67,7 @@ public class AudioSystem : MonoBehaviour
         DisposableSound disposableSound = AudioPool.GetObject();
         disposableSound.transform.position = _cameraTransform.position;
         disposableSound.transform.SetParent(_cameraTransform);
-        disposableSound.Play(customAudioClip.clip, customAudioClip.volume);
+        disposableSound.Play(customAudioClip.clip, customAudioClip.volume, 1);
     }
     
     /// <summary>

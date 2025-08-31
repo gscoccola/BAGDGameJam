@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
@@ -40,11 +39,11 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         EventManager.Instance.Subscribe(Constants.OnDisableControls, DisableRotateCamera);
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
-        EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, DisableRotateCamera);
-        EventManager.Instance.Unsubscribe(Constants.OnEnableControls, EnableRotateCamera);
-        EventManager.Instance.Unsubscribe(Constants.OnDisableControls, DisableRotateCamera);
+        //EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, DisableRotateCamera);
+        //EventManager.Instance.Unsubscribe(Constants.OnEnableControls, EnableRotateCamera);
+        //EventManager.Instance.Unsubscribe(Constants.OnDisableControls, DisableRotateCamera);
     }
 
 

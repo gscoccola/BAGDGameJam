@@ -84,13 +84,13 @@ public class PlayerController : MonoBehaviour
     
     private void OnDestroy()
     {
-        PlayerControls.Instance.OnSprintKey -= StartPressSprint;
-        PlayerControls.Instance.OnSprintKeyCancelled -= StopPressSprint;
-        PlayerControls.Instance.OnCrouchKey -= PressCrouch;
-        PlayerControls.Instance.OnJumpKey -= RequestJump;
-        EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, DisableLocomotion);
-        EventManager.Instance.Unsubscribe(Constants.OnEnableControls, EnableLocomotion);
-        EventManager.Instance.Unsubscribe(Constants.OnDisableControls, DisableLocomotion);
+        //PlayerControls.Instance.OnSprintKey -= StartPressSprint;
+        //PlayerControls.Instance.OnSprintKeyCancelled -= StopPressSprint;
+        //PlayerControls.Instance.OnCrouchKey -= PressCrouch;
+        //PlayerControls.Instance.OnJumpKey -= RequestJump;
+        //EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, DisableLocomotion);
+        //EventManager.Instance.Unsubscribe(Constants.OnEnableControls, EnableLocomotion);
+        //EventManager.Instance.Unsubscribe(Constants.OnDisableControls, DisableLocomotion);
     }
 
     private void Update()

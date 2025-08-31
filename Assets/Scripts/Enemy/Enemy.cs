@@ -37,7 +37,6 @@ public class Enemy : MonoBehaviour
     
     [Header("Sounds")]
     [SerializeField] public CustomAudioClip idleMusic;
-    [SerializeField] public CustomAudioClip persecutionMusic;
     [SerializeField] private CustomAudioClip[] damageSounds;
     public AudioSource audioSource;
     

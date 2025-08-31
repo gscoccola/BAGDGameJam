@@ -26,9 +26,9 @@ namespace PixelMate.Gameplay
 
         [Header("Audio")]
         [SerializeField]
-        private AudioClip[] _grabSounds;
+        private CustomAudioClip[] _grabSounds;
         [SerializeField]
-        private AudioClip _dropSound;
+        private CustomAudioClip _dropSound;
 
 #if UNITY_EDITOR
         [Header("Debug")]
