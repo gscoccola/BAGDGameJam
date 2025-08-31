@@ -84,7 +84,8 @@ namespace PixelMate.Gameplay
                 }
 
                 // Opening/closing the famryard door
-                if (hitInteractives.collider.transform.parent.TryGetComponent<SheepDoor>(out var door))
+                var parentTransform = hitInteractives.collider.transform.parent;
+                if (parentTransform != null && parentTransform.TryGetComponent<SheepDoor>(out var door))
                 {
                     door.MoveDoor();
                     return;
@@ -105,7 +106,7 @@ namespace PixelMate.Gameplay
                     grabbable.BeginGrab();
                     _heldItem = grabbable;
                     _leftArm.gameObject.SetActive(true);
-                    //AudioSystem.Instance?.PlaySound(_grabSounds[Random.Range(0, _grabSounds.Length)]);
+                    AudioSystem.Instance?.PlaySound(_grabSounds[Random.Range(0, _grabSounds.Length)]);
                 }
             }
         }
@@ -118,7 +119,7 @@ namespace PixelMate.Gameplay
             _heldItem.EndGrab(transform.position, transform.rotation);
             _heldItem = null;
             _leftArm.gameObject.SetActive(false);
-            //AudioSystem.Instance?.PlaySound(_dropSound);
+            AudioSystem.Instance?.PlaySound(_dropSound);
         }
     }
 }

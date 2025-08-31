@@ -1296,6 +1296,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _leftArm: {fileID: 4040116544516977075}
+  _grabSounds:
+  - {fileID: 8300000, guid: 1aebf4330db1e42409ed607e062e2f4c, type: 3}
+  - {fileID: 8300000, guid: 2540bf51c04b4a343bdbca90cadc02cf, type: 3}
+  _dropSound: {fileID: 8300000, guid: 3f134266f60a06f49b3ba66637b3129b, type: 3}
   _showDebugRay: 1
   _rayDuration: 2.5
 --- !u!136 &8978732785859398808

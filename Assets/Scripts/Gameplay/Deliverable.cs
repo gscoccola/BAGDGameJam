@@ -14,6 +14,12 @@ namespace PixelMate.Gameplay
         private bool _isDelivered = false;
         private DeliveryManager _currentDeliveryManager;
 
+        private void Start()
+        {
+            // Initial delivery check in case starting in a delivery zone
+            HandleDelivery();
+        }
+
         public void HandleDelivery()
         {
             // Find all delivery managers within range

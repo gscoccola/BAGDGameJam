@@ -16,6 +16,7 @@ namespace PixelMate.Gameplay
         private List<Deliverable> _deliveredItems = new List<Deliverable>();
 
         public int RequiredDeliveries => _requiredDeliveries;
+        public int CurrentDeliveries => _deliveredItems.Count;
 
         public void DeliverItem(Deliverable deliverable)
         {

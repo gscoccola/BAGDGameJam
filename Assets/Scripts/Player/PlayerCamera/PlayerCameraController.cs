@@ -36,12 +36,15 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         _targetCameraRotation = _playerControllerTf.localRotation;
         EnableRotateCamera();
         EventManager.Instance.Subscribe(Constants.OnPlayerDeath, DisableRotateCamera);
+        EventManager.Instance.Subscribe(Constants.OnEnableControls, EnableRotateCamera);
+        EventManager.Instance.Subscribe(Constants.OnDisableControls, DisableRotateCamera);
     }
 
     private void OnDestroy()
     {
-        
         EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, DisableRotateCamera);
+        EventManager.Instance.Unsubscribe(Constants.OnEnableControls, EnableRotateCamera);
+        EventManager.Instance.Unsubscribe(Constants.OnDisableControls, DisableRotateCamera);
     }
 
 
