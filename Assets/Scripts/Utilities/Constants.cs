@@ -5,6 +5,9 @@ public static class Constants
     public const string OnSheepNoise = "OnSheepNoise";
     public const string OnEnterSafeZone = "OnEnterSafeZone";
     public const string OnExitSafeZone = "OnExitSafeZone";
+    public const string OnEnemyChase = "OnEnemyChase";
+    public const string OnPEnemyEndChase = "OnPEnemyEndChase";
+    
     //Player
     public const string OnEnableControls = "OnEnableControls";
     public const string OnDisableControls = "OnDisableControls";

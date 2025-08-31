@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float _maxSearchTime;
     [SerializeField] public float _ultraInstinctTime;
     [SerializeField] float _maxDistanceToDMG = 1f;
-    [SerializeField] float _attackDamage = 20f;
+    [SerializeField] int _attackDamage = 1;
     [SerializeField] float _attackCooldown = 2f;
 
 
@@ -32,9 +32,23 @@ public class Enemy : MonoBehaviour
     [ReadOnly] public float ClosestCenterToPlayer;
     //[ReadOnly] public List<WaypointCenter> _wayPointCenters;
     [ReadOnly] public List<WaypointCenter> _centers;
+    
+    
+    
+    [Header("Sounds")]
+    [SerializeField] public CustomAudioClip idleMusic;
+    [SerializeField] public CustomAudioClip persecutionMusic;
+    [SerializeField] private CustomAudioClip[] damageSounds;
+    public AudioSource audioSource;
+    
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
+        audioSource.clip = idleMusic.clip;
+        audioSource.loop = true;
+        audioSource.Play();
         _stateMachine = new FiniteStateMachine<EnemyState>();
         _stateMachine.AddState(EnemyState.Patrol, new EnemyPatrol(this, _stateMachine));
         _stateMachine.AddState(EnemyState.Chase, new EnemyChase(this, _stateMachine));
@@ -44,6 +58,7 @@ public class Enemy : MonoBehaviour
         EventManager.Instance.Subscribe(Constants.OnSheepNoise, OnSheepNoise);
         EventManager.Instance.Subscribe(Constants.OnEnterSafeZone, EnterSafeZone);
         EventManager.Instance.Subscribe(Constants.OnExitSafeZone, ExitSafeZone);
+        EventManager.Instance.Subscribe(Constants.OnPlayerDeath, EnterSafeZone);
         _naveMeshAgent = GetComponent<NavMeshAgent>();
         _playerHealth = _playerTransform.GetComponent<PlayerHealth>();
         _playerInSafeZoneNumber = 0;
@@ -63,6 +78,8 @@ public class Enemy : MonoBehaviour
         {
             _playerHealth.TakeDamage(_attackDamage);
             _attackTimer = 0f;
+            int randomSound = Random.Range(0, damageSounds.Length);
+            AudioSystem.Instance.PlaySound(damageSounds[randomSound]);
         }
         _attackTimer += Time.deltaTime;
         _stateMachine.Update();

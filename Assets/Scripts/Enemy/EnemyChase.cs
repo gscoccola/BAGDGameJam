@@ -16,11 +16,14 @@ public class EnemyChase : IState<EnemyState>
     public void OnEnter(params object[] parameters)
     {
         _enemy.CurrentState = EnemyState.Chase;
+        _enemy.audioSource.Stop();
+        EventManager.Instance.Trigger(Constants.OnEnemyChase);
     }
 
     public void OnExit()
     {
-        //throw new System.NotImplementedException();
+        _enemy.audioSource.Play();
+        EventManager.Instance.Trigger(Constants.OnPEnemyEndChase);
     }
 
     public void OnUpdate()
