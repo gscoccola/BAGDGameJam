@@ -22,7 +22,16 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 #if UNITY_EDITOR
             Debug.LogWarning($"GAC: Duplicated {GetType()} found", this);
 #endif
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        // Always clear the static reference if this is the current instance
+        if (Instance == this)
+        {
+            Instance = null;
         }
     }
 }

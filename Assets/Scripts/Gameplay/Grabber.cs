@@ -1,3 +1,4 @@
+using PixelMate.Collectibles;
 using UnityEngine;
 
 namespace PixelMate.Gameplay
@@ -22,6 +23,12 @@ namespace PixelMate.Gameplay
 
         [SerializeField]
         private GameObject _leftArm;
+
+        [Header("Audio")]
+        [SerializeField]
+        private AudioClip[] _grabSounds;
+        [SerializeField]
+        private AudioClip _dropSound;
 
 #if UNITY_EDITOR
         [Header("Debug")]
@@ -65,17 +72,21 @@ namespace PixelMate.Gameplay
             }
 #endif
 
-            // Opening/closing the famryard door
             if (Physics.SphereCast(ray, _sphereRadius, out var hitInteractives, _grabDistance, _defaultMask, QueryTriggerInteraction.Collide))
             {
-                Debug.Log($"Player has hit {hitInteractives.collider.name}");
+                Debug.Log($"Player ray has hit {hitInteractives.collider.name}");
 
-                SheepDoor door = hitInteractives.collider.GetComponentInParent<SheepDoor>();
-
-                if (door)
+                // Picking up collectibles
+                if (hitInteractives.collider.TryGetComponent<Collectible>(out var collectible))
                 {
-                    Debug.Log($"Player tries to open the door {door.name}");
-                    door.OpenDoor();
+                    collectible.Collect();
+                    return;
+                }
+
+                // Opening/closing the famryard door
+                if (hitInteractives.collider.transform.parent.TryGetComponent<SheepDoor>(out var door))
+                {
+                    door.MoveDoor();
                     return;
                 }
             }
@@ -94,6 +105,7 @@ namespace PixelMate.Gameplay
                     grabbable.BeginGrab();
                     _heldItem = grabbable;
                     _leftArm.gameObject.SetActive(true);
+                    //AudioSystem.Instance?.PlaySound(_grabSounds[Random.Range(0, _grabSounds.Length)]);
                 }
             }
         }
@@ -106,6 +118,7 @@ namespace PixelMate.Gameplay
             _heldItem.EndGrab(transform.position, transform.rotation);
             _heldItem = null;
             _leftArm.gameObject.SetActive(false);
+            //AudioSystem.Instance?.PlaySound(_dropSound);
         }
     }
 }

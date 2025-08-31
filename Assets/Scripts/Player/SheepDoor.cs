@@ -7,7 +7,7 @@ namespace PixelMate.Gameplay
         [SerializeField]
         private Animator _doorAnimator;
 
-        public void OpenDoor()
+        public void MoveDoor()
         {
             bool openBool = _doorAnimator.GetBool("Open");
             _doorAnimator.SetBool("Open", !openBool);
