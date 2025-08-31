@@ -38,6 +38,7 @@ public class SheepSounds : MonoBehaviour
         _currentTimer = 0;
         _currentCooldown = Random.Range(minCooldown, maxCooldown);
         PlayRandomClip(sheepSounds);
+        EventManager.Instance.Trigger(Constants.OnSheepNoise);
     }
 
 

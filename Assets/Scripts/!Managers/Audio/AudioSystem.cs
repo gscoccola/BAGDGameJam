@@ -49,6 +49,19 @@ public class AudioSystem : MonoBehaviour
     /// GAC: Reproduce un clip con su sonido personalizado sobre la main camera.
     /// </summary>
     /// <param name="customAudioClip"> el clip junto al volumen a reproducir.</param>
+    public void PlaySound(AudioClip customAudioClip)
+    {
+        DisposableSound disposableSound = AudioPool.GetObject();
+        disposableSound.transform.position = _cameraTransform.position;
+        disposableSound.transform.SetParent(_cameraTransform);
+        disposableSound.Play(customAudioClip, 1);
+    }
+    
+    
+    /// <summary>
+    /// GAC: Reproduce un clip con su sonido personalizado sobre la main camera.
+    /// </summary>
+    /// <param name="customAudioClip"> el clip junto al volumen a reproducir.</param>
     public void PlaySound(CustomAudioClip customAudioClip)
     {
         DisposableSound disposableSound = AudioPool.GetObject();
