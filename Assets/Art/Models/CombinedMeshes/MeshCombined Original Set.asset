@@ -6,7 +6,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CombinedMesh_Set Original_1
+  m_Name: MeshCombined Original Set
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
