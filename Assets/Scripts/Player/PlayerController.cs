@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         Fsm.AddState(PlayerState.Landed, new PlayerLanded(Fsm, this));
         Fsm.AddState(PlayerState.Recovery, new PlayerRecovery(Fsm, this));
         Fsm.ChangeState(PlayerState.Idle);
+        EventManager.Instance.Subscribe(Constants.OnPlayerDeath, DisableLocomotion);
     }
     
     private void OnDestroy()
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
         PlayerControls.Instance.OnSprintKeyCancelled -= StopPressSprint;
         PlayerControls.Instance.OnCrouchKey -= PressCrouch;
         PlayerControls.Instance.OnJumpKey -= RequestJump;
+        EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, DisableLocomotion);
     }
 
     private void Update()

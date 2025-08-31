@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
@@ -34,9 +35,16 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         _playerControllerTf = transform.parent;
         _targetCameraRotation = _playerControllerTf.localRotation;
         EnableRotateCamera();
+        EventManager.Instance.Subscribe(Constants.OnPlayerDeath, DisableRotateCamera);
     }
-    
-    
+
+    private void OnDestroy()
+    {
+        
+        EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, DisableRotateCamera);
+    }
+
+
     private void LateUpdate()
     {
         if (!canMoveCamera) return;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 46875166887661340}
   - component: {fileID: 277101988741579565}
   m_Layer: 0
-  m_Name: Prueba
+  m_Name: Prueba Shader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
