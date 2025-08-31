@@ -133645,33 +133645,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3939521443665679077, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
-      propertyPath: m_BounceIntensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4363085269952216914, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -158.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 4363085269952216914, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -47.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 4363085269952216914, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.92
-      objectReference: {fileID: 0}
     - target: {fileID: 5042042739089296577, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
       propertyPath: m_Name
       value: EnemyPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 6651168147797356134, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
-      propertyPath: useOcclusion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7624607006588298009, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
-      propertyPath: m_Speed
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
