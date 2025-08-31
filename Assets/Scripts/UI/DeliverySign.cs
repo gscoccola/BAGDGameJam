@@ -25,7 +25,7 @@ namespace PixelMate.UI
 
         private void Start()
         {
-            string content = string.Format(_countText, 0, _deliveryManager.RequiredDeliveries);
+            string content = string.Format(_countText, _deliveryManager.CurrentDeliveries, _deliveryManager.RequiredDeliveries);
             _signText.SetText(content);
         }
 

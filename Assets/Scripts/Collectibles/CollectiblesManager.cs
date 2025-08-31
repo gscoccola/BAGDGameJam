@@ -21,8 +21,6 @@ namespace PixelMate.Collectibles
         {
             base.Awake();
             Load();
-
-            Debug.Log($"GetString in Awake: {PlayerPrefs.GetString(Key, "")}");
         }
 
 #if UNITY_EDITOR
