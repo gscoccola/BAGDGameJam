@@ -31,6 +31,22 @@ MonoBehaviour:
     m_Key: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 551543891841024
+    m_Key: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 551586841513984
+    m_Key: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 551611990560768
+    m_Key: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 551692160487424
+    m_Key: You Died
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -36,6 +36,16 @@ namespace PixelMate.Collectibles
                 PlayerPrefs.SetString(Key, "");
                 PlayerPrefs.Save();
             }
+
+            // For testing purposes only: Add collectible when pressing 'L'
+            if (UnityEngine.Input.GetKeyDown(KeyCode.L))
+            {
+                if (RegisterCollected("1")) return;
+                else if (RegisterCollected("2")) return;
+                else if (RegisterCollected("3")) return;
+                else if (RegisterCollected("4")) return;
+                else if (RegisterCollected("5")) return;
+            }
         }
 #endif
 

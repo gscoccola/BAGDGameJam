@@ -34,6 +34,22 @@ MonoBehaviour:
     m_Localized: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 551543891841024
+    m_Localized: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 551586841513984
+    m_Localized: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 551611990560768
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 551692160487424
+    m_Localized: You Died
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

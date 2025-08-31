@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using PixelMate.Collectibles;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _howToPlayMenu;
     [SerializeField] private GameObject _creditsMenu;
     [SerializeField] private GameObject _languageMenu;
+    [SerializeField] private Image[] _portraits;
     private Dictionary<MenuState, GameObject> _menuDictionary = new();
 
     private void Awake()
@@ -23,6 +26,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        LoadCollectibles();
         if (LocaleInfo.Instance.IsLocaleSet) ChangeMenu(MenuState.Main);
         else ChangeMenu(MenuState.LanguageMenu);
     }
@@ -56,6 +60,14 @@ public class MainMenu : MonoBehaviour
         LocaleInfo.Instance.CurrentLocale = locale;
         LocaleInfo.Instance.IsLocaleSet = true;
         ChangeScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void LoadCollectibles()
+    {
+        for(int i = 0; i < _portraits.Length; i++)
+        {
+            _portraits[i].enabled = CollectiblesManager.Instance.IsCollected((i+1).ToString());
+        }
     }
 }
 
