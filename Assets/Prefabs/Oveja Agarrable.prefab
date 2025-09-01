@@ -1366,7 +1366,7 @@ MonoBehaviour:
   _deliveryManagerLayers:
     serializedVersion: 2
     m_Bits: 1
-  _aliveModel: {fileID: 0}
+  _aliveModel: {fileID: 8431751260378230696}
   _deathModel: {fileID: 9013007188318952317}
 --- !u!114 &2404811461306296328
 MonoBehaviour:

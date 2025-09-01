@@ -143738,10 +143738,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.48290777
       objectReference: {fileID: 0}
-    - target: {fileID: 3533903269396026799, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
-      propertyPath: _aliveModel
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4630895759490728366, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: _willWarnEnemy
       value: 0

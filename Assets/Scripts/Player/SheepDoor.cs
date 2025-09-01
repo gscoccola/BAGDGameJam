@@ -12,6 +12,10 @@ namespace PixelMate.Gameplay
         [SerializeField]
         private string _openStateName = "Puerta Open";
 
+        [Header("Audio")]
+        [SerializeField]
+        private AudioClip _doorMoveClip;
+
         public event Action OnDoorClose;
 
         private bool _isAnimating;
@@ -39,6 +43,8 @@ namespace PixelMate.Gameplay
                 yield return null;
                 info = _doorAnimator.GetCurrentAnimatorStateInfo(0);
             }
+
+            AudioSystem.Instance?.PlaySound(_doorMoveClip);
 
             // Now wait until the animation has completed one loop
             while (info.normalizedTime < 1f)

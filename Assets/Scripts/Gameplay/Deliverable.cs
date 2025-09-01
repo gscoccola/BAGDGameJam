@@ -88,6 +88,7 @@ namespace PixelMate.Gameplay
         {
             _aliveModel.SetActive(false);
             _deathModel.SetActive(true);
+            GetComponent<SHeepSoundsOnSheep>().enabled = false;
         }
     }
 }
