@@ -17,7 +17,7 @@ public class SHeepSoundsOnSheep : MonoBehaviour
     [SerializeField] private CustomAudioClip[] sheepSounds;
     
     
-    private void Awake()
+    private void Start()
     {
         _playerController = PlayerCameraController.Instance.gameObject.GetComponentInParent<PlayerController>();
         _audioSource = GetComponent<AudioSource>();

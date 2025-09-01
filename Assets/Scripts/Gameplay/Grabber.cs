@@ -1,11 +1,16 @@
 using PixelMate.Collectibles;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace PixelMate.Gameplay
 {
     [DisallowMultipleComponent]
     public sealed class Grabber : MonoBehaviour, IGrabber
     {
+        private GameObject pointedGameObject;
+        public LayerMask defualtAndSheepsMask = ~0;
+        
+        
         [SerializeField]
         private Transform _holdPoint;
 
@@ -61,6 +66,44 @@ namespace PixelMate.Gameplay
                 PlayerControls.Instance.OnClickAttack -= Grab;
             }
         }
+
+        private void Update()
+        {  
+            Ray ray = _camera.ViewportPointToRay(_rayOrigin);
+            if (Physics.SphereCast(ray, _sphereRadius, out var hitInteractives, _grabDistance, defualtAndSheepsMask, QueryTriggerInteraction.Collide))
+            {
+                if (pointedGameObject == hitInteractives.collider.gameObject) return;
+                // Picking up collectibles
+                if (hitInteractives.collider.TryGetComponent<Collectible>(out var collectible))
+                {
+                    EventManager.Instance.Trigger(Constants.OnWantInteract);
+                    pointedGameObject = hitInteractives.collider.gameObject;
+                    return;
+                }
+
+                // Opening/closing the famryard door
+                var parentTransform = hitInteractives.collider.transform.parent;
+                if (parentTransform != null && parentTransform.TryGetComponent<SheepDoor>(out var door))
+                {
+                    EventManager.Instance.Trigger(Constants.OnWantInteract);
+                    pointedGameObject = hitInteractives.collider.gameObject;
+                    return;
+                }
+
+                //Oveja
+                if (hitInteractives.collider.TryGetComponent<IGrabbable>(out var grabbable))
+                {
+                    EventManager.Instance.Trigger(Constants.OnWantInteract);
+                    pointedGameObject = hitInteractives.collider.gameObject;
+                }
+            }
+            else
+            {
+                EventManager.Instance.Trigger(Constants.OnCancelWantInteract);
+                pointedGameObject = null;
+            }
+        }
+
 
         public void Grab()
         {

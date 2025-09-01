@@ -184,6 +184,7 @@ MonoBehaviour:
   currentVerticalAngle: 0
   lowerVerticalClamp: 85
   upperVerticalClamp: 45
+  _isCinematic: 0
   cameraPositionOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &5993471330178473190
 MonoBehaviour:
@@ -643,7 +644,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4cd71cb2f484cf74ea6a7da8a0f19f64, type: 3}
     volume: 1
   audioSource: {fileID: 0}
-  waitTimer: 7
+  waitTimer: 9
 --- !u!1 &4690711294969519827
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +986,7 @@ Light:
   m_Intensity: 25
   m_Range: 40
   m_SpotAngle: 120
-  m_InnerSpotAngle: 45
+  m_InnerSpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -1202,7 +1203,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.4
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -1218,7 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbd446be1fe3d047933ca0f27fd556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveASheep: 1
+  haveASheep: 0
   preset: {fileID: 11400000, guid: 0419e25f4796af746bcdbe6c78d89b9c, type: 2}
   canControllable: 1
   isGrounded: 1
@@ -1273,6 +1274,9 @@ MonoBehaviour:
     volume: 1
   - clip: {fileID: 8300000, guid: 40b074e05a7e37b488b5abe9d42a2ba0, type: 3}
     volume: 1
+  lossSound:
+    clip: {fileID: 8300000, guid: 93ddeebb00ee5574893e457409bed920, type: 3}
+    volume: 1
 --- !u!114 &3175355311261338810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcdad117d2d1fe8448193a99379a5a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defualtAndSheepsMask:
+    serializedVersion: 2
+    m_Bits: 4097
   _holdPoint: {fileID: 3966949923016734889}
   _rayOrigin: {x: 0.5, y: 0.5, z: 0}
   _grabDistance: 3
@@ -1297,9 +1304,13 @@ MonoBehaviour:
     m_Bits: 1
   _leftArm: {fileID: 4040116544516977075}
   _grabSounds:
-  - {fileID: 8300000, guid: 1aebf4330db1e42409ed607e062e2f4c, type: 3}
-  - {fileID: 8300000, guid: 2540bf51c04b4a343bdbca90cadc02cf, type: 3}
-  _dropSound: {fileID: 8300000, guid: 3f134266f60a06f49b3ba66637b3129b, type: 3}
+  - clip: {fileID: 8300000, guid: 466859ea4a4957f40a44f14d863d89ef, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: a745acc77dd26d547ae59c0ceeb280af, type: 3}
+    volume: 1
+  _dropSound:
+    clip: {fileID: 8300000, guid: 92c6a2f58d497f74d820012cbcf87519, type: 3}
+    volume: 1
   _showDebugRay: 1
   _rayDuration: 2.5
 --- !u!136 &8978732785859398808
@@ -1674,6 +1685,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6049955748854111942}
     m_Modifications:
+    - target: {fileID: 1165889936025900579, guid: 75d0640ba2caf4247beba251b59888d5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2550956110175569290, guid: 65c94aa61c448a24fbe3ea7c59dc60f9, type: 3}
     - target: {fileID: 5805875947024435828, guid: 75d0640ba2caf4247beba251b59888d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -1819,6 +1834,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -35.77
       objectReference: {fileID: 0}
+    - target: {fileID: 3933759323665739970, guid: 5140ad0ba7d7ffc458a6bea28fbfbd37, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6283700615660854558, guid: 65c94aa61c448a24fbe3ea7c59dc60f9, type: 3}
     - target: {fileID: 6389197786121038386, guid: 5140ad0ba7d7ffc458a6bea28fbfbd37, type: 3}
       propertyPath: m_CastShadows
       value: 0
