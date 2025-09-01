@@ -9,24 +9,31 @@ namespace PixelMate.Gameplay
         private Animator _doorAnimator;
         [SerializeField]
         private string _closeStateName = "Puerta Close";
+        [SerializeField]
+        private string _openStateName = "Puerta Open";
 
         public event Action OnDoorClose;
 
+        private bool _isAnimating;
+
         public void MoveDoor()
         {
+            if (_isAnimating)
+                return;
+
             bool openBool = _doorAnimator.GetBool("Open");
             _doorAnimator.SetBool("Open", !openBool);
 
-            if (openBool)
-                StartCoroutine(WaitForAnimation(_closeStateName));
+            string targetState = openBool ? _closeStateName : _openStateName;
+            StartCoroutine(WaitForAnimation(targetState));
         }
 
         private System.Collections.IEnumerator WaitForAnimation(string stateName)
         {
-            // 0 = base layer
-            AnimatorStateInfo info = _doorAnimator.GetCurrentAnimatorStateInfo(0);
+            _isAnimating = true;
 
             // Wait until we’re in the correct state
+            AnimatorStateInfo info = _doorAnimator.GetCurrentAnimatorStateInfo(0);
             while (!info.IsName(stateName))
             {
                 yield return null;
@@ -42,6 +49,8 @@ namespace PixelMate.Gameplay
 
             Debug.Log($"{stateName} finished!");
             OnDoorClose?.Invoke();
+
+            _isAnimating = false;
         }
     }
 }
