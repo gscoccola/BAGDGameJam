@@ -27,7 +27,8 @@ public class SheepSounds : MonoBehaviour
 
     private void Update()
     {
-        if (!_playerController.haveASheep) return;
+        if (_playerController.haveASheep != gameObject) return;
+        
 
         float multiplier = 1;
         if (_playerController.CurrentPlayerState == PlayerState.Sprinting) multiplier = 1.33f;

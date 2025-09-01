@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
             
             if (currentHealth == 4) takeDamageVolume.weight = 0.25f;
             else if (currentHealth == 3) takeDamageVolume.weight = 0.5f;
-            else if (currentHealth == 2) takeDamageVolume.weight = 0.7f;
+            else if (currentHealth == 2) takeDamageVolume.weight = 0.75f;
             else takeDamageVolume.weight = 0;
         }
     }
@@ -65,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
         {
             if (currentHealth == 4) takeDamageVolume.weight = 0.25f;
             else if (currentHealth == 3) takeDamageVolume.weight = 0.5f;
-            else if (currentHealth == 2) takeDamageVolume.weight = 0.7f;
+            else if (currentHealth == 2) takeDamageVolume.weight = 0.75f;
             else takeDamageVolume.weight = 1;
         }
         if (currentHealth <= 0)

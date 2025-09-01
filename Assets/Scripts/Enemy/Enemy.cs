@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private float _baseSpeed;
 
     [Header("Parameters")]
+    [SerializeField] public float minDistanceToPlayerForBurstSpeed = 50f;
     [SerializeField] public float _maxSearchTime;
     [SerializeField] public float _ultraInstinctTime;
     [SerializeField] float _maxDistanceToDMG = 1f;
@@ -84,7 +85,7 @@ public class Enemy : MonoBehaviour
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
-        if (DistanceToPlayer > 30f) _naveMeshAgent.speed = _baseSpeed * 8f;
+        if (DistanceToPlayer >= minDistanceToPlayerForBurstSpeed) _naveMeshAgent.speed = _baseSpeed * 4f;
         else _naveMeshAgent.speed = _baseSpeed;
         if (DistanceToPlayer < _maxDistanceToDMG && _attackTimer > _attackCooldown)
         {

@@ -34,7 +34,7 @@ MonoBehaviour:
   canSprintBackward: 0
   minSprintSpeed: 3.5
   maxSprintSpeed: 5.25
-  burstSprintSpeed: 7.5
+  burstSprintSpeed: 9
   sprintHeadBobPreset:
     amplitude: 0.008
     frequency: 18

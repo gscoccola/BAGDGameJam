@@ -26,7 +26,7 @@ public class SHeepSoundsOnSheep : MonoBehaviour
 
     private void Update()
     {
-        if (_playerController.haveASheep) return;
+        if (_playerController.haveASheep != null) return;
         _currentTimer += Time.deltaTime;
         if (sheepSounds.Length == 0) return;
         if (_currentTimer < _currentCooldown) return;
@@ -34,7 +34,6 @@ public class SHeepSoundsOnSheep : MonoBehaviour
         _currentTimer = 0;
         _currentCooldown = Random.Range(minCooldown, maxCooldown);
         PlayRandomClip(sheepSounds);
-        EventManager.Instance.Trigger(Constants.OnSheepNoise);
     }
 
 

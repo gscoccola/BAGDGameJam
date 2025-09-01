@@ -71,7 +71,7 @@ public class PlayerSounds : MonoBehaviour
                 return;
         }
         
-        if (_playerController.haveASheep)
+        if (_playerController.haveASheep != null)
         {
             footSteps = surfaceDetails.SurfaceFootsteps(tag).sheepFootsteps;
         }

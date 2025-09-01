@@ -31,6 +31,12 @@ public class EnemySearch : IState<EnemyState>
     public void OnUpdate()
     {
         _timer += Time.deltaTime;
+        if (_enemy.HasLineOfSight(_enemy.transform.position))
+        {
+            _stateMachine.ChangeState(EnemyState.Chase);
+            return;
+        }
+        
         if (_timer >= _enemy._maxSearchTime)
         {
             if (!_hasChecked)
@@ -38,6 +44,7 @@ public class EnemySearch : IState<EnemyState>
                 _lastKnownPlayerPosition = _enemy._playerTransform.position;
                 _enemy.SetTargetAndNavMeshPath(_enemy._playerTransform.position);
                 _hasChecked = true;
+                if (_timer >= _enemy._maxSearchTime * 2) _stateMachine.ChangeState(EnemyState.Patrol);
             }
             if (Vector3.Distance(_lastKnownPlayerPosition, _enemy.transform.position) < 5f)
             {

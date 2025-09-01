@@ -23,9 +23,9 @@ public class OvejaAnimation : MonoBehaviour
     private IEnumerator Coroutine()
     {
         float random = Random.Range(0f, 5f);
-        _aniamtor.StopPlayback();
+        _aniamtor.enabled = false;
         yield return new WaitForSeconds(random);
-        _aniamtor.StartPlayback();
+        _aniamtor.enabled = true;
     }
     
 

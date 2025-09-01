@@ -6,7 +6,7 @@ public class PlayerPersecutionMusic : MonoBehaviour
 
     [SerializeField] private CustomAudioClip persecutionMusic;
     public AudioSource audioSource;
-    private int count = 0;
+    [SerializeField, ReadOnly] private int count = 0;
     public float waitTimer = 5;
     private Coroutine _coroutine;
     
@@ -20,10 +20,12 @@ public class PlayerPersecutionMusic : MonoBehaviour
         audioSource.loop = true;
         EventManager.Instance.Subscribe(Constants.OnEnemyChase, PlayMusic);
         EventManager.Instance.Subscribe(Constants.OnPEnemyEndChase, StopMusic);
+        EventManager.Instance.Subscribe(Constants.OnPlayerDeath, OnPlayerDEad);
     }
 
     private void OnDestroy()
     {
+        StopAllCoroutines();
         //EventManager.Instance.Unsubscribe(Constants.OnEnemyChase, PlayMusic);
         //EventManager.Instance.Unsubscribe(Constants.OnPEnemyEndChase, StopMusic);
     }
@@ -49,6 +51,13 @@ public class PlayerPersecutionMusic : MonoBehaviour
         if (count == 0)
         {
             audioSource.Stop();
+            _coroutine = null;
         }
+    }
+    
+    private void OnPlayerDEad()
+    {
+        StopAllCoroutines();
+        audioSource.Stop();
     }
 }

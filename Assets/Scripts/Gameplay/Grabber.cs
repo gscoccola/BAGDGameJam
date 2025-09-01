@@ -154,7 +154,7 @@ namespace PixelMate.Gameplay
                     _heldItem = grabbable;
                     _leftArm.gameObject.SetActive(true);
                     AudioSystem.Instance?.PlaySound(_grabSounds[Random.Range(0, _grabSounds.Length)]);
-                    EventManager.Instance.Trigger(Constants.OnPlayerKeepSheepForSounds, true);
+                    EventManager.Instance.Trigger(Constants.OnPlayerKeepSheepForSounds, hit.collider.gameObject);
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace PixelMate.Gameplay
             _heldItem = null;
             _leftArm.gameObject.SetActive(false);
             AudioSystem.Instance?.PlaySound(_dropSound);
-            EventManager.Instance.Trigger(Constants.OnPlayerKeepSheepForSounds, false);
+            EventManager.Instance.Trigger(Constants.OnPlayerKeepSheepForSounds, null);
         }
 
         public void AllowGrabberState(bool state) => _canGrab = state;

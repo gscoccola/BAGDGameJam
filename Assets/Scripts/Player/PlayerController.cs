@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    public bool haveASheep;
+    public GameObject haveASheep;
     
     [Header("Controller")]
     [SerializeField] private PlayerPreset preset;
@@ -84,13 +84,21 @@ public class PlayerController : MonoBehaviour
 
     private void EnableSHeep(params object[] parameters)
     {
-        if ((bool)parameters[0])
+        if (parameters != null && parameters.Length > 0)
         {
-            haveASheep = true;
+            var asd = (GameObject)parameters[0];
+            if (asd != null)
+            {
+                haveASheep = asd;
+            }
+            else
+            {
+                haveASheep = null;
+            }
         }
         else
         {
-            haveASheep = false;
+            haveASheep = null;
         }
     }
     

@@ -143694,6 +143694,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74505383339976297, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: retrasarAnimation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 672822690132737915, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.28
@@ -143706,10 +143710,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 59.70017
       objectReference: {fileID: 0}
+    - target: {fileID: 1222632864106130339, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: retrasarAnimation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1304563253202871012, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: _playerGrabber
       value: 
       objectReference: {fileID: 1923755633}
+    - target: {fileID: 1534952195727422306, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: _requiredDeliveries
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1777022931440366257, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.507271
@@ -143717,6 +143729,14 @@ PrefabInstance:
     - target: {fileID: 1777022931440366257, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.48290777
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451230416166326933, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: retrasarAnimation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869724453766792220, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: retrasarAnimation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3051874842056870791, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: m_LocalPosition.x
@@ -143737,6 +143757,10 @@ PrefabInstance:
     - target: {fileID: 3426577152596761870, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.48290777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627284892359576864, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: retrasarAnimation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4630895759490728366, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: _willWarnEnemy
@@ -143809,6 +143833,14 @@ PrefabInstance:
     - target: {fileID: 8266093402256799896, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: _willWarnEnemy
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276311248472745366, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: retrasarAnimation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428543813433010160, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: retrasarAnimation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8786058253043504968, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: maxCooldown
