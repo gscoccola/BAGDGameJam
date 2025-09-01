@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private int _playerInSafeZoneNumber = 0;
     private PlayerHealth _playerHealth;
     private float _attackTimer = 0f;
+    private float _baseSpeed;
 
     [Header("Parameters")]
     [SerializeField] public float _maxSearchTime;
@@ -62,6 +63,7 @@ public class Enemy : MonoBehaviour
         _playerHealth = _playerTransform.GetComponent<PlayerHealth>();
         _playerInSafeZoneNumber = 0;
         _playerInSafeZone = false;
+        _baseSpeed = _naveMeshAgent.speed;
     }
 
     private void OnDestroy()
@@ -82,6 +84,8 @@ public class Enemy : MonoBehaviour
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
+        if (DistanceToPlayer > 30f) _naveMeshAgent.speed = _baseSpeed * 4f;
+        else _naveMeshAgent.speed = _baseSpeed;
         if (DistanceToPlayer < _maxDistanceToDMG && _attackTimer > _attackCooldown)
         {
             _playerHealth.TakeDamage(_attackDamage);
