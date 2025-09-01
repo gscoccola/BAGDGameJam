@@ -17,6 +17,7 @@ namespace PixelMate.Gameplay
 
         public int RequiredDeliveries => _requiredDeliveries;
         public int CurrentDeliveries => _deliveredItems.Count;
+        public List<Deliverable> DeliveredItems => _deliveredItems;
 
         public void DeliverItem(Deliverable deliverable)
         {
@@ -25,7 +26,7 @@ namespace PixelMate.Gameplay
 
             _deliveredItems.Add(deliverable);
 
-            if (_deliveredItems.Count >= _requiredDeliveries)
+            if (AreAllItemsDelivered())
                 OnAllItemsDelivered?.Invoke();
             else
                 OnItemAmountChanged?.Invoke(_deliveredItems.Count);
@@ -38,6 +39,11 @@ namespace PixelMate.Gameplay
                 _deliveredItems.Remove(deliverable);
                 OnItemAmountChanged?.Invoke(_deliveredItems.Count);
             }
+        }
+
+        public bool AreAllItemsDelivered()
+        {
+            return _deliveredItems.Count >= _requiredDeliveries;
         }
     }
 }

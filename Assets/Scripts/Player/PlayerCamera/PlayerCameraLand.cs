@@ -26,7 +26,7 @@ public class PlayerCameraLand : MonoBehaviour
     
     private void OnDestroy()
     {
-        EventManager.Instance.Unsubscribe(Constants.OnPlayerLanded, OnStartLanded);
+        //EventManager.Instance.Unsubscribe(Constants.OnPlayerLanded, OnStartLanded);
     }
 
     private void Update()

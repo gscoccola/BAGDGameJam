@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, OnPlayerDeath);
+        //EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, OnPlayerDeath);
     }
 
     private void Update()
