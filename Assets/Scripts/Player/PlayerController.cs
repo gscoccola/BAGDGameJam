@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour
     public float CurrentSpeed => currentSpeed;
     public bool IsMovingBackward => _moveInput.y < 0;
     private const float AntiBumpFactor = -2;
-    [Min(0)] private float _currentCoyoteTimer;
-    [Min(0)] private float _currentJumpBufferTimer;
     private Vector2 _moveInput;
     private Vector3 _targetVelocity;
     private Vector3 _currentMoveVelocity;
@@ -110,7 +108,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        TryJump();
         Fsm.Update();
     }
     
@@ -165,25 +162,15 @@ public class PlayerController : MonoBehaviour
     private void RequestJump()
     {
         if (!GetCanControllable) return;
-        
-        _currentJumpBufferTimer = Preset.JumpBufferTime;
-    }
 
-    private void TryJump()
-    {
-        _currentCoyoteTimer -= Time.deltaTime;
-        _currentJumpBufferTimer -= Time.deltaTime;
-        
-        if (!GetCanControllable) return;
-        
-        if (_currentJumpBufferTimer > 0 && _currentCoyoteTimer > 0)
+        if (isGrounded)
         {
             _currentGravityVelocity.y = Mathf.Sqrt(Preset.JumpHeight * Physics.gravity.y * -2f * Preset.FallGravityMultiplier);
-            _currentJumpBufferTimer = 0f;
-            _currentCoyoteTimer = 0f;
+            isGrounded = false;
             OnJump?.Invoke();
         }
     }
+    
     #endregion
   
     
@@ -214,7 +201,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             if (_currentGravityVelocity.y < 0) _currentGravityVelocity.y = AntiBumpFactor;
-            _currentCoyoteTimer = Preset.CoyoteTime;
         }
         
         //Movimiento horizontal

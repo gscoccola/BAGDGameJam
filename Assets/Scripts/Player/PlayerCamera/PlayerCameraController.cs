@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerCameraController : Singleton<PlayerCameraController>
 {
-    public static PlayerCameraController Instance { get; private set; }
 
     [Header("Player Camera")]
     [SerializeField, ReadOnly] private bool canMoveCamera = true;

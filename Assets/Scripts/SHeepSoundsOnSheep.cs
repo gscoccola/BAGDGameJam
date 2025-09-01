@@ -15,16 +15,18 @@ public class SHeepSoundsOnSheep : MonoBehaviour
 
     [Header("Sheep")]
     [SerializeField] private CustomAudioClip[] sheepSounds;
-
+    
+    
     private void Awake()
     {
+        _playerController = PlayerCameraController.Instance.gameObject.GetComponentInParent<PlayerController>();
         _audioSource = GetComponent<AudioSource>();
         _currentCooldown = Random.Range(minCooldown, maxCooldown);
     }
 
     private void Update()
     {
-        
+        if (_playerController.haveASheep) return;
         _currentTimer += Time.deltaTime;
         if (sheepSounds.Length == 0) return;
         if (_currentTimer < _currentCooldown) return;
