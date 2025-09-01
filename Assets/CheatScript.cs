@@ -20,9 +20,7 @@ public class CheatScript : MonoBehaviour
             
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
             {
-                PlayerPrefs.DeleteAll();
-                collectiblesManager.Load();
-                mainMenu.LoadCollectibles();
+                BTN_ResetCollectibles();
             }
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
             {
@@ -40,5 +38,15 @@ public class CheatScript : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
         }
+    }
+
+
+
+
+    public void BTN_ResetCollectibles()
+    {
+        PlayerPrefs.DeleteAll();
+        collectiblesManager.Load();
+        mainMenu.LoadCollectibles();
     }
 }
