@@ -16,4 +16,8 @@ public static class Constants
     public const string OnPlayerUpdateCurrentHealth = "OnPlayerUpdateCurrentHealth";
     public const string OnPlayerDeath = "OnPlayerDeath";
     public const string OnModifyEnergy = "OnModifyEnergy";
+    
+    
+    
+    public const string OnPlayerKeepSheepForSounds = "OnPlayerKeepSheepForSounds";
 }

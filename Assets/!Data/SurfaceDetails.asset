@@ -67,14 +67,14 @@ MonoBehaviour:
       volume: 0.8
     sheepFootsteps:
     - clip: {fileID: 8300000, guid: 8f0baf9e06f1d0f41ba8f03fdcecddf9, type: 3}
-      volume: 1
+      volume: 0.85
     - clip: {fileID: 8300000, guid: bfd3be728d8d8fd4e96c74eabe10eb07, type: 3}
-      volume: 1
+      volume: 0.85
     - clip: {fileID: 8300000, guid: 4058d57f2e3facd449e05e2b644d69fd, type: 3}
-      volume: 1
+      volume: 0.85
     - clip: {fileID: 8300000, guid: b21a846640c5a9c4d96d93ab991d4e7e, type: 3}
-      volume: 1
+      volume: 0.85
     - clip: {fileID: 8300000, guid: 41d87e916112b17468b840bb50cb1258, type: 3}
-      volume: 1
+      volume: 0.85
     - clip: {fileID: 8300000, guid: 3a29ab3a90ede124d84c61cf59cd8adb, type: 3}
-      volume: 1
+      volume: 0.85

@@ -15,7 +15,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _languageMenu;
     [SerializeField] private Image[] _portraits;
     private Dictionary<MenuState, GameObject> _menuDictionary = new();
-
+    public static bool languageChoose;
+    public AudioClip clickButtonSound;
+    public AudioClip clickPlayButtonSound;
+    
     private void Awake()
     {
         _menuDictionary.Add(MenuState.Main, _mainMenu);
@@ -31,6 +34,16 @@ public class MainMenu : MonoBehaviour
         else ChangeMenu(MenuState.LanguageMenu);
     }
 
+    public void ButtonSounds()
+    {
+        AudioSystem.Instance.PlaySound(clickButtonSound);
+    }
+    
+    public void PlayButtonSounds()
+    {
+        AudioSystem.Instance.PlaySound(clickPlayButtonSound);
+    }
+
     public void ChangeMenu(int index)
     {
         ChangeMenu((MenuState)index);
@@ -41,6 +54,7 @@ public class MainMenu : MonoBehaviour
         if (_menuDictionary[_currentMenuState] != null) _menuDictionary[_currentMenuState].gameObject.SetActive(false);
         _menuDictionary[menuState].gameObject.SetActive(true);
         _currentMenuState = menuState;
+        ButtonSounds();
     }
 
     public void ChangeScene(int index)
@@ -51,6 +65,7 @@ public class MainMenu : MonoBehaviour
     public void ChooseLocale(string locale)
     {
         StartCoroutine(ISetLocale(locale));
+        ButtonSounds();
     }
 
     public IEnumerator ISetLocale(string locale)
@@ -60,6 +75,7 @@ public class MainMenu : MonoBehaviour
         LocaleInfo.Instance.CurrentLocale = locale;
         LocaleInfo.Instance.IsLocaleSet = true;
         ChangeScene(SceneManager.GetActiveScene().buildIndex);
+        languageChoose = true;
     }
 
     private void LoadCollectibles()

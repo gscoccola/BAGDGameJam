@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 875419489727830048}
   - component: {fileID: 1798621863752105710}
   - component: {fileID: 7618736428743011055}
+  - component: {fileID: 2404811461306296328}
   m_Layer: 12
   m_Name: Oveja Agarrable
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dbb79a673e2164d80d2fa487159ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _willWarnEnemy: 1
 --- !u!114 &7618736428743011055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +108,18 @@ MonoBehaviour:
   _deliveryManagerLayers:
     serializedVersion: 2
     m_Bits: 1
+--- !u!114 &2404811461306296328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254945514424722203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf73f0e3f9f32a4d9b0bdaf8f05c9a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4365096925510107961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oveja
       objectReference: {fileID: 0}
+    - target: {fileID: 2272405181377838989, guid: 60691b18d5c58f3429f33cf8094d8ad4, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: a3547d6f634ca5343b71ff9f48436057, type: 3}
     - target: {fileID: 7517942984702804425, guid: 60691b18d5c58f3429f33cf8094d8ad4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

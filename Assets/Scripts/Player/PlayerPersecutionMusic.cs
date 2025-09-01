@@ -31,6 +31,8 @@ public class PlayerPersecutionMusic : MonoBehaviour
     private void PlayMusic()
     {
         count++;
+        
+        if (_coroutine != null) return;
         audioSource.Play();
     }
 

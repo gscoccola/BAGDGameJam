@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]
@@ -10,9 +12,13 @@ public class LevelMusic : MonoBehaviour
     private int _lastTrackIndex = -1;
     private AudioSource _audioSource;
     private const int MAX_RANDOM_ATTEMPTS = 10;
+    private static bool _loaded = false;
     
-    private void Awake()
+    
+    protected virtual void Start()
     {
+        
+        
         _audioSource = GetComponent<AudioSource>();
         _lastTrackIndex = -1;
 #if UNITY_EDITOR
@@ -24,8 +30,9 @@ public class LevelMusic : MonoBehaviour
 #endif
         StartCoroutine(ChangeMusic());
     }
-
     
+
+
     #region Utilities
     private void MuteMusic()
     {
