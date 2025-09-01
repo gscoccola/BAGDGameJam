@@ -74,7 +74,7 @@ public class MainMenu : MonoBehaviour
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales.Find(x => x.Identifier.Code == locale);
         LocaleInfo.Instance.CurrentLocale = locale;
         LocaleInfo.Instance.IsLocaleSet = true;
-        ChangeScene(SceneManager.GetActiveScene().buildIndex);
+        ChangeMenu(MenuState.Main);
         languageChoose = true;
     }
 
