@@ -39,7 +39,7 @@ MonoBehaviour:
     amplitude: 0.008
     frequency: 18
     smooth: 30
-  jumpHeight: 2.5
+  jumpHeight: 1.5
   fallGravityMultiplier: 1.5
   coyoteTime: 0.15
   jumpBufferTime: 0.15
