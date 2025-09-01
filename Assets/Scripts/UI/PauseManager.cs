@@ -71,13 +71,13 @@ public class PauseManager : MonoBehaviour
 
     private IEnumerator IStartDialog()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog6";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog7";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog8";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Empty";
     }
 }
