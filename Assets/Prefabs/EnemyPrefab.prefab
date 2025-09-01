@@ -11273,7 +11273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6379818645079624754
 Transform:
   m_ObjectHideFlags: 0
@@ -16501,9 +16501,6 @@ MonoBehaviour:
   _centers: []
   idleMusic:
     clip: {fileID: 8300000, guid: b9ea17fc578c20240a17c6a855628e80, type: 3}
-    volume: 1
-  persecutionMusic:
-    clip: {fileID: 0}
     volume: 1
   damageSounds:
   - clip: {fileID: 8300000, guid: b531ef103ae831d43abb826abd7930ab, type: 3}

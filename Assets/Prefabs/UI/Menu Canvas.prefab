@@ -346,6 +346,8 @@ MonoBehaviour:
   - {fileID: 3607778944066446501}
   - {fileID: 2210805711503857126}
   - {fileID: 4719516319431925848}
+  clickButtonSound: {fileID: 0}
+  clickPlayButtonSound: {fileID: 0}
 --- !u!1 &2917451034084155210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5143507132688517268, guid: 29d7346402d071e4889ff0384828a88b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5143507132688517268, guid: 29d7346402d071e4889ff0384828a88b, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1612,7 +1614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5143507132688517268, guid: 29d7346402d071e4889ff0384828a88b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5143507132688517268, guid: 29d7346402d071e4889ff0384828a88b, type: 3}
       propertyPath: m_SizeDelta.x
