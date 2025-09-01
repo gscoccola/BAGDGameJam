@@ -14,8 +14,8 @@ public class PauseManager : MonoBehaviour
 
     private void Awake()
     {
-        _pauseCanvas = transform.GetChild(0).GetChild(0).gameObject;
-        _deathCanvas = transform.GetChild(0).GetChild(1).gameObject;
+        _pauseCanvas = transform.GetChild(0).GetChild(1).gameObject;
+        _deathCanvas = transform.GetChild(0).GetChild(2).gameObject;
         EventManager.Instance.Subscribe(Constants.OnPlayerDeath, OnPlayerDeath);
     }
 
