@@ -21,7 +21,7 @@ namespace PixelMate.UI
         [SerializeField]
         private string _allDelipveredTextES = "Cierra el corral!";
         [SerializeField]
-        private string _countTextEN         = "Sheeps: {0}/{1}";
+        private string _countTextEN         = "Sheep: {0}/{1}";
         [SerializeField]
         private string _allDeliveredTextEN  = "Close the Farmyard!";
 
