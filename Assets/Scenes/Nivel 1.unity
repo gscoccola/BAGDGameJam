@@ -132999,10 +132999,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1737243725431340197, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3382982959201637331, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
       propertyPath: m_Name
       value: PauseManager
@@ -133046,30 +133042,6 @@ PrefabInstance:
     - target: {fileID: 4133086522620576523, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652595107948086630, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652595107948086630, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652595107948086630, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 7334371016115544173, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7334371016115544173, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7334371016115544173, guid: 2cd6460385aa49347bee15f744fad673, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
