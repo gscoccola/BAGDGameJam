@@ -399,8 +399,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5971605066882749987}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.05}
-  m_LocalScale: {x: 0.6666665, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.084}
+  m_LocalScale: {x: 0.5714283, y: 0.57142836, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8070405272326207375}
@@ -408,8 +408,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.9, y: 0}
-  m_SizeDelta: {x: 1.8, y: 1}
+  m_AnchoredPosition: {x: 1.906, y: -0}
+  m_SizeDelta: {x: 2.3, y: 1.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7354257842088991078
 Canvas:
@@ -489,8 +489,10 @@ MonoBehaviour:
   _deliveryManager: {fileID: 1534952195727422306}
   _worldCanvas: {fileID: 7354257842088991078}
   _signText: {fileID: 575353072027484909}
-  _countText: 'Ovejas: {0}/{1}'
-  _allDeliveredText: Cierra el corral
+  _countTextES: 'Ovejas: {0}/{1}'
+  _allDelipveredTextES: Cierra el corral!
+  _countTextEN: 'Sheeps: {0}/{1}'
+  _allDeliveredTextEN: Close the Farmyard!
 --- !u!1 &6952429852905076714
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _doorAnimator: {fileID: 7171750852758963162}
   _closeStateName: Puerta Close
+  _openStateName: Puerta Open
 --- !u!1 &8044134483886024784
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sheeps: 0/7'
+  m_text: 'Sheeps: {0}/{1}'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -727,8 +730,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.45
-  m_fontSizeBase: 0.45
+  m_fontSize: 0.495
+  m_fontSizeBase: 0.495
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -913,11 +916,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d83f6478b22acc0418abaac1986f0595, type: 2}
     - target: {fileID: 8751678502987317893, guid: cf16f994843df254f80cb77f36536422, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 8751678502987317893, guid: cf16f994843df254f80cb77f36536422, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 8751678502987317893, guid: cf16f994843df254f80cb77f36536422, type: 3}
       propertyPath: m_LocalPosition.x
@@ -925,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751678502987317893, guid: cf16f994843df254f80cb77f36536422, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.037
+      value: -0.463
       objectReference: {fileID: 0}
     - target: {fileID: 8751678502987317893, guid: cf16f994843df254f80cb77f36536422, type: 3}
       propertyPath: m_LocalPosition.z

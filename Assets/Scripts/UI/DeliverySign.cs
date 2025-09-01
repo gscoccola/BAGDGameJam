@@ -1,6 +1,7 @@
 using PixelMate.Gameplay;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 namespace PixelMate.UI
 {
@@ -13,10 +14,16 @@ namespace PixelMate.UI
         private Canvas _worldCanvas;
         [SerializeField]
         private TMP_Text _signText;
+
+        [Header("Text localizations")]
         [SerializeField]
-        private string _countText = "Sheeps: {0}/{1}";
+        private string _countTextES         = "Ovejas: {0}/{1}";
         [SerializeField]
-        private string _allDeliveredText = "All sheeps are in the Farmyard!";
+        private string _allDelipveredTextES = "Cierra el corral!";
+        [SerializeField]
+        private string _countTextEN         = "Sheeps: {0}/{1}";
+        [SerializeField]
+        private string _allDeliveredTextEN  = "Close the Farmyard!";
 
         private void Awake()
         {
@@ -25,8 +32,7 @@ namespace PixelMate.UI
 
         private void Start()
         {
-            string content = string.Format(_countText, _deliveryManager.CurrentDeliveries, _deliveryManager.RequiredDeliveries);
-            _signText.SetText(content);
+            _signText.SetText(CheckCountLocale());
         }
 
         private void OnEnable()
@@ -41,17 +47,28 @@ namespace PixelMate.UI
         private void OnDisable()
         {
             _deliveryManager.OnItemAmountChanged -= HandleNumberOfItemsChange;
+            _deliveryManager.OnAllItemsDelivered -= HandleAllItemsDelivered;
         }
 
         private void HandleNumberOfItemsChange(int current)
         {
-            string content = string.Format(_countText, current, _deliveryManager.RequiredDeliveries);
-            _signText.SetText(content);
+            _signText.SetText(CheckCountLocale());
         }
 
         private void HandleAllItemsDelivered()
         {
-            _signText.SetText(_allDeliveredText);
+            _signText.SetText(CheckAllItemsLocale());
+        }
+
+        private string CheckCountLocale()
+        {
+            string content = (LocalizationSettings.SelectedLocale.LocaleName == "Spanish (es)") ? _countTextES : _countTextEN;
+            return string.Format(content, _deliveryManager.CurrentDeliveries, _deliveryManager.RequiredDeliveries);
+        }
+
+        private string CheckAllItemsLocale()
+        {
+            return (LocalizationSettings.SelectedLocale.LocaleName == "Spanish (es)") ? _allDelipveredTextES : _allDeliveredTextEN;
         }
     }
 }
