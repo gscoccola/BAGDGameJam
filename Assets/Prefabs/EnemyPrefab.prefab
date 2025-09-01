@@ -16489,7 +16489,7 @@ MonoBehaviour:
   _playerInSafeZone: 0
   _maxSearchTime: 3
   _ultraInstinctTime: 6
-  _maxDistanceToDMG: 1
+  _maxDistanceToDMG: 3
   _attackDamage: 1
   _attackCooldown: 2
   _target: {fileID: 6379818645079624754}
