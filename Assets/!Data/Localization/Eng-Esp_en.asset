@@ -70,6 +70,22 @@ MonoBehaviour:
     m_Localized: I have to... close the pen... ?
     m_Metadata:
       m_Items: []
+  - m_Id: 594819768406016
+    m_Localized: Uh... I fell asleep... Is it nighttime already?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594885035970560
+    m_Localized: Holy molly! I left the pen open...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594956599185408
+    m_Localized: The sheeps must have scattered to the field.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 595039185031168
+    m_Localized: I'll have to look for them, before they are lost for good.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,5 +1,8 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization.Components;
 
 public class PauseManager : MonoBehaviour
 {
@@ -7,11 +10,12 @@ public class PauseManager : MonoBehaviour
     GameObject _deathCanvas;
     private bool _isPaused = false;
     private bool _isDead = false;
+    [SerializeField] private LocalizeStringEvent _localizeStringEvent;
 
     private void Awake()
     {
-        _pauseCanvas = transform.GetChild(0).gameObject;
-        _deathCanvas = transform.GetChild(1).gameObject;
+        _pauseCanvas = transform.GetChild(0).GetChild(0).gameObject;
+        _deathCanvas = transform.GetChild(0).GetChild(1).gameObject;
         EventManager.Instance.Subscribe(Constants.OnPlayerDeath, OnPlayerDeath);
     }
 
@@ -26,6 +30,11 @@ public class PauseManager : MonoBehaviour
         {
             Pause();
         }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(IStartDialog());
     }
 
     public void Pause()
@@ -58,5 +67,17 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene(index);
+    }
+
+    private IEnumerator IStartDialog()
+    {
+        yield return new WaitForSeconds(3f);
+        _localizeStringEvent.StringReference.TableEntryReference = "Dialog6";
+        yield return new WaitForSeconds(3f);
+        _localizeStringEvent.StringReference.TableEntryReference = "Dialog7";
+        yield return new WaitForSeconds(3f);
+        _localizeStringEvent.StringReference.TableEntryReference = "Dialog8";
+        yield return new WaitForSeconds(3f);
+        _localizeStringEvent.StringReference.TableEntryReference = "Empty";
     }
 }

@@ -67,6 +67,22 @@ MonoBehaviour:
     m_Key: Dialog4
     m_Metadata:
       m_Items: []
+  - m_Id: 594819768406016
+    m_Key: Dialog5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594885035970560
+    m_Key: Dialog6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594956599185408
+    m_Key: Dialog7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 595039185031168
+    m_Key: Dialog8
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

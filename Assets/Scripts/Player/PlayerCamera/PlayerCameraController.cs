@@ -88,7 +88,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         {
             _currentHorizontalAngle += input.x;
             _currentHorizontalAngle = Mathf.Clamp(_currentHorizontalAngle, -90, 90);
-            _camera.transform.localRotation = Quaternion.Euler(currentVerticalAngle, _currentHorizontalAngle, 0);
+            _camera.transform.localRotation = Quaternion.Euler(currentVerticalAngle + Mathf.Sin(Time.time * 0.5f) * 10f, _currentHorizontalAngle, 0);
             //_playerControllerTf.Rotate(Vector3.up * horizontalAngle);
             _camera.transform.localPosition = _originalCameraLocalPosition + cameraPositionOffset;
             return;

@@ -73,6 +73,22 @@ MonoBehaviour:
     m_Localized: Tengo que... cerrar el corr... ?
     m_Metadata:
       m_Items: []
+  - m_Id: 594819768406016
+    m_Localized: "Uy\u2026 me qued\xE9 dormido\u2026 \xBFya es de noche?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594885035970560
+    m_Localized: "\xA1La gran siete! Dej\xE9 el corral abierto\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594956599185408
+    m_Localized: "Las ovejas se me habr\xE1n ido pa\u2019l campo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 595039185031168
+    m_Localized: Tengo que salir a buscarlas antes que se pierdan del todo.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
