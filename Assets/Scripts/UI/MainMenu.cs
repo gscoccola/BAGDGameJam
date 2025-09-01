@@ -78,7 +78,7 @@ public class MainMenu : MonoBehaviour
         languageChoose = true;
     }
 
-    private void LoadCollectibles()
+    public void LoadCollectibles()
     {
         for(int i = 0; i < _portraits.Length; i++)
         {

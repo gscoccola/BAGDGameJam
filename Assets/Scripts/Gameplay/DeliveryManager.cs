@@ -40,6 +40,12 @@ namespace PixelMate.Gameplay
                 OnItemAmountChanged?.Invoke(_deliveredItems.Count);
             }
         }
+        
+        public void ForCheatScript()
+        {
+            _requiredDeliveries = _deliveredItems.Count;
+            OnAllItemsDelivered?.Invoke();
+        }
 
         public bool AreAllItemsDelivered()
         {

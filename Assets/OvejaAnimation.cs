@@ -11,7 +11,7 @@ public class OvejaAnimation : MonoBehaviour
     private void Awake()
     {
         _aniamtor = GetComponent<Animator>();
-        if (retrasarAnimation) return;
+        if (!retrasarAnimation) return;
         StartCoroutine(Coroutine());
     }
 

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace PixelMate.Ritual
@@ -59,6 +60,10 @@ namespace PixelMate.Ritual
         private float _farmerSpawnDepth = 2.0f; // how far below ground to start
         [SerializeField]
         private TMP_Text _endText;
+        [SerializeField] private GameObject menuButton;
+        [SerializeField]
+        private GameObject enemyPArticles;
+        
 
         private Coroutine spinRoutine;
         private List<Deliverable> _deliverables = new List<Deliverable>();
@@ -116,12 +121,13 @@ namespace PixelMate.Ritual
             // accelerate up to max
             while (currentSpeed < maxSpinSpeed)
             {
+                if (currentSpeed >= maxSpinSpeed / 2) 
+                    enemyPArticles.SetActive(true);
                 currentSpeed += spinAcceleration * Time.deltaTime;
                 currentSpeed = Mathf.Min(currentSpeed, maxSpinSpeed);
                 _ritualPoint.Rotate(Vector3.up, currentSpeed * Time.deltaTime, Space.World);
                 yield return null;
             }
-
             // hold spin for a while
             float t = 0f;
             while (t < holdDuration)
@@ -196,7 +202,7 @@ namespace PixelMate.Ritual
             IEnumerator fade = FadeImageAlpha(_screenCoverPanel, 1f, 0f, _fadeDuration);
             IEnumerator rise = MoveOverTime(_farmerChild.transform, farmerStartPos, farmerTargetPos, _farmerRiseDuration);
 
-            // Start a “coming out” stinger when the farmer's son begins rising
+            // Start a ï¿½coming outï¿½ stinger when the farmer's son begins rising
             AudioSystem.Instance.PlaySound(_boyComingOutClip);
 
             // Start both
@@ -221,6 +227,8 @@ namespace PixelMate.Ritual
             c.a = from;
             img.color = c;
 
+            yield return new WaitForSeconds(1f);
+            
             while (t < duration)
             {
                 t += Time.deltaTime;
@@ -270,6 +278,14 @@ namespace PixelMate.Ritual
                 yield return FadeImageAlpha(_screenCoverPanel, 0f, 1f, _fadeDuration);
             }
 
+            
+            // 4) Show end text
+            if (_endText != null)
+                _endText.gameObject.SetActive(true);
+            menuButton.gameObject.SetActive(true);
+            
+            EventManager.Instance.Trigger(Constants.OnDisableControls);
+            
             // 3) Farmer voice
             if (second != null)
             {
@@ -277,11 +293,13 @@ namespace PixelMate.Ritual
                 yield return new WaitForSeconds(second.length);
             }
 
-            // 4) Show end text
-            if (_endText != null)
-                _endText.gameObject.SetActive(true);
         }
 
         #endregion
+        
+        public void LoadMenu()
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

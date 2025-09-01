@@ -81,7 +81,7 @@ namespace PixelMate.Collectibles
             return true;
         }
 
-        private void Load()
+        public void Load()
         {
             _collected.Clear();
             string raw = PlayerPrefs.GetString(Key, "");
