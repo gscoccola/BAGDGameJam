@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private CustomAudioClip deadSound;
     [SerializeField] private CustomAudioClip[] takeDamageSounds;
     
+    [SerializeField] private CustomAudioClip lossSound;
+    
     
 
     private void Start()
@@ -76,6 +78,7 @@ public class PlayerHealth : MonoBehaviour
         {
             int randomSound = Random.Range(0, takeDamageSounds.Length);
             AudioSystem.Instance.PlaySound(takeDamageSounds[randomSound]);
+            AudioSystem.Instance.PlaySound(lossSound);
         }
     }
     

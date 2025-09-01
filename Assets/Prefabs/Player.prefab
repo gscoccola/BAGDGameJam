@@ -1274,6 +1274,9 @@ MonoBehaviour:
     volume: 1
   - clip: {fileID: 8300000, guid: 40b074e05a7e37b488b5abe9d42a2ba0, type: 3}
     volume: 1
+  lossSound:
+    clip: {fileID: 8300000, guid: 93ddeebb00ee5574893e457409bed920, type: 3}
+    volume: 1
 --- !u!114 &3175355311261338810
 MonoBehaviour:
   m_ObjectHideFlags: 0

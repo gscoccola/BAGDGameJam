@@ -96,9 +96,6 @@ namespace PixelMate.Gameplay
                     EventManager.Instance.Trigger(Constants.OnWantInteract);
                     pointedGameObject = hitInteractives.collider.gameObject;
                 }
-                
-                
-                EventManager.Instance.Trigger(Constants.OnCancelWantInteract);
             }
             else
             {
