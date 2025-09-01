@@ -15,6 +15,11 @@ public class PauseManager : MonoBehaviour
         EventManager.Instance.Subscribe(Constants.OnPlayerDeath, OnPlayerDeath);
     }
 
+    private void OnDestroy()
+    {
+        EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, OnPlayerDeath);
+    }
+
     private void Update()
     {
         if (UnityEngine.Input.GetKeyDown(KeyCode.P))

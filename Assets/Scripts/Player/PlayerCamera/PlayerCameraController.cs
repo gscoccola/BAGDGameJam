@@ -20,7 +20,9 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
     private Transform _playerControllerTf;
     private Quaternion _cameraRotationBeforeTransition;
     private Vector3 _cameraPositionBeforeTransition;
-    
+    [SerializeField] private bool _isCinematic;
+    private float _currentHorizontalAngle;
+
     [Header("Effects")]
     [SerializeField, ReadOnly] private Vector3 cameraPositionOffset = Vector3.zero;
 
@@ -81,7 +83,18 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         
         currentVerticalAngle -= input.y;
         currentVerticalAngle = Mathf.Clamp(currentVerticalAngle, -lowerVerticalClamp, upperVerticalClamp);
-        
+
+
+        if (_isCinematic)
+        {
+            _currentHorizontalAngle += input.x;
+            _currentHorizontalAngle = Mathf.Clamp(_currentHorizontalAngle, -90, 90);
+            _camera.transform.localRotation = Quaternion.Euler(currentVerticalAngle, _currentHorizontalAngle, 0);
+            //_playerControllerTf.Rotate(Vector3.up * horizontalAngle);
+            _camera.transform.localPosition = _originalCameraLocalPosition + cameraPositionOffset;
+            return;
+        }
+
         _camera.transform.localRotation = Quaternion.Euler(currentVerticalAngle, 0, 0);
         _playerControllerTf.Rotate(Vector3.up * input.x);
         _camera.transform.localPosition = _originalCameraLocalPosition + cameraPositionOffset;

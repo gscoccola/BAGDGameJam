@@ -51,6 +51,22 @@ MonoBehaviour:
     m_Key: Resume
     m_Metadata:
       m_Items: []
+  - m_Id: 581824858312704
+    m_Key: Dialog1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 581929443282944
+    m_Key: Dialog2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 581993309949952
+    m_Key: Dialog3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 582098696032256
+    m_Key: Dialog4
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

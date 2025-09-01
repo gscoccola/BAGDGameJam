@@ -56,6 +56,23 @@ MonoBehaviour:
     m_Localized: Resumir
     m_Metadata:
       m_Items: []
+  - m_Id: 581824858312704
+    m_Localized: "Uff\u2026 qu\xE9 linda la brisa\u2026 me voy a quedar un ratito
+      en la mecedora."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 581929443282944
+    m_Localized: "Uy\u2026 que sue\xF1o\u2026 "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 581993309949952
+    m_Localized: Tengo que... ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 582098696032256
+    m_Localized: Tengo que... cerrar el corr... ?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
