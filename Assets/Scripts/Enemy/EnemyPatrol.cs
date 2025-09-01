@@ -55,7 +55,7 @@ public class EnemyPatrol : IState<EnemyState>
 
     public List<Vector3> GetWayPointsQueue()
     {
-        return _enemy.GetClosestCenter().ConnectedWaypointPositions.Shuffle();
+        return _enemy.GetClosestCenter().ConnectedWaypointPositions.Shuffle().Take(2).ToList();
     }
 }
 

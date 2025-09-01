@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
-        if (DistanceToPlayer > 30f) _naveMeshAgent.speed = _baseSpeed * 4f;
+        if (DistanceToPlayer > 30f) _naveMeshAgent.speed = _baseSpeed * 8f;
         else _naveMeshAgent.speed = _baseSpeed;
         if (DistanceToPlayer < _maxDistanceToDMG && _attackTimer > _attackCooldown)
         {
