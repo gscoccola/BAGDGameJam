@@ -10706,8 +10706,8 @@ MonoBehaviour:
   m_text: "Uff\u2026 qu\xE9 linda la brisa\u2026 me voy a quedar un ratito en la
     mecedora"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1602b7f034e92ff4ba7c6d62784a3a97, type: 2}
+  m_sharedMaterial: {fileID: -8335029926594678965, guid: 1602b7f034e92ff4ba7c6d62784a3a97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10819,7 +10819,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
