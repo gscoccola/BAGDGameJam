@@ -2,6 +2,7 @@ using PixelMate.Gameplay;
 using PixelMate.Utilities;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,6 +57,8 @@ namespace PixelMate.Ritual
         private float _farmerRiseDuration = 1.25f;
         [SerializeField]
         private float _farmerSpawnDepth = 2.0f; // how far below ground to start
+        [SerializeField]
+        private TMP_Text _endText;
 
         private Coroutine spinRoutine;
         private List<Deliverable> _deliverables = new List<Deliverable>();
@@ -207,10 +210,6 @@ namespace PixelMate.Ritual
             // Sequential VO: boy, then farmer
             yield return PlayVoiceSequential(_boyVoiceClip, _farmerVoiceClip);
 
-            // (Optional) deactivate the cover panel after fade
-            if (_screenCoverPanel != null)
-                _screenCoverPanel.gameObject.SetActive(false);
-
             // TODO: trigger next phase/gameplay here if needed
         }
 
@@ -250,17 +249,37 @@ namespace PixelMate.Ritual
 
         private IEnumerator PlayVoiceSequential(AudioClip first, AudioClip second)
         {
+            // 1) Boy voice
             if (first != null)
             {
                 AudioSystem.Instance.PlaySound(first);
                 yield return new WaitForSeconds(first.length);
             }
 
+            // 2) Fade to black (0 -> 1 over _fadeDuration)
+            if (_screenCoverPanel != null)
+            {
+                _screenCoverPanel.gameObject.SetActive(true);
+
+                // force full black, alpha 0 to start the fade-in
+                Color c = _screenCoverPanel.color;
+                c.r = 0f; c.g = 0f; c.b = 0f; c.a = 0f;
+                _screenCoverPanel.color = c;
+
+                // reuse your helper to fade to opaque
+                yield return FadeImageAlpha(_screenCoverPanel, 0f, 1f, _fadeDuration);
+            }
+
+            // 3) Farmer voice
             if (second != null)
             {
                 AudioSystem.Instance.PlaySound(second);
                 yield return new WaitForSeconds(second.length);
             }
+
+            // 4) Show end text
+            if (_endText != null)
+                _endText.gameObject.SetActive(true);
         }
 
         #endregion
