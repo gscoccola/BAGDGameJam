@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8315584681802295395}
   - component: {fileID: 5436223113613634090}
-  - component: {fileID: 5924049377255345104}
   m_Layer: 0
   m_Name: Player Inputs
   m_TagString: Untagged
@@ -48,20 +47,6 @@ MonoBehaviour:
   MouseSensitivity: 1
   InvertLookX: 0
   InvertLookY: 0
---- !u!114 &5924049377255345104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644634246522790520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09c89ea363390e40826d313db25f776, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startLooked: 1
-  isLooked: 0
 --- !u!1 &1533220625555445334
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +204,7 @@ GameObject:
   - component: {fileID: 3952204228144352136}
   - component: {fileID: 1957859628523533991}
   - component: {fileID: 70081578101111374}
+  - component: {fileID: 9219373729273549912}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -243,7 +229,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1957859628523533991
 CanvasRenderer:
@@ -273,9 +259,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e5f8ab59b19de3245bc099f4adc69561, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63566db573048e04ba44213ff08cd908, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -283,6 +269,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9219373729273549912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927687785891097795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09c89ea363390e40826d313db25f776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLooked: 1
+  isLooked: 0
+  cursorImage: {fileID: 70081578101111374}
+  cursorImageDefault: {fileID: 21300000, guid: 63566db573048e04ba44213ff08cd908, type: 3}
+  cursorImageInteract: {fileID: 21300000, guid: 82b67709b4b10584f90cd0d91e56a346, type: 3}
 --- !u!1 &7034862081489285181
 GameObject:
   m_ObjectHideFlags: 0

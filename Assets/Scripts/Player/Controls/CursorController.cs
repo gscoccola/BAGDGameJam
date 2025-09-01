@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour
 {
@@ -7,13 +8,22 @@ public class CursorController : MonoBehaviour
    [SerializeField] private bool startLooked = true;
    [SerializeField, ReadOnly] private bool isLooked;
    private int _isLookedCount;
+   public Image cursorImage;
+   
+   public Sprite cursorImageDefault;
+   public Sprite cursorImageInteract;
    
    
    private void Awake()
    {
       if (startLooked) LockCursor();
+      CancelWantInteract();
       EventManager.Instance.Subscribe(Constants.OnEnableControls, LockCursor);
       EventManager.Instance.Subscribe(Constants.OnDisableControls, UnLockCursor);
+      
+      
+      EventManager.Instance.Subscribe(Constants.OnWantInteract, WantInteract);
+      EventManager.Instance.Subscribe(Constants.OnCancelWantInteract, CancelWantInteract);
    }
 
    private void OnDestroy()
@@ -22,6 +32,18 @@ public class CursorController : MonoBehaviour
       //EventManager.Instance.Unsubscribe(Constants.OnDisableControls, UnLockCursor);
    }
 
+   private void WantInteract()
+   {
+      cursorImage.sprite = cursorImageInteract;
+   }
+
+   private void CancelWantInteract()
+   {
+      cursorImage.sprite = cursorImageDefault;
+   }
+   
+   
+   
 
    #region Cursor Methods
    private void LockCursor()

@@ -18,6 +18,8 @@ public static class Constants
     public const string OnModifyEnergy = "OnModifyEnergy";
     
     
+    public const string OnWantInteract = "OnWantInteract";
+    public const string OnCancelWantInteract = "OnCancelWantInteract";
     
     public const string OnPlayerKeepSheepForSounds = "OnPlayerKeepSheepForSounds";
 }
