@@ -11,6 +11,12 @@ namespace PixelMate.Gameplay
         [SerializeField]
         private LayerMask _deliveryManagerLayers = 0;
 
+        [Header("Models")]
+        [SerializeField]
+        private GameObject _aliveModel;
+        [SerializeField]
+        private GameObject _deathModel;
+
         private bool _isDelivered = false;
         private DeliveryManager _currentDeliveryManager;
 
@@ -76,6 +82,12 @@ namespace PixelMate.Gameplay
                     Debug.Log($"{name} retrieved from delivery zone");
                 }
             }
+        }
+
+        public void KillSheep()
+        {
+            _aliveModel.SetActive(false);
+            _deathModel.SetActive(true);
         }
     }
 }

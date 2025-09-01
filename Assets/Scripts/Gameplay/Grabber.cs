@@ -38,6 +38,7 @@ namespace PixelMate.Gameplay
         private float _rayDuration = 2.5f;
 #endif
 
+        private bool _canGrab = true;
         private Camera _camera;
         private IGrabbable _heldItem;
 
@@ -63,6 +64,9 @@ namespace PixelMate.Gameplay
 
         public void Grab()
         {
+            if (!_canGrab)
+                return;
+
             Ray ray = _camera.ViewportPointToRay(_rayOrigin);
 
 #if UNITY_EDITOR
@@ -123,5 +127,7 @@ namespace PixelMate.Gameplay
             AudioSystem.Instance?.PlaySound(_dropSound);
             EventManager.Instance.Trigger(Constants.OnPlayerKeepSheepForSounds, false);
         }
+
+        public void AllowGrabberState(bool state) => _canGrab = state;
     }
 }
