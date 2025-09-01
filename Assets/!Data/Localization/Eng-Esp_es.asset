@@ -93,6 +93,10 @@ MonoBehaviour:
     m_Localized: ' '
     m_Metadata:
       m_Items: []
+  - m_Id: 707139475623936
+    m_Localized: "Fin.\n\xA1Gracias por jugar!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
