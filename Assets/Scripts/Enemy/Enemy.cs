@@ -66,11 +66,11 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     { 
-        EventManager.Instance.Unsubscribe(Constants.OnSheepPickup, OnSheepPickup);
-        EventManager.Instance.Unsubscribe(Constants.OnSheepNoise, OnSheepNoise);
-        EventManager.Instance.Unsubscribe(Constants.OnEnterSafeZone, EnterSafeZone);
-        EventManager.Instance.Unsubscribe(Constants.OnExitSafeZone, ExitSafeZone);
-        EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, EnterSafeZone);
+        //EventManager.Instance.Unsubscribe(Constants.OnSheepPickup, OnSheepPickup);
+        //EventManager.Instance.Unsubscribe(Constants.OnSheepNoise, OnSheepNoise);
+        //EventManager.Instance.Unsubscribe(Constants.OnEnterSafeZone, EnterSafeZone);
+        //EventManager.Instance.Unsubscribe(Constants.OnExitSafeZone, ExitSafeZone);
+        //EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, EnterSafeZone);
     }
 
     private void Start()
