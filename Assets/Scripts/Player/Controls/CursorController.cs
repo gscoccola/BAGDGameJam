@@ -18,8 +18,8 @@ public class CursorController : MonoBehaviour
 
    private void OnDestroy()
    {
-      EventManager.Instance.Unsubscribe(Constants.OnEnableControls, LockCursor);
-      EventManager.Instance.Unsubscribe(Constants.OnDisableControls, UnLockCursor);
+      //EventManager.Instance.Unsubscribe(Constants.OnEnableControls, LockCursor);
+      //EventManager.Instance.Unsubscribe(Constants.OnDisableControls, UnLockCursor);
    }
 
 

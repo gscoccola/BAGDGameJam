@@ -24,8 +24,8 @@ public class PlayerPersecutionMusic : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Instance.Unsubscribe(Constants.OnEnemyChase, PlayMusic);
-        EventManager.Instance.Unsubscribe(Constants.OnPEnemyEndChase, StopMusic);
+        //EventManager.Instance.Unsubscribe(Constants.OnEnemyChase, PlayMusic);
+        //EventManager.Instance.Unsubscribe(Constants.OnPEnemyEndChase, StopMusic);
     }
 
     private void PlayMusic()
