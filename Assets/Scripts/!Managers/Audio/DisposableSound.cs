@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class DisposableSound : MonoBehaviour
 {
-    private AudioSource _audioSource;
+    public AudioSource _audioSource;
 
     
     private void Awake()

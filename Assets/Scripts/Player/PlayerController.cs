@@ -80,7 +80,22 @@ public class PlayerController : MonoBehaviour
         EventManager.Instance.Subscribe(Constants.OnPlayerDeath, DisableLocomotion);
         EventManager.Instance.Subscribe(Constants.OnEnableControls, EnableLocomotion);
         EventManager.Instance.Subscribe(Constants.OnDisableControls, DisableLocomotion);
+        
+        EventManager.Instance.Subscribe(Constants.OnPlayerKeepSheepForSounds, EnableSHeep);
     }
+
+    private void EnableSHeep(params object[] parameters)
+    {
+        if ((bool)parameters[0])
+        {
+            haveASheep = true;
+        }
+        else
+        {
+            haveASheep = false;
+        }
+    }
+    
     
     private void OnDestroy()
     {

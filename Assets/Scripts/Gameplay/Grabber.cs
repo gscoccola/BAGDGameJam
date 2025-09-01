@@ -107,6 +107,7 @@ namespace PixelMate.Gameplay
                     _heldItem = grabbable;
                     _leftArm.gameObject.SetActive(true);
                     AudioSystem.Instance?.PlaySound(_grabSounds[Random.Range(0, _grabSounds.Length)]);
+                    EventManager.Instance.Trigger(Constants.OnPlayerKeepSheepForSounds, true);
                 }
             }
         }
@@ -120,6 +121,7 @@ namespace PixelMate.Gameplay
             _heldItem = null;
             _leftArm.gameObject.SetActive(false);
             AudioSystem.Instance?.PlaySound(_dropSound);
+            EventManager.Instance.Trigger(Constants.OnPlayerKeepSheepForSounds, false);
         }
     }
 }
