@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour
     private PlayerHealth _playerHealth;
     private float _attackTimer = 0f;
     private float _baseSpeed;
+    private float _currentSpeedPercentage = 1f;
+    private int _consecutiveAttacks;
+    private float _consecutiveAttackTimer;
+
+
 
     [Header("Parameters")]
     [SerializeField] public float minDistanceToPlayerForBurstSpeed = 50f;
@@ -85,16 +90,34 @@ public class Enemy : MonoBehaviour
     {
         DistanceToTarget = FlatDistance(_target);
         DistanceToPlayer = FlatDistance(_playerTransform);
+        _consecutiveAttackTimer += Time.deltaTime;
+        if (_currentSpeedPercentage < 1f)        
+        {
+            _currentSpeedPercentage += Time.deltaTime;
+            _naveMeshAgent.speed = _baseSpeed * Mathf.Clamp(_currentSpeedPercentage, 0f, 1f);
+        }
         if (DistanceToPlayer >= minDistanceToPlayerForBurstSpeed) _naveMeshAgent.speed = _baseSpeed * 4f;
         else _naveMeshAgent.speed = _baseSpeed;
         if (DistanceToPlayer < _maxDistanceToDMG && _attackTimer > _attackCooldown)
         {
+            _consecutiveAttackTimer = 0f;
+            _consecutiveAttacks++;
             _playerHealth.TakeDamage(_attackDamage);
             _attackTimer = 0f;
             int randomSound = Random.Range(0, damageSounds.Length);
             AudioSystem.Instance.PlaySound(damageSounds[randomSound]);
         }
         _attackTimer += Time.deltaTime;
+        if (_consecutiveAttacks > 1)
+        {
+            if (_consecutiveAttackTimer < 3f) _naveMeshAgent.speed = _baseSpeed * 0.6f;
+            else
+            {
+                _consecutiveAttacks = 0;
+                _consecutiveAttackTimer = 0f;
+            }
+
+        }
         _stateMachine.Update();
     }
 

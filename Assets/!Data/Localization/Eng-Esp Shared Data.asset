@@ -91,6 +91,10 @@ MonoBehaviour:
     m_Key: FinalMessage
     m_Metadata:
       m_Items: []
+  - m_Id: 715942615076864
+    m_Key: Reset Collectibles
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

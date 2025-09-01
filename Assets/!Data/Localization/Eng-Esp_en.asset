@@ -79,7 +79,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 594956599185408
-    m_Localized: The sheeps must have scattered to the field.
+    m_Localized: The sheep must have scattered to the field.
     m_Metadata:
       m_Items: []
   - m_Id: 595039185031168
@@ -94,6 +94,10 @@ MonoBehaviour:
     m_Localized: 'The end.
 
       Thanks for playing!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715942615076864
+    m_Localized: Reset Collectibles
     m_Metadata:
       m_Items: []
   references:

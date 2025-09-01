@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: '1c9177e91339b4f418f6dfc3d9bb0858[Controls_0]'
     m_Metadata:
       m_Items: []
+  - m_Id: 109490737270784
+    m_Localized: '174dc8573608ffa4cb6851319796bc3d[aB3dmN_0]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -21,6 +21,10 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 109490737270784
+    m_Key: Mate team
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 4122749313568735638
@@ -38,6 +42,10 @@ MonoBehaviour:
       data:
         m_Entries:
         - m_KeyId: 7306498048
+          m_TableCodes:
+          - en
+          - es
+        - m_KeyId: 109490737270784
           m_TableCodes:
           - en
           - es

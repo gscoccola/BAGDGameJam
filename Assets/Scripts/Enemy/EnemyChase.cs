@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyChase : IState<EnemyState>
@@ -28,6 +29,7 @@ public class EnemyChase : IState<EnemyState>
 
     public void OnUpdate()
     {
+ 
         if (!_enemy.HasLineOfSight(_enemy.transform.position))
         {
             _stateMachine.ChangeState(EnemyState.Search, false);
@@ -35,4 +37,5 @@ public class EnemyChase : IState<EnemyState>
         }
         _enemy.SetTargetAndNavMeshPath(_enemy._playerTransform.position);
     }
+
 }

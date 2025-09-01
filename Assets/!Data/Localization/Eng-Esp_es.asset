@@ -97,6 +97,10 @@ MonoBehaviour:
     m_Localized: "Fin.\n\xA1Gracias por jugar!"
     m_Metadata:
       m_Items: []
+  - m_Id: 715942615076864
+    m_Localized: Borrar Coleccionables
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

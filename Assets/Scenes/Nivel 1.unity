@@ -127637,6 +127637,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8566007381087177139, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
+      propertyPath: timerWithNoDamageToHeal
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8934050333628775224, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: waitTimer
       value: 9
@@ -139806,6 +139810,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2090166106095674463, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
+      propertyPath: _attackCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090166106095674463, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
       propertyPath: _playerTransform
       value: 
       objectReference: {fileID: 1849027051}
@@ -139873,6 +139881,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 4363085269952216914, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363085269952216914, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.97
+      objectReference: {fileID: 0}
     - target: {fileID: 4385355282779730324, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -139923,7 +139939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7624607006588298009, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
       propertyPath: m_Speed
-      value: 3.8
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 7712571437188321292, guid: 1a12b7a4548b5d141b27bfea0ad72552, type: 3}
       propertyPath: m_Enabled
@@ -143726,6 +143742,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 575353072027484909, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: m_text
+      value: 'Sheep: {0}/{1}'
+      objectReference: {fileID: 0}
     - target: {fileID: 1304563253202871012, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: menuButton
       value: 
@@ -143761,6 +143781,10 @@ PrefabInstance:
     - target: {fileID: 4867431291400966771, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100945990012687577, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
+      propertyPath: _countTextEN
+      value: 'Sheep: {0}/{1}'
       objectReference: {fileID: 0}
     - target: {fileID: 6624613504050486208, guid: def249c2e6a99b04f9e57d2f88f98451, type: 3}
       propertyPath: m_LocalPosition.x
