@@ -127454,7 +127454,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -127462,11 +127462,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.8336185
+      value: -0.98153454
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalRotation.x
@@ -127474,7 +127474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.55234057
+      value: -0.19128488
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalRotation.z
@@ -127486,7 +127486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 427.055
+      value: 382.056
       objectReference: {fileID: 0}
     - target: {fileID: 1733855038482514334, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -127495,7 +127495,15 @@ PrefabInstance:
     - target: {fileID: 3070279166351197765, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_Cookie
       value: 
-      objectReference: {fileID: 2800000, guid: e1ef095d2d094994fb66d9c693c8e71b, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070279166351197765, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
+      propertyPath: m_SpotAngle
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070279166351197765, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3175355311261338810, guid: 96da2383f2120c44e94bdc2ab6e0a821, type: 3}
       propertyPath: m_Enabled
       value: 1
