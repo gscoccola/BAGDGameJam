@@ -19,6 +19,8 @@ public class PlayerPreset : ScriptableObject
     
     
     [Header("Move")]
+    [SerializeField, Range(0f, 90f)] private float maxSlideAngle = 50;
+    public float MaxSlideAngle => maxSlideAngle;
     [SerializeField, Range(0f, 20f)] private float acceleration = 5;
     public float Acceleration => acceleration;
     [SerializeField, Range(0f, 20f)] private float crouchSpeed = 1.5f;

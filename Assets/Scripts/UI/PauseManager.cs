@@ -1,7 +1,9 @@
 using System.Collections;
+using PixelMate.Collectibles;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 
 public class PauseManager : MonoBehaviour
@@ -12,6 +14,12 @@ public class PauseManager : MonoBehaviour
     private bool _isDead = false;
     [SerializeField] private LocalizeStringEvent _localizeStringEvent;
 
+
+    [SerializeField] private CollectiblesManager collectiblesManager;
+    [SerializeField] private TextMeshProUGUI collecionablesText;
+    
+    
+    
     private void Awake()
     {
         _pauseCanvas = transform.GetChild(0).GetChild(1).gameObject;
@@ -58,9 +66,21 @@ public class PauseManager : MonoBehaviour
 
     private void OnPlayerDeath()
     {
-        Time.timeScale = 0f;
+        string currentCollecionablesText = $"{collectiblesManager.CollectedCount}/5";
+        LocalizedString info = new LocalizedString("Eng-Esp", "COLECCIONABLES");
+        info.Arguments = new object[] { new {TOTAL = currentCollecionablesText} };
+        collecionablesText.text = info.GetLocalizedString();
+
+
+        StartCoroutine(OnPlayerDeathCoroutine());
         _isDead = true;
         _deathCanvas.SetActive(true);
+    }
+
+    private IEnumerator OnPlayerDeathCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0f;
     }
 
     public void LoadScene(int index)

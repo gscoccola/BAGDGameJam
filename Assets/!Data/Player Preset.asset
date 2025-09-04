@@ -20,6 +20,7 @@ MonoBehaviour:
   whatIsSurface:
     serializedVersion: 2
     m_Bits: 1
+  maxSlideAngle: 50
   acceleration: 5
   crouchSpeed: 2
   crouchHeadBobPreset:
@@ -32,14 +33,14 @@ MonoBehaviour:
     frequency: 12
     smooth: 25
   canSprintBackward: 0
-  minSprintSpeed: 3.75
+  minSprintSpeed: 4
   maxSprintSpeed: 6
-  burstSprintSpeed: 7
+  burstSprintSpeed: 7.3
   sprintHeadBobPreset:
     amplitude: 0.008
     frequency: 18
     smooth: 30
-  jumpHeight: 1.5
+  jumpHeight: 2.25
   fallGravityMultiplier: 1.5
   coyoteTime: 0.15
   jumpBufferTime: 0.15

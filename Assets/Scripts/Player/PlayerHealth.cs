@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -18,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private CustomAudioClip deadSound;
     [SerializeField] private CustomAudioClip[] takeDamageSounds;
     
-    [SerializeField] private CustomAudioClip lossSound;
+    [SerializeField] private AudioClip lossSound;
     
     
 
@@ -31,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnDestroy()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
     }
 
     private void Update()
@@ -78,7 +79,6 @@ public class PlayerHealth : MonoBehaviour
         {
             int randomSound = Random.Range(0, takeDamageSounds.Length);
             AudioSystem.Instance.PlaySound(takeDamageSounds[randomSound]);
-            AudioSystem.Instance.PlaySound(lossSound);
         }
     }
     
@@ -91,8 +91,16 @@ public class PlayerHealth : MonoBehaviour
     
     private void Dead()
     {
+        StartCoroutine(CooldownCoroutine());
         EventManager.Instance.Trigger(Constants.OnPlayerDeath);
         EventManager.Instance.Trigger(Constants.OnDisableControls);
     }
     #endregion
+
+
+    private IEnumerator CooldownCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        AudioSystem.Instance.PlaySound(lossSound);
+    }
 }

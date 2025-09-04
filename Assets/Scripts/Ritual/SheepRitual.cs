@@ -2,8 +2,10 @@ using PixelMate.Gameplay;
 using PixelMate.Utilities;
 using System.Collections;
 using System.Collections.Generic;
+using PixelMate.Collectibles;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,6 +14,11 @@ namespace PixelMate.Ritual
     [DisallowMultipleComponent]
     public sealed class SheepRitual : MonoBehaviour
     {
+        [SerializeField] private CollectiblesManager collectiblesManager;
+        [SerializeField] private TextMeshProUGUI collecionablesText;
+        
+        
+        
         [SerializeField]
         private SheepDoor _sheepDoor;
         [SerializeField]
@@ -115,7 +122,7 @@ namespace PixelMate.Ritual
 
         private IEnumerator SpinRitualPoint()
         {
-            AudioSystem.Instance.PlaySound(_ritualSpinClip);
+            AudioSystem.Instance.PlaySound(_ritualSpinClip, _ritualPoint.position);
             float currentSpeed = 0f;
 
             // accelerate up to max
@@ -177,7 +184,7 @@ namespace PixelMate.Ritual
 
             _ritualEndingStarted = true;
 
-            AudioSystem.Instance.PlaySound(_thunderSpinClip);
+            AudioSystem.Instance.PlaySound(_thunderSpinClip, _ritualPoint.position);
             StartCoroutine(RitualEndSequence());
         }
 
@@ -203,7 +210,7 @@ namespace PixelMate.Ritual
             IEnumerator rise = MoveOverTime(_farmerChild.transform, farmerStartPos, farmerTargetPos, _farmerRiseDuration);
 
             // Start a �coming out� stinger when the farmer's son begins rising
-            AudioSystem.Instance.PlaySound(_boyComingOutClip);
+            AudioSystem.Instance.PlaySound(_boyComingOutClip, _ritualPoint.position);
 
             // Start both
             Coroutine fadeCo = StartCoroutine(fade);
@@ -257,10 +264,11 @@ namespace PixelMate.Ritual
 
         private IEnumerator PlayVoiceSequential(AudioClip first, AudioClip second)
         {
+            yield return new WaitForSeconds(0.7f);
             // 1) Boy voice
             if (first != null)
             {
-                AudioSystem.Instance.PlaySound(first);
+                AudioSystem.Instance.PlaySound(first, _ritualPoint.position);
                 yield return new WaitForSeconds(first.length);
             }
 
@@ -279,10 +287,16 @@ namespace PixelMate.Ritual
             }
 
             
+            string currentCollecionablesText = $"{collectiblesManager.CollectedCount}/5";
+            LocalizedString info = new LocalizedString("Eng-Esp", "COLECCIONABLES");
+            info.Arguments = new object[] { new {TOTAL = currentCollecionablesText} };
+            collecionablesText.text = info.GetLocalizedString();
+            
             // 4) Show end text
             if (_endText != null)
                 _endText.gameObject.SetActive(true);
             menuButton.gameObject.SetActive(true);
+            collecionablesText.gameObject.SetActive(true);
             
             EventManager.Instance.Trigger(Constants.OnDisableControls);
             

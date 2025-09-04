@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 492ed95835c2f4743b48a411f96ced2f, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3929970224400433239
   m_TableData:
   - m_Id: 58137268224
     m_Localized: Play
@@ -67,7 +68,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 582098696032256
-    m_Localized: I have to... close the pen... ?
+    m_Localized: I have to... close the sheep pen... ?
     m_Metadata:
       m_Items: []
   - m_Id: 594819768406016
@@ -75,7 +76,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 594885035970560
-    m_Localized: Holy molly! I left the pen open...
+    m_Localized: Holy molly! I left the sheep pen open...
     m_Metadata:
       m_Items: []
   - m_Id: 594956599185408
@@ -100,6 +101,33 @@ MonoBehaviour:
     m_Localized: Reset Collectibles
     m_Metadata:
       m_Items: []
+  - m_Id: 1940010376269824
+    m_Localized: SHEEP PEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940012746051584
+    m_Localized: BARN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940060540145664
+    m_Localized: MILSS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940079443873792
+    m_Localized: SILOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1946941530738688
+    m_Localized: CONSEGUISTE {TOTAL} COLECCIONABLES
+    m_Metadata:
+      m_Items:
+      - rid: 3929970224400433239
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3929970224400433239
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1946941530738688

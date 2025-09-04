@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: es
   m_SharedData: {fileID: 11400000, guid: 492ed95835c2f4743b48a411f96ced2f, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3929970224400433240
   m_TableData:
   - m_Id: 58137268224
     m_Localized: Jugar
@@ -101,6 +102,33 @@ MonoBehaviour:
     m_Localized: Borrar Coleccionables
     m_Metadata:
       m_Items: []
+  - m_Id: 1940010376269824
+    m_Localized: CORRAL DE OVEJAS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940012746051584
+    m_Localized: GRANERO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940060540145664
+    m_Localized: MOLINOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940079443873792
+    m_Localized: SILOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1946941530738688
+    m_Localized: CONSEGUISTE {TOTAL} COLECCIONABLES
+    m_Metadata:
+      m_Items:
+      - rid: 3929970224400433240
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3929970224400433240
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1946941530738688

@@ -95,6 +95,26 @@ MonoBehaviour:
     m_Key: Reset Collectibles
     m_Metadata:
       m_Items: []
+  - m_Id: 1940010376269824
+    m_Key: Corral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940012746051584
+    m_Key: Granero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940060540145664
+    m_Key: Molinos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940079443873792
+    m_Key: Silos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1946941530738688
+    m_Key: COLECCIONABLES
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

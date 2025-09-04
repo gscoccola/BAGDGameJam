@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _characterController.slopeLimit = preset.MaxSlideAngle - 0.1f;
         _playerCameraTransform = GetComponentInChildren<PlayerCameraController>().transform;
         _characterController.height = Preset.NormalHeight;
         _characterController.center = new Vector3(0, Preset.NormalHeight / 2, 0);
@@ -225,9 +226,19 @@ public class PlayerController : MonoBehaviour
         Vector3 totalVelocity = _currentMoveVelocity;
         totalVelocity.y = _currentGravityVelocity.y;
         
-        //Movimiento + detección de suelo
+        //Movimiento
         CollisionFlags flags = _characterController.Move(totalVelocity * Time.deltaTime);
-        isGrounded = (flags & CollisionFlags.Below) != 0;
+        
+        //Detección de suelo
+        if ((flags & CollisionFlags.Below) != 0)
+        {
+            IsSlidingOnSlope();
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
         
         if (isGrounded) OnMove?.Invoke();
         
@@ -235,6 +246,30 @@ public class PlayerController : MonoBehaviour
         if ((flags & CollisionFlags.Above) != 0 && _currentGravityVelocity.y > 0) _currentGravityVelocity.y = AntiBumpFactor;
     }
 
+    private void IsSlidingOnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _characterController.height / 2 + 0.2f, preset.WhatIsSurface, QueryTriggerInteraction.Ignore))
+        {
+            //Comprobar si la pendiente es demasiado empinada
+            float slotAngle = Vector3.Angle(hit.normal, Vector3.up);
+
+            if (slotAngle <= preset.MaxSlideAngle)
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+                Vector3 slideDirection = Vector3.ProjectOnPlane(Vector3.down, hit.normal).normalized;
+                _characterController.Move(slideDirection * (Mathf.Abs(_currentGravityVelocity.y) * Time.deltaTime));
+            }
+        }
+        else
+        {
+            isGrounded = true;
+        }
+    }
+    
     private IEnumerator ChangeCrouchStateCoroutine(float targetHeight, float cameraHeight)
     {
         float timer = 0;

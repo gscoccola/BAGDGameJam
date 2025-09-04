@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour
             _currentSpeedPercentage += Time.deltaTime;
             _naveMeshAgent.speed = _baseSpeed * Mathf.Clamp(_currentSpeedPercentage, 0f, 1f);
         }
-        if (DistanceToPlayer >= minDistanceToPlayerForBurstSpeed) _naveMeshAgent.speed = _baseSpeed * 4f;
+        if (DistanceToPlayer >= minDistanceToPlayerForBurstSpeed) _naveMeshAgent.speed = _baseSpeed * 6f;
         else _naveMeshAgent.speed = _baseSpeed;
         if (DistanceToPlayer < _maxDistanceToDMG && _attackTimer > _attackCooldown)
         {
@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
         _attackTimer += Time.deltaTime;
         if (_consecutiveAttacks > 1)
         {
-            if (_consecutiveAttackTimer < 3f) _naveMeshAgent.speed = _baseSpeed * 0.6f;
+            if (_consecutiveAttackTimer < 5f) _naveMeshAgent.speed = _baseSpeed * 0.5f;
             else
             {
                 _consecutiveAttacks = 0;
