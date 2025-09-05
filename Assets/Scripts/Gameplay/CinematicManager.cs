@@ -14,6 +14,7 @@ public class CinematicManager : MonoBehaviour
     [SerializeField] float target3;
     [SerializeField] Image Panel;
     [SerializeField] TextMeshProUGUI Text;
+    [SerializeField] private AudioClip _dialogClip;
     /*[SerializeField] float time1;
     [SerializeField] float time2;
     [SerializeField] float time3;
@@ -35,6 +36,7 @@ public class CinematicManager : MonoBehaviour
     {
         _intensityTarget = 0f;
         _speed = 0.2f;
+        AudioSystem.Instance.PlaySound(_dialogClip, Vector3.zero);
         yield return new WaitForSeconds(6f);
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog2";
         _intensityTarget = target1;
@@ -44,9 +46,9 @@ public class CinematicManager : MonoBehaviour
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog3";
         _intensityTarget = target2;
         yield return new WaitForSeconds(3f);
+        _localizeStringEvent.StringReference.TableEntryReference = "Dialog4";
         _intensityTarget = 0f;
         yield return new WaitForSeconds(2f);
-        _localizeStringEvent.StringReference.TableEntryReference = "Dialog4";
         _intensityTarget = target3;
         yield return new WaitForSeconds(2f);
         _panelEnabled = true;

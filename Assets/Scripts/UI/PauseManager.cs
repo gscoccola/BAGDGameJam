@@ -15,14 +15,24 @@ public class PauseManager : Singleton<PauseManager>
     GameObject _deathCanvasDefaultButton;
     private bool _isPaused = false;
     private bool _isDead = false;
-    [SerializeField] private LocalizeStringEvent _localizeStringEvent;
+    [SerializeField] public LocalizeStringEvent _localizeStringEvent;
 
 
     [SerializeField] private CollectiblesManager collectiblesManager;
     [SerializeField] private TextMeshProUGUI collecionablesText;
-    
-    
-    
+
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip _dialog2;
+    [SerializeField]
+    private AudioClip _dialog3;
+    [SerializeField]
+    private AudioClip _dialog4;
+    [SerializeField]
+    private AudioClip _dialog5;
+
+
+
     private new void Awake()
     {
         base.Awake();
@@ -92,13 +102,19 @@ public class PauseManager : Singleton<PauseManager>
 
     private IEnumerator IStartDialog()
     {
+        AudioSystem.Instance.PlaySound(_dialog2);
         yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog6";
+        AudioSystem.Instance.PlaySound(_dialog3);
         yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog7";
+        AudioSystem.Instance.PlaySound(_dialog4);
         yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Dialog8";
+        AudioSystem.Instance.PlaySound(_dialog5);
         yield return new WaitForSeconds(5f);
         _localizeStringEvent.StringReference.TableEntryReference = "Empty";
     }
+
+
 }

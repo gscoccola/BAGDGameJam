@@ -48858,6 +48858,7 @@ MonoBehaviour:
   target3: 1
   Panel: {fileID: 351650559}
   Text: {fileID: 638616120}
+  _dialogClip: {fileID: 8300000, guid: b1c005c19f7bb9c4883aff642832523e, type: 3}
   _intensityTarget: 0
 --- !u!4 &8345299573356786825
 Transform:

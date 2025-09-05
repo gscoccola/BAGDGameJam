@@ -516,6 +516,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _localizeStringEvent: {fileID: 2476398683362047987}
+  collectiblesManager: {fileID: 0}
+  collecionablesText: {fileID: 0}
+  _playerTransform: {fileID: 0}
+  _dialog2: {fileID: 8300000, guid: d4f92298f23c1334895f96b02fa375fd, type: 3}
+  _dialog3: {fileID: 8300000, guid: 74e21e95b2e9ae64195630ca127011ed, type: 3}
+  _dialog4: {fileID: 8300000, guid: 9f7b986e98679ef4e906dbef87ae0c8e, type: 3}
+  _dialog5: {fileID: 8300000, guid: f2cfc5e3b0369184f954727539a4e1b1, type: 3}
 --- !u!1 &4479973766737373754
 GameObject:
   m_ObjectHideFlags: 0

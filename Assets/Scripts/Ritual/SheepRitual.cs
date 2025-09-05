@@ -270,6 +270,7 @@ namespace PixelMate.Ritual
             if (first != null)
             {
                 AudioSystem.Instance.PlaySound(first, _ritualPoint.position);
+                PauseManager.Instance._localizeStringEvent.StringReference.TableEntryReference = "Dad";
                 yield return new WaitForSeconds(first.length);
             }
 
@@ -306,6 +307,7 @@ namespace PixelMate.Ritual
             if (second != null)
             {
                 AudioSystem.Instance.PlaySound(second);
+                //PauseManager.Instance._localizeStringEvent.StringReference.TableEntryReference = "Osvaldo";
                 yield return new WaitForSeconds(second.length);
             }
 
