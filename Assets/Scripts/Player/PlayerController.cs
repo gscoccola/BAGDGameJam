@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public PlayerPreset Preset => preset;
     private Transform _playerCameraTransform;
     private Coroutine _crouchCoroutine;
-    public PlayerSprintEnergy GetPlayerSprintEnergy { get; private set; }
     
     [Header("Movement")]
     [SerializeField, ReadOnly] private bool canControllable = true;
@@ -58,12 +57,11 @@ public class PlayerController : MonoBehaviour
         Vector3 camStartPos = _playerCameraTransform.localPosition;
         Vector3 camTargetPos = new Vector3(camStartPos.x, Preset.NormalCameraHeight, camStartPos.z);
         _playerCameraTransform.localPosition = camTargetPos;
-        GetPlayerSprintEnergy = GetComponent<PlayerSprintEnergy>();
         PlayerSounds = GetComponentInChildren<PlayerSounds>();
+        isSprinting = true;
         
         EnableLocomotion();
-        PlayerControls.Instance.OnSprintKey += StartPressSprint;
-        PlayerControls.Instance.OnSprintKeyCancelled += StopPressSprint;
+        PlayerControls.Instance.OnSprintKeyStarted += StartPressSprint;
         PlayerControls.Instance.OnCrouchKey += PressCrouch;
         PlayerControls.Instance.OnJumpKey += RequestJump;
         
@@ -126,17 +124,12 @@ public class PlayerController : MonoBehaviour
     #region Inputs Methods
     private void StartPressSprint()
     {
-        isSprinting = true;
-    }
-    
-    private void StopPressSprint()
-    {
-        isSprinting = false;
+        isSprinting = !isSprinting;
     }
     
     private void PressCrouch()
     {
-        if (!GetCanControllable || !GetIsGrounded || GetIsSprinting) return;
+        if (!GetCanControllable || !GetIsGrounded) return;
         
         if (!isCrouching) StartCrouch();
         else StopCrouch();

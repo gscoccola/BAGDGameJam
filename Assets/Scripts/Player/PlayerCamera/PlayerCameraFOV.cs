@@ -31,7 +31,7 @@ public class PlayerCameraFOV : MonoBehaviour
     #region FOV Methods
     private void UpdateCameraFOV()
     {
-        if (_playerController.CurrentSpeed >= _playerController.Preset.minSprintSpeed)
+        if (_playerController.CurrentSpeed >= _playerController.Preset.sprintSpeed)
         {
             _camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, _sprintCameraFOV, fovTransitionSpeed * Time.deltaTime);
         }

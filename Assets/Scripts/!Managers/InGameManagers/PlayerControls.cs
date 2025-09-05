@@ -11,7 +11,7 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
     public bool InvertLookY;
     
     //Gameplay
-    public event Action OnSprintKey, OnSprintKeyCancelled;
+    public event Action OnSprintKeyStarted, OnSprintKeyCancelled;
     public event Action OnCrouchKey;
     public event Action OnJumpKey;
     public event Action OnStartPrimaryInteractKey, OnEndPrimaryInteractKey;
@@ -103,8 +103,7 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
     
     private void KEY_Sprint(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.started || callbackContext.performed) OnSprintKey?.Invoke();
-        if (callbackContext.canceled) OnSprintKeyCancelled?.Invoke();
+        if (callbackContext.started) OnSprintKeyStarted?.Invoke();
     }
 
     private void KEY_Crouch(InputAction.CallbackContext callbackContext)
