@@ -33,22 +33,8 @@ public class PlayerCrouch : IState<PlayerState>
         // 3. Si deja de estar agachado, va caminando
         if (!_playerController.GetIsCrouching)
         {
-            _fsm.ChangeState(PlayerState.Walking);
-            return;
-        }
-        
-        // 4. Si está sprintando mientras agachado
-        if (_playerController.GetIsSprinting)
-        {
-            bool canSprint = _playerController.Preset.CanSprintBackward || !_playerController.IsMovingBackward;
-            if (canSprint)
-            {
-                if (!_playerController.StopCrouch()) _playerController.Move(_playerController.Preset.CrouchSpeed);
-            }
-            else // 5. Me muevo agachado
-            {
-                _playerController.Move(_playerController.Preset.CrouchSpeed);
-            }
+            if(_playerController.GetIsSprinting) _fsm.ChangeState(PlayerState.Sprinting);
+            else _fsm.ChangeState(PlayerState.Walking);
             return;
         }
         

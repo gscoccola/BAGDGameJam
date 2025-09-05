@@ -38,7 +38,7 @@ public class PlayerFall : IState<PlayerState>
         if (_playerController.GetCanControllable)
         {
             // Si estoy corriendo de espaldas y no puedo
-            if (_playerController.GetIsSprinting && currentSpeed >= _playerController.Preset.minSprintSpeed)
+            if (_playerController.GetIsSprinting && currentSpeed >= _playerController.Preset.sprintSpeed)
             {
                 bool canSprint = _playerController.Preset.CanSprintBackward || !_playerController.IsMovingBackward;
                 if (!canSprint) currentSpeed = _playerController.Preset.WalkSpeed;

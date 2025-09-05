@@ -26,7 +26,7 @@ public class PlayerRecovery :  IState<PlayerState>
         currentDuration += Time.deltaTime;
         float currentSpeed;
         if (PlayerControls.Instance.InputMovement().magnitude == 0) currentSpeed = 0f;
-        else if (_playerController.GetIsSprinting) currentSpeed = _playerController.Preset.minSprintSpeed;
+        else if (_playerController.GetIsSprinting) currentSpeed = _playerController.Preset.sprintSpeed;
         else if (_playerController.GetIsCrouching) currentSpeed = _playerController.Preset.CrouchSpeed;
         else currentSpeed = _playerController.Preset.WalkSpeed;
         
@@ -48,7 +48,7 @@ public class PlayerRecovery :  IState<PlayerState>
         if (_playerController.GetCanControllable)
         {
             // Si estoy corriendo de espaldas y no puedo
-            if (_playerController.GetIsSprinting && currentSpeed >= _playerController.Preset.minSprintSpeed)
+            if (_playerController.GetIsSprinting && currentSpeed >= _playerController.Preset.sprintSpeed)
             {
                 bool canSprint = _playerController.Preset.CanSprintBackward || !_playerController.IsMovingBackward;
                 if (!canSprint) currentSpeed = _playerController.Preset.WalkSpeed;
