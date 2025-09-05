@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8415057410579787746}
   - component: {fileID: 8994126842074463292}
   - component: {fileID: 614935461283926279}
+  - component: {fileID: 3576504076135282841}
   m_Layer: 0
   m_Name: Fuente con agua
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -5.28, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 150, y: 150, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4665394121521666394}
-  m_Mesh: {fileID: -4901537318370592684, guid: 014be3fa041250e4dbb03cdd569f05ab, type: 3}
+  m_Mesh: {fileID: -8685131927988310842, guid: 6c34b9feb4aa0ba45af789f06dab95a4, type: 3}
 --- !u!23 &614935461283926279
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87,3 +88,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3576504076135282841
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665394121521666394}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.010798193, y: 0.009318102, z: 0.024971915}
+  m_Center: {x: 7.947285e-10, y: -3.973643e-10, z: 0.012485897}
