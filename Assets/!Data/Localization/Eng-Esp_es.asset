@@ -58,35 +58,32 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 581824858312704
-    m_Localized: ' '
+    m_Localized: "Ahh... \xA1que linda la brisita ch\xE9!"
     m_Metadata:
       m_Items: []
   - m_Id: 581929443282944
-    m_Localized: ' '
+    m_Localized: "Me voy a quedar un ratito en la mecedora total, ya est\xE1 todo
+      preparad..."
     m_Metadata:
       m_Items: []
   - m_Id: 581993309949952
-    m_Localized: ' '
-    m_Metadata:
-      m_Items: []
-  - m_Id: 582098696032256
-    m_Localized: ' '
+    m_Localized: Solo me queda cerrar el... corral...
     m_Metadata:
       m_Items: []
   - m_Id: 594819768406016
-    m_Localized: ' '
+    m_Localized: "Uyy me qued\xE9 dormido, ya es de noche!"
     m_Metadata:
       m_Items: []
   - m_Id: 594885035970560
-    m_Localized: ' '
+    m_Localized: "\xA1La gran Siete! Dej\xE9 el corral abierto"
     m_Metadata:
       m_Items: []
   - m_Id: 594956599185408
-    m_Localized: ' '
+    m_Localized: "Las ovejas se me habr\xE1n ido para el campo"
     m_Metadata:
       m_Items: []
   - m_Id: 595039185031168
-    m_Localized: ' '
+    m_Localized: Tengo que salir a buscarlas antes de que me pierdan del todo
     m_Metadata:
       m_Items: []
   - m_Id: 597078711488512
@@ -127,7 +124,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2086774536949760
-    m_Localized: ' '
+    m_Localized: "\xBFPap\xE1?"
     m_Metadata:
       m_Items: []
   references:

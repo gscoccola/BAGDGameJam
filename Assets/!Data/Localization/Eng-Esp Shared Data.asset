@@ -63,10 +63,6 @@ MonoBehaviour:
     m_Key: Dialog3
     m_Metadata:
       m_Items: []
-  - m_Id: 582098696032256
-    m_Key: Dialog4
-    m_Metadata:
-      m_Items: []
   - m_Id: 594819768406016
     m_Key: Dialog5
     m_Metadata:

@@ -56,19 +56,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 581824858312704
-    m_Localized: What a lovely breeze... I'll stay in the rocking chair for a while.
+    m_Localized: 'What a lovely breeze... '
     m_Metadata:
       m_Items: []
   - m_Id: 581929443282944
-    m_Localized: Uhh... so tired...
+    m_Localized: I'll stay in the rocking chair for a while. I've left everything
+      set...
     m_Metadata:
       m_Items: []
   - m_Id: 581993309949952
-    m_Localized: I have to... ?
-    m_Metadata:
-      m_Items: []
-  - m_Id: 582098696032256
-    m_Localized: I have to... close the sheep pen... ?
+    m_Localized: I just have to... close the sheep pen... ?
     m_Metadata:
       m_Items: []
   - m_Id: 594819768406016
