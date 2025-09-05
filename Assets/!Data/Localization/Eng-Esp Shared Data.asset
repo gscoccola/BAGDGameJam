@@ -115,6 +115,14 @@ MonoBehaviour:
     m_Key: COLECCIONABLES
     m_Metadata:
       m_Items: []
+  - m_Id: 2086745361371136
+    m_Key: Osvaldo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2086774536949760
+    m_Key: Dad
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

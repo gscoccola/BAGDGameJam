@@ -122,6 +122,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3929970224400433239
+  - m_Id: 2086745361371136
+    m_Localized: Osvaldo!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2086774536949760
+    m_Localized: Dad?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
