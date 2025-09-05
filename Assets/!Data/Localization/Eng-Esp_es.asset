@@ -17,7 +17,7 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 492ed95835c2f4743b48a411f96ced2f, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 3929970224400433240
+    - rid: 2086527937191608394
   m_TableData:
   - m_Id: 58137268224
     m_Localized: Jugar
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1940010376269824
-    m_Localized: CORRAL DE OVEJAS
+    m_Localized: CORRAL
     m_Metadata:
       m_Items: []
   - m_Id: 1940012746051584
@@ -122,11 +122,11 @@ MonoBehaviour:
     m_Localized: CONSEGUISTE {TOTAL} COLECCIONABLES
     m_Metadata:
       m_Items:
-      - rid: 3929970224400433240
+      - rid: 2086527937191608394
   references:
     version: 2
     RefIds:
-    - rid: 3929970224400433240
+    - rid: 2086527937191608394
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 

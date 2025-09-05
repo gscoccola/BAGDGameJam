@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace PixelMate.Ritual
 {
@@ -276,6 +277,7 @@ namespace PixelMate.Ritual
             if (_screenCoverPanel != null)
             {
                 _screenCoverPanel.gameObject.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(_screenCoverPanel.transform.GetChild(0).GetChild(1).gameObject);
 
                 // force full black, alpha 0 to start the fade-in
                 Color c = _screenCoverPanel.color;

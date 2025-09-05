@@ -21,6 +21,7 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
     public event Action OnGamePlayCancelKey, OnMenuCancelKey;
     public event Action OnClickAttack;
     public event Action OnReleaseAttack;
+    public event Action OnPause;
 
     private InputSystem_Actions _inputActions;
 
@@ -66,6 +67,7 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
         gameplayActionMap.Sprint.canceled += KEY_Sprint;
         gameplayActionMap.Crouch.started += KEY_Crouch;
         gameplayActionMap.Jump.started += KEY_Jump;
+        gameplayActionMap.Pause.started += KEY_Pause;
     }
     
     
@@ -202,6 +204,12 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
     {
         if (context.canceled)
             OnReleaseAttack?.Invoke();
+    }
+
+    private void KEY_Pause(InputAction.CallbackContext context)
+    {
+        if (PauseManager.Instance == null) return;
+        else PauseManager.Instance.Pause();
     }
 
     #endregion

@@ -110,7 +110,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1940060540145664
-    m_Localized: MILSS
+    m_Localized: MILS
     m_Metadata:
       m_Items: []
   - m_Id: 1940079443873792
@@ -118,7 +118,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1946941530738688
-    m_Localized: CONSEGUISTE {TOTAL} COLECCIONABLES
+    m_Localized: YOU FOUND {TOTAL} COLLECTIBLES
     m_Metadata:
       m_Items:
       - rid: 3929970224400433239

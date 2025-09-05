@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PixelMate.Collectibles;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,13 +19,19 @@ public class MainMenu : MonoBehaviour
     public static bool languageChoose;
     public AudioClip clickButtonSound;
     public AudioClip clickPlayButtonSound;
-    
+    private Dictionary<MenuState, GameObject> _defaultButtonDictionary = new();
+
     private void Awake()
     {
         _menuDictionary.Add(MenuState.Main, _mainMenu);
         _menuDictionary.Add(MenuState.HowToPlay, _howToPlayMenu);
         _menuDictionary.Add(MenuState.Credits, _creditsMenu);
         _menuDictionary.Add(MenuState.LanguageMenu, _languageMenu);
+
+        _defaultButtonDictionary.Add(MenuState.Main, _mainMenu.transform.GetChild(0).GetChild(0).gameObject);
+        _defaultButtonDictionary.Add(MenuState.HowToPlay, _howToPlayMenu.transform.GetChild(1).GetChild(0).gameObject);
+        _defaultButtonDictionary.Add(MenuState.Credits, _creditsMenu.transform.GetChild(1).GetChild(0).gameObject);
+        _defaultButtonDictionary.Add(MenuState.LanguageMenu, _languageMenu.transform.GetChild(0).GetChild(0).gameObject);
     }
 
     private void Start()
@@ -51,8 +58,10 @@ public class MainMenu : MonoBehaviour
 
     public void ChangeMenu(MenuState menuState)
     {
+        
         if (_menuDictionary[_currentMenuState] != null) _menuDictionary[_currentMenuState].gameObject.SetActive(false);
         _menuDictionary[menuState].gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_defaultButtonDictionary[menuState]);
         _currentMenuState = menuState;
         ButtonSounds();
     }
