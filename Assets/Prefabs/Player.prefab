@@ -644,6 +644,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4cd71cb2f484cf74ea6a7da8a0f19f64, type: 3}
     volume: 1
   audioSource: {fileID: 0}
+  count: 0
   waitTimer: 9
 --- !u!1 &4690711294969519827
 GameObject:
@@ -1151,7 +1152,6 @@ GameObject:
   - component: {fileID: 1733855038482514334}
   - component: {fileID: 5977318154292609576}
   - component: {fileID: 8266218004754040164}
-  - component: {fileID: 5678936560583457298}
   - component: {fileID: 8566007381087177139}
   - component: {fileID: 3175355311261338810}
   - component: {fileID: 8978732785859398808}
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbd446be1fe3d047933ca0f27fd556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveASheep: 0
+  haveASheep: {fileID: 0}
   preset: {fileID: 11400000, guid: 0419e25f4796af746bcdbe6c78d89b9c, type: 2}
   canControllable: 1
   isGrounded: 1
@@ -1227,26 +1227,6 @@ MonoBehaviour:
   isCrouching: 0
   currentPlayerState: 0
   currentSpeed: 0
---- !u!114 &5678936560583457298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8338320075049027767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94209975281588249a18371e0b9ead1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnergy: 0
-  maxEnergy: 100
-  energyRechargeDelayTimeInSeconds: 1
-  minPercentForBurst: 70
-  energyUsedPerSecond: 10
-  energyRechargePerSecond: 10
-  burstEnergyUsedPerSecond: 20
-  burstEnergyRechargePerSecond: 5
 --- !u!114 &8566007381087177139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,9 +1254,7 @@ MonoBehaviour:
     volume: 1
   - clip: {fileID: 8300000, guid: 40b074e05a7e37b488b5abe9d42a2ba0, type: 3}
     volume: 1
-  lossSound:
-    clip: {fileID: 8300000, guid: 93ddeebb00ee5574893e457409bed920, type: 3}
-    volume: 1
+  lossSound: {fileID: 0}
 --- !u!114 &3175355311261338810
 MonoBehaviour:
   m_ObjectHideFlags: 0
