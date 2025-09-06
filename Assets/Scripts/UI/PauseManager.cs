@@ -15,6 +15,7 @@ public class PauseManager : Singleton<PauseManager>
     GameObject _deathCanvasDefaultButton;
     private bool _isPaused = false;
     private bool _isDead = false;
+    float _buttonTimer = 1f;
     [SerializeField] public LocalizeStringEvent _localizeStringEvent;
 
 
@@ -43,6 +44,11 @@ public class PauseManager : Singleton<PauseManager>
         EventManager.Instance.Subscribe(Constants.OnPlayerDeath, OnPlayerDeath);
     }
 
+    private void Update()
+    {
+        _buttonTimer -= Time.unscaledDeltaTime;
+    }
+
     private new void OnDestroy()
     {
         //EventManager.Instance.Unsubscribe(Constants.OnPlayerDeath, OnPlayerDeath);
@@ -55,7 +61,8 @@ public class PauseManager : Singleton<PauseManager>
 
     public void Pause()
     {
-        if (_isDead) return;
+        if (_isDead || _buttonTimer > 0f) return;
+        _buttonTimer = 1f;
         if (!_isPaused)
         {
             Time.timeScale = 0f;

@@ -207,7 +207,11 @@ public class PlayerControls : Singleton<PlayerControls> //Revisar
 
     private void KEY_Pause(InputAction.CallbackContext context)
     {
-        if (PauseManager.Instance == null) return;
+        if (PauseManager.Instance == null)
+        {
+            Debug.Log("No pause manager Found");
+            return;
+        }
         else PauseManager.Instance.Pause();
     }
 
